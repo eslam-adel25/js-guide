@@ -1,0 +1,1407 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مقدمة في JavaScript - الدرس الأول</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/basics.css" />
+    <link rel="stylesheet" href="../css/compiler.css" />
+  </head>
+
+  <body>
+    <!-- Navbar (نفسه بتاع الصفحة الرئيسية) -->
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">JS Guide</div>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="basics.html">الأساسيات</a></li>
+          <li><a href="advanced.html">متقدم</a></li>
+          <li><a href="monsterLevel.html">Monster Level</a></li>
+          <li><a href="#">مشاريع</a></li>
+        </ul>
+
+        <!-- Menu Icon (Mobile) -->
+        <div class="menu-icon" id="menuIcon">☰</div>
+      </div>
+    </nav>
+
+    <!-- محتوى الدرس -->
+    <div class="container lesson-card">
+      <h1>1. مقدمة: ما هي لغة JavaScript؟</h1>
+
+      <p>
+        الجافا سكريبت (تُختصر بـ <strong>JS</strong>) هي لغة برمجة عالية
+        المستوى، وهي العصب الأساسي لشبكة الويب الحديثة. هي اللغة التي تعطي
+        "الحياة" لصفحات الويب وتجعلها تتفاعل معك.
+      </p>
+
+      <div class="note">
+        <strong>💡 ملحوظة مهمة:</strong> لغة JavaScript لا علاقة لها بلغة Java.
+        تشابه الأسماء هو مجرد صدفة تسويقية قديمة.
+      </div>
+
+      <h2>2. ماذا تفعل JavaScript؟ (مثال التشبيه)</h2>
+      <p>تخيل أن موقع الويب هو <strong>"منزل"</strong>:</p>
+      <ul>
+        <li><strong>HTML:</strong> هو هيكل البناء (العواميد والجدران).</li>
+        <li><strong>CSS:</strong> هو الديكور والدهانات (الألوان والتصميم).</li>
+        <li>
+          <strong>JS:</strong> هي الكهرباء والأنظمة الذكية (الإضاءة عند الضغط
+          على الزر، التفاعل).
+        </li>
+      </ul>
+      <p>
+        <strong>وظيفتها الأساسية:</strong> تحويل الموقع من مجرد نصوص ثابتة إلى
+        موقع <strong>تفاعلي</strong>.
+      </p>
+
+      <h2>3. كيف تعمل؟</h2>
+      <p>
+        تعمل غالباً داخل <strong>المتصفح</strong> (Client-side). المتصفح يحتوي
+        على "محرك" (Engine) يقرأ الكود سطراً بسطر وينفذ الأوامر فوراً.
+      </p>
+
+      <h2>4. أين وكيف تُكتب؟</h2>
+      <p>هناك 3 طرق لكتابة الكود:</p>
+
+      <h3>أولاً: داخل عنصر HTML (Internal)</h3>
+      <pre><code>&lt;script&gt;
+    alert("مرحباً بك!");
+&lt;/script&gt;</code></pre>
+
+      <h3>ثانياً: في ملف خارجي (External) - الطريقة الأفضل</h3>
+      <p>يتم إنشاء ملف بامتداد <code>.js</code> وربطه بالصفحة:</p>
+      <pre><code>&lt;script src="main.js"&gt;&lt;/script&gt;</code></pre>
+
+      <h3>ثالثاً: في الـ Console</h3>
+      <p>للتجربة السريعة داخل المتصفح.</p>
+
+      <h2>5. ملخص سريع</h2>
+      <div class="table-responsive">
+        <table>
+          <tr>
+            <th>العنصر</th>
+            <th>الوظيفة</th>
+            <th>التشبيه</th>
+          </tr>
+          <tr>
+            <td>HTML</td>
+            <td>الهيكل والمحتوى</td>
+            <td>العظام</td>
+          </tr>
+          <tr>
+            <td>CSS</td>
+            <td>الشكل والمظهر</td>
+            <td>الملابس</td>
+          </tr>
+          <tr>
+            <td>JS</td>
+            <td>التفاعل والمنطق</td>
+            <td>العقل والأعصاب</td>
+          </tr>
+        </table>
+      </div>
+
+      <button class="btn-test" onclick="runDemo()">
+        اضغط هنا لتجربة JavaScript الآن
+      </button>
+      <p id="demo-text" class="hidden-text">
+        🎉 ممتاز! لقد قمت بتشغيل كود JavaScript بنجاح!
+      </p>
+    </div>
+
+    <div class="container lesson-card">
+      <h1>2. المخرجات (Output) والتعليقات (Comments)</h1>
+
+      <p>
+        في الدرس ده هنتعلم إزاي نخلي JavaScript تخرج لنا بيانات، وإزاي نكتب
+        ملاحظات جوه الكود.
+      </p>
+
+      <div class="note">
+        <strong>💡 ملحوظة مهمة:</strong> المخرجات هي وسيلة التواصل بين الكود
+        وبينك كمبرمج أو بينك وبين المستخدم.
+      </div>
+
+      <h2>1. طرق إخراج البيانات (Output)</h2>
+      <p>عندنا طرق كتير، وأهمهم اللي هنستخدمهم طول الرحلة دي:</p>
+
+      <h3>أولاً: console.log()</h3>
+      <p>
+        دي أهم أداة للمبرمج، بتطبع النتائج في كونسول المتصفح (اضغط F12 عشان
+        تشوفها).
+      </p>
+      <pre><code>console.log("أهلاً بك في عالم البرمجة");</code></pre>
+
+      <h3>ثانياً: innerHTML</h3>
+      <p>بنستخدمها لما نحب نغير محتوى عنصر موجود فعلاً في صفحة الـ HTML.</p>
+      <pre><code>document.getElementById("text").innerHTML = "تم التغيير!";</code></pre>
+
+      <h2>2. التعليقات (Comments)</h2>
+      <p>التعليقات هي نصوص بيكتبها المبرمج لنفسه والمحرك بيتجاهلها تماماً.</p>
+
+      <pre><code>// تعليق سطر واحد (Single Line)
+    
+    /* تعليق أكثر من سطر
+       (Multi-line Comment)
+    */</code></pre>
+
+      <button class="btn-test" onclick="runLesson2()">
+        جرب مخرجات الكونسول الآن
+      </button>
+    </div>
+
+    <section class="lesson-card">
+      <h1>🧠 مخرجات الـ JavaScript (مقارنة عملية)</h1>
+      <p>
+        هناك 3 طرق شهيرة لإخراج البيانات، لكن لكل واحدة هدف ومكان استخدام مختلف
+        تماماً.
+      </p>
+
+      <div class="topic-box">
+        <h2>1️⃣ console.log() - صديق المبرمج</h2>
+        <p>
+          تستخدم لطباعة القيم في الـ Console (اضغط F12) للفهم والتصحيح.
+          <strong>المستخدم لا يراها!</strong>
+        </p>
+        <pre><code>console.log("Age:", 20); // مخرجات للمبرمج فقط</code></pre>
+        <button class="btn-test secondary" onclick="testConsole()">
+          جرب طباعة Console
+        </button>
+      </div>
+
+      <div class="topic-box">
+        <h2>2️⃣ window.alert() - النافذة المزعجة</h2>
+        <p>
+          تظهر للمستخدم وتوقف الصفحة بالكامل. ❌
+          <strong>لا تُستخدم في المواقع الاحترافية.</strong>
+        </p>
+        <pre><code>alert("أهلاً بك"); // توقف كل شيء حتى تضغط OK</code></pre>
+        <button class="btn-test danger" onclick="testAlert()">
+          جرب Alert القديم
+        </button>
+      </div>
+
+      <div class="topic-box">
+        <h2>3️⃣ document.write() - الممنوع استخدامه</h2>
+        <p>
+          تكتب مباشرة في الصفحة، لكنها قد
+          <strong>تمسح المحتوى بالكامل</strong> إذا استُخدمت بشكل خاطئ.
+        </p>
+        <pre><code>document.write("Hello"); // تمسح الصفحة في المواقع الحديثة</code></pre>
+        <button class="btn-test warning" onclick="testWrite()">
+          جرب خطر document.write
+        </button>
+      </div>
+
+      <div class="note danger">
+        <strong>⚠️ تحذير:</strong> دالة <code>document.write()</code> و
+        <code>alert()</code> ممنوعة في المشاريع الحقيقية. البديل هو الـ
+        <strong>Console</strong> للمبرمج والـ
+        <strong>Notifications</strong> للمستخدم.
+      </div>
+
+      <h2>🔥 المقارنة النهائية</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>الخاصية</th>
+              <th>console.log</th>
+              <th>alert</th>
+              <th>document.write</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>تظهر لمين؟</td>
+              <td>المبرمج</td>
+              <td>المستخدم</td>
+              <td>المستخدم</td>
+            </tr>
+            <tr>
+              <td>بتوقف الصفحة؟</td>
+              <td>❌</td>
+              <td>✅</td>
+              <td>❌</td>
+            </tr>
+            <tr>
+              <td>احترافية؟</td>
+              <td>✅ آمنة</td>
+              <td>❌ مزعجة</td>
+              <td>❌ ممنوعة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="lesson-card">
+      <h1>3. المتغيرات، البيانات، واكتشاف الأخطاء 🛠️</h1>
+      <p>
+        في هذا الدرس سنتعلم كيف نفكر كمبرمجين: كيف نخزن البيانات، أنواعها، وكيف
+        نكتشف الأخطاء بسرعة.
+      </p>
+
+      <div class="topic-box error-theme">
+        <h2>1️⃣ كيف تكتشف الخطأ؟ (Debugging) 🐞</h2>
+        <p>
+          الفرق بين المبرمج المحترف والمبتدئ هو سرعة اكتشاف الخطأ. صديقك الأول
+          هو <strong>Console</strong> (F12).
+        </p>
+
+        <div class="interactive-grid">
+          <div class="card-item">
+            <h3>🚫 Syntax Error</h3>
+            <p>خطأ في الكتابة (نسيت قوس، كتبت كلمة غلط).</p>
+            <button class="btn-test danger" onclick="triggerError('syntax')">
+              حاكي هذا الخطأ
+            </button>
+          </div>
+          <div class="card-item">
+            <h3>🔍 Reference Error</h3>
+            <p>بتنادي على متغير مش موجود أصلاً.</p>
+            <button class="btn-test danger" onclick="triggerError('ref')">
+              حاكي هذا الخطأ
+            </button>
+          </div>
+          <div class="card-item">
+            <h3>🔢 Type Error</h3>
+            <p>بتعامل رقم كأنه دالة (مثلاً).</p>
+            <button class="btn-test danger" onclick="triggerError('type')">
+              حاكي هذا الخطأ
+            </button>
+          </div>
+        </div>
+        <div class="note">
+          💡 <strong>نصيحة ذهبية:</strong> استخدم
+          <code>console.log(variable)</code> قبل وبعد السطر المشكوك فيه لمراقبة
+          القيم.
+        </div>
+      </div>
+
+      <div class="topic-box">
+        <h2>2️⃣ أنواع البيانات (Data Types) 🧬</h2>
+        <p>البيانات في JS لها أنواع، لازم تكون عارف إنت بتتعامل مع إيه.</p>
+
+        <table class="luxury-table">
+          <thead>
+            <tr>
+              <th>النوع</th>
+              <th>مثال</th>
+              <th>الوصف</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge string">String</span></td>
+              <td><code>"Ali"</code></td>
+              <td>نص (بين علامات تنصيص)</td>
+            </tr>
+            <tr>
+              <td><span class="badge number">Number</span></td>
+              <td><code>20</code>, <code>9.5</code></td>
+              <td>أرقام (بدون تنصيص)</td>
+            </tr>
+            <tr>
+              <td><span class="badge boolean">Boolean</span></td>
+              <td><code>true</code></td>
+              <td>يا صح يا غلط</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="code-playground">
+          <h3>🧪 معمل اختبار الأنواع</h3>
+          <p>اضغط لمعرفة نوع البيانات الحقيقي:</p>
+          <div class="btn-group">
+            <button class="btn-test secondary" onclick="checkType('Islam')">
+              "Eslam"
+            </button>
+            <button class="btn-test secondary" onclick="checkType(25)">
+              25
+            </button>
+            <button class="btn-test secondary" onclick="checkType(true)">
+              true
+            </button>
+            <button class="btn-test secondary" onclick="checkType('20')">
+              "20"
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-comparison">
+        <div class="old-way">
+          <h4>عملية الجمع</h4>
+          <pre><code> let num = 4 + 5; //9 </code></pre>
+        </div>
+        <div class="old-way">
+          <h4>عملية الطرح</h4>
+          <pre><code> let num = 5 – 4; //1 </code></pre>
+        </div>
+        <div class="old-way">
+          <h4>عملية الضرب</h4>
+          <pre><code> let num = 4 * 5; //20 </code></pre>
+        </div>
+        <div class="old-way">
+          <h4>عملية القسمة</h4>
+          <pre><code> let num = 5 / 4; //1.25 </code></pre>
+        </div>
+        <div class="old-way">
+          <h4>باقي القسمة</h4>
+          <pre><code> let num = 5 % 2; //1 </code></pre>
+        </div>
+        <div class="old-way">
+          <h4>الأس</h4>
+          <pre><code> let num = 4 ** 5; //1024 </code></pre>
+        </div>
+      </div>
+
+      <div class="topic-box">
+        <h2>3️⃣ المتغيرات (Variables) 📦</h2>
+        <p>المتغير هو "علبة" بنشيل فيها البيانات ولها اسم.</p>
+
+        <div class="comparison-grid">
+          <div class="comp-card gold">
+            <h3>🥇 const (الأفضل)</h3>
+            <p>قيمة ثابتة لا تتغير.</p>
+            <code>const country = "Egypt";</code>
+            <button class="btn-test" onclick="testConst()">
+              جرب تغيرها (هيحصل خطأ)
+            </button>
+          </div>
+          <div class="comp-card blue">
+            <h3>🥈 let (المرن)</h3>
+            <p>قيمة ممكن تتغير عادي.</p>
+            <code>let age = 20;</code>
+            <button class="btn-test secondary" onclick="testLet()">
+              جرب تغيرها (هتنجح)
+            </button>
+          </div>
+          <div class="comp-card red">
+            <h3>🥉 var (القديم)</h3>
+            <p>❌ به مشاكل، لا تستخدمه.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-box">
+        <h2>4️⃣ ربط النصوص (Concatenation) 🔗</h2>
+        <p>كيف نركب جملة فيها متغيرات؟</p>
+
+        <div class="code-comparison">
+          <div class="old-way">
+            <h4>❌ الطريقة القديمة</h4>
+            <pre><code>"My name is " + name + " age " + age</code></pre>
+          </div>
+          <div class="new-way">
+            <h4>✅ الطريقة الحديثة (Template Literals)</h4>
+            <pre><code>`My name is ${name} age ${age}`</code></pre>
+          </div>
+        </div>
+
+        <button class="btn-test primary" onclick="runLiveDemo()">
+          شغل مثال حي الآن 🚀
+        </button>
+        <div id="demo-output" class="console-box" style="display: none"></div>
+      </div>
+    </section>
+
+    <section class="lesson-card luxury-design">
+      <h1 class="bold-text main-title">🧠 الفكرة الأساسية (قبل أي كود)</h1>
+      <p class="bold-text text-large">تخيّل واحد واقف على طريق، وعنده قرار:</p>
+
+      <div class="decision-box">
+        <p class="bold-text">🌧️ لو الجو مطر ← خُد شمسية</p>
+        <p class="bold-text">❄️ غير كده لو الجو برد ← إلبس جاكيت</p>
+        <p class="bold-text">☀️ غير كده ← إطلع عادي</p>
+      </div>
+      <p class="bold-text highlight">
+        ده بالظبط اللي بتعمله if / else if / else.
+      </p>
+
+      <hr class="separator" />
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">1️⃣ if فقط</h2>
+        <p class="bold-text">يعني إيه if؟ يعني: لو الشرط صح ← نفّذ الكود</p>
+        <div class="code-wrapper">
+          <p class="bold-text">الشكل العام:</p>
+          <pre><code>if (condition) { // الكود اللي هيتنفّذ }</code></pre>
+        </div>
+        <p class="bold-text">condition لازم تكون: true أو false</p>
+        <div class="example-box">
+          <p class="bold-text">مثال بسيط جدًا:</p>
+          <pre><code>let age = 20;
+    if (age >= 18) {
+        console.log("أنت بالغ");
+    }</code></pre>
+          <p class="bold-text">✔️ لو age = 20 ← الشرط صح ← الكود يتنفّذ</p>
+          <p class="bold-text">❌ لو age = 15 ← الشرط غلط ← الكود يتجاهل</p>
+        </div>
+        <p class="bold-text alert-text">
+          ❗ ملاحظة مهمة: if ملهاش else، يعني لو الشرط غلط مفيش حاجة تحصل.
+        </p>
+        <button
+          class="btn-test secondary bold-text"
+          onclick="openCustomModal('من فضلك أدخل عمرك', 'age')"
+        >
+          جرب العمر بنفسك
+        </button>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">2️⃣ if / else</h2>
+        <p class="bold-text">
+          يعني إيه؟ لو الشرط صح ← نفّذ كذا | غير كده ← نفّذ حاجة تانية
+        </p>
+        <pre><code>if (condition) { // لو صح } else { // لو غلط }</code></pre>
+        <div class="example-box">
+          <p class="bold-text">مثال واضح:</p>
+          <pre><code>let temperature = 30;
+    if (temperature > 25) {
+        console.log("الجو حر");
+    } else {
+        console.log("الجو مش حر");
+    }</code></pre>
+        </div>
+        <p class="bold-text highlight">
+          الحقيقة المهمة: else ملهاش شرط، بتتنفّذ لما if تكون غلط.
+        </p>
+        <button
+          class="btn-test primary bold-text"
+          onclick="openCustomModal('أدخل درجة الحرارة الآن', 'temp')"
+        >
+          جرب الحرارة بنفسك
+        </button>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">3️⃣ if / else if / else</h2>
+        <p class="bold-text">ليه نحتاجها؟ لما يكون عندك أكتر من احتمال.</p>
+        <div class="example-box">
+          <p class="bold-text">مثال حياتي (التقديرات):</p>
+          <pre><code>let score = 85;
+    if (score >= 90) { console.log("ممتاز"); }
+    else if (score >= 75) { console.log("جيد جدًا"); }
+    else if (score >= 60) { console.log("جيد"); }
+    else { console.log("راسب"); }</code></pre>
+        </div>
+        <p class="bold-text red-alert">
+          🔴 مهم جدًا: JavaScript بتشيّك من فوق لتحت، وأول شرط يطلع true يقف.
+        </p>
+        <button
+          class="btn-test success bold-text"
+          onclick="openCustomModal('أدخل درجتك من 100', 'score')"
+        >
+          اختبر درجتك الآن
+        </button>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">4️⃣ الشروط (Conditions) بالتفصيل</h2>
+        <div class="grid-table">
+          <div class="grid-item bold-text">
+            المقارنة: > , < ,>= , <= ,===(يساوي الأفضل) , !==
+          </div>
+          <div class="grid-item bold-text">
+            المنطقية: && (و) , || (أو) , ! (نفي)
+          </div>
+        </div>
+        <p class="bold-text highlight">
+          مثال: if (age >= 18 && isStudent) { ... }
+        </p>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">5️⃣ Truthy & Falsy (مهم جدًا)</h2>
+        <p class="bold-text">
+          القيم اللي بتعتبر False هي: false, 0, "", null, undefined, NaN
+        </p>
+        <p class="bold-text">أي حاجة غير كده = True</p>
+        <button
+          class="btn-test warning bold-text"
+          onclick="
+            openCustomModal('جرب اكتب: 0 أو false أو اتركها فارغة', 'username')
+          "
+        >
+          جرب قيم الـ Falsy
+        </button>
+      </div>
+
+      <div class="topic-section error-card">
+        <h2 class="bold-text">6️⃣ أخطاء شائعة جدًا (احذر منها)</h2>
+        <ul class="bold-text">
+          <li>❌ استخدام = بدل == (خطأ قاتل)</li>
+          <li>❌ نسيان الأقواس: if age > 18 (غلط)</li>
+          <li>❌ شرط دايمًا true بسبب استخدام || بدل &&</li>
+        </ul>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">7️⃣ أمثلة شائعة جدًا</h2>
+        <p class="bold-text">
+          تسجيل دخول - زر مفعّل - التحقق من إدخال الإيميل.
+        </p>
+      </div>
+
+      <div class="topic-section final-example">
+        <h2 class="bold-text section-head">8️⃣ مثال كامل (تطبيقي)</h2>
+        <pre><code>const age = 17;
+    if (age >= 18) { console.log("مسموح"); }
+    else { console.log("ممنوع"); }</code></pre>
+      </div>
+
+      <div class="golden-summary">
+        <h2 class="bold-text">🧠 ملخص (احفظه)</h2>
+        <p class="bold-text">
+          if = لو | else if = احتمال تاني | else = غير كده
+        </p>
+        <p class="bold-text">الترتيب مهم جدًا.. أول شرط صح يقف.</p>
+      </div>
+
+      <div class="topic-section challenge-card">
+        <h2 class="bold-text" style="color: #facc15">🎯 خمن الناتج!</h2>
+        <p class="bold-text">
+          اقرأ الكود ده كويس، وتوقع الرقم اللي هيطلع في الـ
+          <strong>console</strong>:
+        </p>
+
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">
+let totalOrder = 100;
+let isVip = true;
+let discount = 0;
+            
+if (totalOrder > 150) {
+    discount = 20;
+  } 
+else if (isVip === true) {
+    discount = 10;
+  } 
+else {
+    discount = 0;
+ }
+            
+console.log(discount);</code></pre>
+        </div>
+
+        <p class="bold-text">
+          تفتكر قيمة الـ <strong>discount</strong> هتكون كام؟
+        </p>
+        <button
+          class="btn-test primary bold-text"
+          onclick="openCustomModal('اكتب الرقم المتوقع للخصم', 'challenge')"
+        >
+          أدخل إجابتك
+        </button>
+
+        <div
+          id="challengeExplanation"
+          class="explanation-persistent bold-text"
+          style="display: none"
+        ></div>
+      </div>
+    </section>
+
+    <section class="lesson-card luxury-design">
+      <h1 class="bold-text main-title">🧠 قبل ما نبدأ: يعني إيه switch؟</h1>
+      <p class="bold-text text-large">تخيّل عندك زرار:</p>
+
+      <div class="decision-box">
+        <p class="bold-text">🔘 لو ضغط 1 ← يطلع رسالة</p>
+        <p class="bold-text">🔘 لو ضغط 2 ← يطلع رسالة تانية</p>
+        <p class="bold-text">🔘 لو ضغط 3 ← رسالة تالتة</p>
+      </div>
+      <p class="bold-text highlight">
+        جملة switch هي أداة تحكم بديلة أكثر ترتيباً لسلسلة طويلة من if...else if
+        عندما تقارن متغيراً واحداً بقيم ثابتة.
+      </p>
+
+      <hr class="separator" />
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">1️⃣ الهيكل الأساسي (Syntax)</h2>
+        <p class="bold-text">
+          تقوم الـ switch بتقييم التعبير مرة واحدة، ثم تقارن الناتج مع قيم case.
+        </p>
+        <div class="code-wrapper">
+          <pre><code>switch (expression) {
+      case value1:
+        // كود الحالة الأولى
+        break; // يوقف التنفيذ ويخرج
+      case value2:
+        // كود الحالة الثانية
+        break;
+      default:
+        // لو مفيش أي حاجة طابقت (مثل else)
+    }</code></pre>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">2️⃣ مثال عملي (إشارة المرور)</h2>
+        <div class="example-box">
+          <p class="bold-text">لنفترض أننا نحدد الإجراء بناءً على اللون:</p>
+          <pre><code>let trafficLight = "red";
+switch (trafficLight) {
+    case "green": console.log("انطلق"); break;
+    case "yellow": console.log("استعد"); break;
+    case "red": console.log("توقف"); break;
+    default: console.log("إشارة معطلة");
+ }</code></pre>
+        </div>
+        <button
+          class="btn-test primary bold-text"
+          onclick="openCustomModal('اكتب لون (red, green, yellow)', 'traffic')"
+        >
+          اختبر إشارة المرور
+        </button>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">3️⃣ ميزة تجميع الحالات (Grouping)</h2>
+        <p class="bold-text">
+          يمكنك دمج أكثر من case لتنفيذ نفس الكود (مفيد لعدم التكرار).
+        </p>
+        <div class="example-box">
+          <p class="bold-text">مثال: هل اليوم عطلة أم عمل؟</p>
+          <pre><code>case "Friday": <br>case "Saturday":
+console.log("إجازة 🎉"); break;</code></pre>
+        </div>
+        <button
+          class="btn-test secondary bold-text"
+          onclick="openCustomModal('اكتب اسم اليوم (بالإنجليزي)', 'dayCheck')"
+        >
+          هل اليوم إجازة؟
+        </button>
+      </div>
+
+      <div class="topic-section error-card">
+        <h2 class="bold-text red-alert">⚠️ أخطاء شائعة (احذر منها!)</h2>
+        <ul class="bold-text">
+          <li>
+            🚫 <strong>نسيان break:</strong> سيستمر البرنامج في تنفيذ الحالات
+            التالية حتى لو لم تتطابق!
+          </li>
+          <li>
+            🚫 <strong>تجاهل النوع (===):</strong> الـ switch تقارن القيمة
+            والنوع معاً.
+          </li>
+          <li>
+            🚫 <strong>مشاكل النطاق (Scope):</strong> لا يمكنك تعريف متغير بنفس
+            الاسم في حالتين مختلفتين إلا باستخدام الأقواس المعقوفة { }.
+          </li>
+        </ul>
+        <div class="code-wrapper">
+          <p class="bold-text" style="color: #fff">الصحيح عند تعريف متغيرات:</p>
+          <pre><code>case 1: {
+    let y = 10; 
+    break;
+    }</code></pre>
+        </div>
+        <div class="code-wrapper">
+          <p class="bold-text" style="color: #fff">
+            لا تعتمد على تحويل الأنواع التلقائي كما يحدث أحياناً في ==. الـ
+            switch تستخدم ===.
+          </p>
+          <pre>
+                    <code>
+let num = "5"; // نص
+switch (num) {
+    case 5: // رقم
+        console.log("هذا رقم 5");
+        break;
+    case "5": // نص
+        console.log("هذا نص 5");
+        break;
+        }
+// الناتج: هذا نص 5 (لأنه تطابق تام)
+// لن يتم تنفيذ الحالة الأولى لأن الأنواع مختلفة.
+                    </code>
+                </pre>
+        </div>
+      </div>
+
+      <div class="golden-summary">
+        <h2 class="bold-text">💡 ملخص سريع للنقاط الفنية</h2>
+        <p class="bold-text">
+          ✅ default: اختيارية، ويفضل وضعها للقيم غير المتوقعة.
+        </p>
+        <p class="bold-text">
+          ✅ السرعة: قد تكون أسرع قليلاً من if..else في المقارنات الكثيرة.
+        </p>
+      </div>
+      <div
+        class="topic-section challenge-card"
+        style="border-color: #3b82f6 !important"
+      >
+        <h2 class="bold-text" style="color: #3b82f6">
+          🎮 تحدي الـ Switch الأسطوري!
+        </h2>
+        <p class="bold-text">
+          لو المتغير <strong>rank</strong> قيمته هي النص "2"، تفتكر إيه اللي
+          هيطلع؟
+        </p>
+
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let rank = "2";     
+switch(rank) {
+    case 2: 
+    console.log("فضي"); 
+    break;
+    case "2": 
+    console.log("ذهبي"); 
+    break;
+    default: 
+    console.log("مفيش مركز");
+    }</code></pre>
+        </div>
+
+        <p class="bold-text">
+          اكتب الكلمة اللي هتطلع في الـ console (فضي، ذهبي، مفيش مركز):
+        </p>
+        <button
+          class="btn-test secondary bold-text"
+          onclick="openCustomModal('توقع الكلمة الناتجة', 'switchChallenge')"
+        >
+          تحقق من إجابتك
+        </button>
+
+        <div
+          id="switchChallengeExplanation"
+          class="explanation-persistent bold-text"
+          style="display: none; border-right-color: #3b82f6"
+        ></div>
+      </div>
+    </section>
+
+    <section class="lesson-card luxury-design">
+      <h1 class="bold-text main-title">
+        🔄 حلقة التكرار (for Loop) في JavaScript
+      </h1>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">يعني إيه for؟</h2>
+        <p class="bold-text">for معناها ببساطة:</p>
+        <p class="bold-text">كرر نفس الكود أكتر من مرة بدل ما تكتبه بإيدك</p>
+        <div class="info-box bold-text">
+          تخيل تقول: <br />
+          اطبع رقم 1 <br />
+          اطبع رقم 2 <br />
+          اطبع رقم 3 <br />
+          بدل ما تكتب 3 سطور ← نستخدم for.
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">نظرة سريعة على أنواع for في JS</h2>
+        <p class="bold-text">في JavaScript عندنا أكثر من نوع للحلقة for:</p>
+        <ul class="bold-text list-styled">
+          <li>for التقليدية (الكلاسيكية).</li>
+          <li>for...of للمرور على قيم المصفوفات والـ iterables.</li>
+          <li>for...in للمرور على مفاتيح الكائنات (خصائص الـ objects).</li>
+          <li>for await...of للمرور على قيم غير متزامنة (async iterables)</li>
+        </ul>
+        <p class="bold-text">+2</p>
+        <p class="bold-text" style="color: #94a3b8">
+          سيتم شرح كل نوع بالتفصيل في المستقبل ولاكن الان سنشرح for التقليدية
+        </p>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🧱 الشكل العام لجملة for</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (initialization; condition; increment) {
+        // الكود اللي هيتكرر
+    }</code></pre>
+        </div>
+        <p class="bold-text">دلوقتي نفهم كل جزء لوحده 👇</p>
+        <div class="grid-container">
+          <div class="info-card">
+            <h4 class="bold-text">1️⃣ initialization (البداية)</h4>
+            <p class="bold-text">let i = 0;</p>
+            <p>ده عداد بيبدأ من قيمة معينة بيتنفّذ مرة واحدة فقط</p>
+          </div>
+          <div class="info-card">
+            <h4 class="bold-text">2️⃣ condition (الشرط)</h4>
+            <p class="bold-text">i < 5;</p>
+            <p>طول ما الشرط true الـ Loop تكمل أول ما يبقى false → توقف</p>
+          </div>
+          <div class="info-card">
+            <h4 class="bold-text">3️⃣ increment (الزيادة / النقصان)</h4>
+            <p class="bold-text">i++;</p>
+            <p>بيزوّد العداد بعد كل دورة ممكن: يزيد، ينقص، يزيد بأكتر من 1</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🧪 مثال بسيط جدًا</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 1; i <= 5; i++) {
+        console.log(i);
+    }</code></pre>
+        </div>
+        <div class="info-box bold-text">النتيجة: 1 2 3 4 5</div>
+        <p class="bold-text">إيه اللي حصل خطوة خطوة؟</p>
+        <p class="bold-text">
+          1️⃣ i = 1 | ,2️⃣ 1 <= 5 → صح | 3️⃣ اطبع 1 | 4️⃣ i++ → بقت 2 | 5️⃣ كرر…
+        </p>
+
+        <button
+          class="btn-test primary bold-text"
+          onclick="
+            openCustomModal(
+              'لو شلنا علامة = وبقت (i < 5)، الـ Loop هتطبع كام رقم؟',
+              'loopEqualsTest',
+            )
+          "
+        >
+          اختبر فهمك للشرط
+        </button>
+        <div
+          id="explain-loopEquals"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+
+        <h3 class="bold-text sub-head">🔁 ترتيب التنفيذ (مهم جدًا)</h3>
+        <p class="bold-text">
+          البداية ← الشرط ← تنفيذ الكود ← الزيادة ← الرجوع للشرط
+        </p>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">4️⃣ أمثلة شائعة جدًا</h2>
+        <p class="bold-text">🔹 مثال 1: طباعة من 0 لـ 9</p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 0; i < 10; i++) <br> { console.log(i); }  //0 1 2 3 4 5 6 7 8 9 </code></pre>
+        </div>
+
+        <p class="bold-text">🔹 مثال 2: العد التنازلي</p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 10; i >= 1; i--) <br> { console.log(i); }  //10 9 8 7 6 5 4 3 2 1 </code></pre>
+        </div>
+
+        <p class="bold-text">🔹 مثال 3: الزيادة بأكتر من 1</p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 0; i <= 10; i += 2) <br> { console.log(i); }    //0  2  4  6  8  10</code></pre>
+        </div>
+
+        <p class="bold-text">🔹 مثال 4: التكرار على Array</p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let names = ["Ali", "Eslam", "Ahmed"];
+for (let i = 0; i < names.length; i++) {
+        console.log(names[i]);
+    }     // Ali  Eslam  Ahmed </code></pre>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          استخدام for للمرور على عناصر مصفوفة
+        </h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const colors = ["red", "green", "blue"];
+for (let i = 0; i < colors.length; i++) {
+      console.log(colors[i]);
+    }  // red  green blue </code></pre>
+        </div>
+        <p class="bold-text">
+          هذا نمط كلاسيكي وشائع جداً: نستخدم i كـ index للوصول لكل عنصر:
+          colors[i].
+        </p>
+        <button
+          class="btn-test success bold-text"
+          onclick="
+            openCustomModal('ما هو الـ index الخاص بكلمة green؟', 'indexTest')
+          "
+        >
+          اختبر الـ Index
+        </button>
+        <div
+          id="explain-indexTest"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+
+        <h2 class="bold-text section-head">
+          استخدام for للمرور على أحرف نص (String)
+        </h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const name = "Ali";
+for (let i = 0; i < name.length; i++) {
+      console.log(name[i]);
+    }  //A  l  i</code></pre>
+        </div>
+        <p class="bold-text">
+          النص في JS أيضاً iterable، فنستطيع استخدامه مثل المصفوفة
+        </p>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">استخدام for للمرور بالعكس</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const arr = [10, 20, 30, 40, 50];
+for (let i = arr.length - 1; i >= 0; i--) {
+      console.log(arr[i]);
+    }  // 50  40  30  20  10 </code></pre>
+        </div>
+        <p class="bold-text">
+          نبدأ من آخر index: arr.length - 1. الشرط i >= 0 وننقص i في كل مرة:
+          i--.
+        </p>
+
+        <h2 class="bold-text section-head">
+          يمكن إخلاء أي جزء من الأجزاء الثلاثة (كلها اختيارية)
+        </h2>
+        <p class="bold-text">
+          مثال: حلقة لا تملك initialization (العداد معرّف من قبل):
+        </p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let i = 0; <br>for (; i < 3; i++) <br> { console.log(i); }</code></pre>
+        </div>
+
+        <p class="bold-text">
+          مثال: حلقة لا تملك condition (حلقة لا نهائية تحتاج break):
+        </p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let i = 0; <br>for (;;)<br> { console.log(i); i++; if (i >= 3) break; }</code></pre>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">5️⃣ for مع شروط داخلها</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 1; i <= 10; i++)
+ { if (i % 2 === 0) 
+    { console.log(i + " عدد زوجي"); } 
+ }</code></pre>
+        </div>
+
+        <h2 class="bold-text section-head">6️⃣ كلمات مهمة داخل الـ Loop</h2>
+        <p class="bold-text">🔸 <strong>break (إيقاف الـ Loop)</strong></p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 1; i <= 10; i++)
+ { if (i === 5) 
+    { break; } 
+    console.log(i); 
+ }</code></pre>
+        </div>
+        <p class="bold-text">⛔ الـ Loop تقف عند 5</p>
+
+        <p class="bold-text">🔸 <strong>continue (تخطي دورة)</strong></p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 1; i <= 5; i++)
+ { if (i === 3)
+     { continue; }
+      console.log(i); 
+ }</code></pre>
+        </div>
+        <p class="bold-text">⏭️ يتخطى 3</p>
+        <button
+          class="btn-test primary bold-text"
+          onclick="
+            openCustomModal(
+              'في مثال الـ continue، هل سيظهر رقم 3؟ (أجب بنعم أو لا)',
+              'continueTest',
+            )
+          "
+        >
+          تحدي الـ Continue
+        </button>
+        <div
+          id="explain-continueTest"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">7️⃣ for جوه for (Nested Loop)</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">for (let i = 1; i <= 3; i++)<br> { for (let j = 1; j <= 2; j++)<br>    { console.log(i, j); } <br> }  // 1 1   1 2   2 1   2 2   3 1  3 2</code></pre>
+        </div>
+        <p class="bold-text">تستخدم في: الجداول، الشبكات، الألعاب</p>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">8️⃣ إمتى أستخدم for؟</h2>
+        <ul class="bold-text list-styled">
+          <li>لما أعرف عدد التكرارات</li>
+          <li>مع الأرقام</li>
+          <li>مع الـ arrays</li>
+        </ul>
+      </div>
+
+      <div class="topic-section error-card">
+        <h2 class="bold-text red-alert">❌ أخطاء شائعة جدًا (انتبه لها)</h2>
+        <p class="bold-text">
+          1️⃣ نسيان الزيادة (Infinite Loop): ❌ الـ Loop هتفضل شغالة للأبد | ✔️
+          الحل: i++
+        </p>
+        <p class="bold-text">
+          2️⃣ شرط غلط: ❌ الشرط false من البداية → مش هيطبع حاجة
+        </p>
+        <p class="bold-text">
+          3️⃣ استخدام var بدل let: ❌ ممكن يعمل مشاكل | ✔️ استخدم let
+        </p>
+        <p class="bold-text">
+          4️⃣ نسيان length مع Array: ❌ غلط | ✔️ الصح: i < arr.length
+        </p>
+      </div>
+
+      <div class="topic-section challenge-card">
+        <h2 class="bold-text">🧠</h2>
+
+        <p class="bold-text">
+          <strong>for = تكرار</strong> <br />
+
+          3 أجزاء: بداية – شرط – زيادة <br />
+          تستخدم لما تعرف عدد التكرارات <br /><br />
+
+          <span class="break">break توقف</span> |
+          <span class="continue">continue تخطي</span>
+
+          <br /><br />
+
+          <span class="warning">⚠ انتبه للـ Infinite Loop</span>
+        </p>
+      </div>
+
+      <div class="topic-section challenge-card" style="border-color: #f59e0b">
+        <h2 class="bold-text" style="color: #f59e0b">
+          🏆 التحدي النهائي: ماذا سينتج؟
+        </h2>
+        <p class="bold-text">
+          اقرأ الكود التالي بتركيز، وحاول معرفة القيمة النهائية للمتغير
+          <code>total</code>:
+        </p>
+
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">
+let numbers = [1, 2, 3, 4, 5];
+let total = 0;
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+        continue; // تخطي الأرقام الزوجية
+    }
+    total += numbers[i];
+ }
+console.log(total);</code></pre>
+        </div>
+
+        <p class="bold-text">ما هي قيمة <code>total</code> النهائية؟</p>
+        <button
+          class="btn-test success bold-text"
+          style="background: #f59e0b"
+          onclick="
+            openCustomModal(
+              'أدخل الناتج النهائي لـ total',
+              'finalLoopChallenge',
+            )
+          "
+        >
+          إرسال الإجابة
+        </button>
+
+        <div
+          id="explain-finalChallenge"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
+    </section>
+
+    <section class="lesson-card luxury-design">
+      <h1 class="bold-text main-title">🔄 1️⃣ while Loop</h1>
+
+      <div class="topic-section">
+        <p class="bold-text">
+          أهلاً بك مجدداً! بعد أن أتقنت الـ for، حان الوقت لفهم "أبناء العمومة"
+          في عائلة التكرار: while و do...while.
+        </p>
+        <p class="bold-text">
+          الفرق الجوهري بينهما وبين for هو أننا نستخدم for عندما نعرف عدد مرات
+          التكرار (مثل: كرر 10 مرات).
+        </p>
+        <p class="bold-text">
+          أما while و do...while نستخدمهما عندما لا نعرف متى سنتوقف، ويعتمد
+          الأمر على شرط معين (مثل: استمر في اللعب حتى يخسر اللاعب).
+        </p>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">1. جملة while (الحلقة الحذرة)</h2>
+        <p class="bold-text">
+          هذه الجملة تفكر قبل أن تعمل. هي تتحقق من الشرط أولاً، فإذا كان صحيحاً
+          (true)، تنفذ الكود. إذا كان خاطئاً من البداية، لن تعمل أبداً.
+        </p>
+
+        <h4 class="bold-text">الهيكل (Syntax):</h4>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">while (condition) {
+      // الكود الذي سيتكرر
+      // خطوة تحديث (مهمة جداً لتجنب اللانهاية)
+    }</code></pre>
+        </div>
+
+        <h4 class="bold-text">مثال بسيط جدًا</h4>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let i = 1;
+while (i <= 5) {
+    console.log(i);
+    i++;
+ }  // 1  2  3  4  5  </code></pre>
+        </div>
+
+        <h4 class="bold-text">مثال بسيط (العد التنازلي):</h4>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let count = 5;
+while (count > 0) {
+    console.log("العد: " + count);
+    count--; // نقصنا 1 (بدون هذا السطر سيعلق البرنامج للأبد)
+ }  // العد : 5 العد : 4 العد : 3 العد : 2 العد : 1  </code></pre>
+        </div>
+
+        <h4 class="bold-text">مثال شائع (انتظار حدوث شيء):</h4>
+        <p class="bold-text">
+          تخيل أنك تريد توليد رقم عشوائي وتستمر في المحاولة حتى تحصل على الرقم
+          6. أنت لا تعرف هل سيحدث ذلك في المحاولة الأولى أم المئة.
+        </p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript"  >let dice = 0;
+   // !== هل لا تساوي
+ while (dice !== 6)   {
+    dice = Math.floor(Math.random() * 6) + 1; // رمي النرد (1-6)
+      console.log("حصلت على: " + dice);
+    }
+    console.log("أخيراً! ظهر الرقم 6.");</code></pre>
+        </div>
+        <button
+          class="btn-test primary bold-text"
+          onclick="
+            openCustomModal(
+              'في جملة while، ماذا يحدث إذا كان الشرط خطأ من البداية؟ اجب ب 0 او 1 ',
+              'whileFalseStart',
+            )
+          "
+        >
+          اختبر فهمك لـ while
+        </button>
+        <div
+          id="explain-whileFalseStart"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          2. جملة do...while (الحلقة المتهورة)
+        </h2>
+        <p class="bold-text">
+          هذه الجملة تعمل أولاً ثم تفكر. هي تضمن تنفيذ الكود مرة واحدة على
+          الأقل، ثم تتحقق من الشرط لترى إن كانت ستكرر أم لا.
+        </p>
+
+        <h4 class="bold-text">الهيكل (Syntax):</h4>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">do {
+    // الكود ينفذ هنا مرة واحدة حتماً
+    // خطوة التحديث
+ } while (condition); // لاحظ الفاصلة المنقوطة هنا ضرورية</code></pre>
+        </div>
+
+        <h4 class="bold-text">متى نستخدمها؟</h4>
+        <p class="bold-text">
+          أفضل مثال هو قوائم "جرب مرة أخرى". أنت تريد عرض القائمة للمستخدم مرة
+          واحدة، ثم تسأله إن كان يريد الاستمرار.
+        </p>
+
+        <h4 class="bold-text">مثال عملي:</h4>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let number = 0;
+do {
+    // لنفترض أننا نزيد الرقم هنا
+    number += 5;  // number = number + 5
+    console.log("الرقم الحالي: " + number);
+ } while (number < 20);</code></pre>
+        </div>
+        <button
+          class="btn-test success bold-text"
+          onclick="
+            openCustomModal(
+              'لماذا تسمى do...while متهورة؟ (اكتب: لأنها تنفذ ثم تفكر / لأنها تفكر ثم تنفذ)',
+              'doWhileReason',
+            )
+          "
+        >
+          تحدي المتهور
+        </button>
+        <div
+          id="explain-doWhileReason"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
+
+      <div class="topic-section challenge-card">
+        <h2 class="bold-text">3. الفرق الحاسم (بمثال واحد)</h2>
+        <p class="bold-text">
+          لنرى ماذا يحدث إذا كان الشرط خاطئاً من البداية (false).
+        </p>
+        <div class="grid-container">
+          <div class="info-card">
+            <h4 class="bold-text">في while:</h4>
+            <pre><code>let x = 100;
+while (x < 10) {
+    console.log("أنا داخل while");
+ }</code></pre>
+            <p style="color: #f87171">النتيجة: لن يطبع شيئاً أبداً.</p>
+          </div>
+          <div class="info-card">
+            <h4 class="bold-text">في do...while:</h4>
+            <pre><code>let y = 100;
+do {
+    console.log("أنا داخل do-while");
+ } while (y < 10);</code></pre>
+            <p style="color: #f87171">النتيجة: سيطبع هذه الجملة مرة واحدة!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-section error-card">
+        <h2 class="bold-text red-alert">4. أخطاء شائعة جداً (تجنبها!)</h2>
+        <p class="bold-text">
+          <strong>أ) نسيان تحديث المتغير (Infinite Loop):</strong> هذا أشهر خطأ.
+          إذا لم تغير المتغير، سيظل الشرط true للأبد.
+        </p>
+        <p class="bold-text">
+          <strong>ب) وضع الفاصلة المنقوطة ; في المكان الخطأ:</strong> وضعها بعد
+          while مباشرة ينهي الـ Loop فوراً ويجمد البرنامج.
+        </p>
+        <p class="bold-text">
+          <strong>ج) نسيان الفاصلة المنقوطة في نهاية do...while:</strong> هي
+          مطلوبة في نهاية سطر while(condition);.
+        </p>
+        <p class="bold-text">
+          <strong>د) استخدام do...while عندما يجب التحقق أولاً:</strong> قد يسبب
+          خطأ لو البيانات فارغة، استخدم while العادية.
+        </p>
+      </div>
+
+      <div class="topic-section challenge-card">
+        <h2 class="bold-text">🧠 ملخص للاختيار:</h2>
+        <ul class="bold-text" style="list-style: none; text-align: right">
+          <li>✅ هل تعرف عدد المرات؟ -> استخدم <strong>for</strong>.</li>
+          <li>
+            ✅ هل عدد المرات مجهول ويجب فحص الشرط أولاً؟ -> استخدم
+            <strong>while</strong>.
+          </li>
+          <li>
+            ✅ هل يجب تنفيذ الكود مرة واحدة على الأقل مهما كان الشرط؟ -> استخدم
+            <strong>do...while</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="topic-section challenge-card" style="border-color: #3b82f6">
+        <h2 class="bold-text" style="color: #3b82f6">🧠 اختبار الـ while</h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">
+    let count = 0;
+    let x = 1;
+    while (x < 10) {
+        x += 3;
+        count++;
+    }</code></pre>
+        </div>
+        <p class="bold-text" style="color: #fff">
+          ما هي القيمة النهائية للمتغير <code>count</code>؟
+        </p>
+        <button
+          class="btn-test primary bold-text"
+          onclick="
+            openCustomModal('أدخل قيمة count النهائية', 'whileCountTest')
+          "
+        >
+          إرسال الإجابة
+        </button>
+        <div id="explain-whileCountTest" class="persistent-explain"></div>
+      </div>
+
+      <div class="topic-section challenge-card" style="border-color: #ef4444">
+        <h2 class="bold-text" style="color: #ef4444">
+          🎯 اختبار الـ do...while
+        </h2>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">
+let score = 10;
+let attempts = 0;
+do {
+    score -= 5;
+        attempts++;
+  } while (score > 10);</code></pre>
+        </div>
+        <p class="bold-text" style="color: #fff">
+          ما هي القيمة النهائية للمتغير <code>attempts</code>؟
+        </p>
+        <button
+          class="btn-test success bold-text"
+          style="background: #ef4444"
+          onclick="
+            openCustomModal(
+              'أدخل قيمة attempts النهائية',
+              'doWhileAttemptsTest',
+            )
+          "
+        >
+          إرسال الإجابة
+        </button>
+        <div id="explain-doWhileAttemptsTest" class="persistent-explain"></div>
+      </div>
+    </section>
+
+    <div id="customModal" class="modal-overlay">
+      <div class="modal-content">
+        <h3 class="bold-text" id="modalTitle">أدخل بياناتك</h3>
+        <input
+          type="number"
+          id="modalInput"
+          class="bold-text"
+          placeholder="اكتب الرقم هنا..."
+        />
+        <div class="modal-buttons">
+          <button onclick="submitModal()" class="btn-test success bold-text">
+            تأكيد
+          </button>
+          <button onclick="closeModal()" class="btn-test danger bold-text">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+
+    <!-- compiler -->
+    <div id="fab-root"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/compiler.js"></script>
+  </body>
+</html>

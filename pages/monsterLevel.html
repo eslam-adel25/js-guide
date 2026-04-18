@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>advancced</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+    <!--<link rel="stylesheet" href="../css/style.css">-->
+    <link rel="stylesheet" href="../css/monsterLevel.css" />
+    <link rel="stylesheet" href="../css/navigation.css" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="logo">JS Guide</div>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html" class="active">الرئيسية</a></li>
+          <li><a href="basics.html">الأساسيات</a></li>
+          <li><a href="advanced.html">متقدم</a></li>
+          <li><a href="monsterLevel.html">Monster Level</a></li>
+          <li><a href="#">مشاريع</a></li>
+        </ul>
+
+        <!-- Menu Icon (Mobile) -->
+        <div class="menu-icon" id="menuIcon">☰</div>
+      </div>
+    </nav>
+
+    <div class="aurora-bg"></div>
+    <div class="grid-pattern"></div>
+
+    <div class="luxury-container">
+      <header class="main-header reveal">
+        <div class="badge-new">✨ الدليل الشامل</div>
+        <h1>شرح المصفوفات (Arrays) في JavaScript</h1>
+        <p class="hero-text">
+          تخيل أن المصفوفة (Array) مثل <span>"خزانة أدراج مرقمة"</span>. كل درج
+          له رقم، وتضع فيه ألعابك. المهم أنك تعرف في أي درج وضعت اللعبة
+          لتسترجعها بسهولة.
+        </p>
+      </header>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">01</div>
+
+        <h2 class="section-title">
+          <span class="main-label">تعريف المصفوفة</span>
+          <span class="sub-label"
+            >كائن خاص ومرتب (Ordered & Indexed Object)</span
+          >
+        </h2>
+        <div class="analogy-box">
+          <div class="icon">📦</div>
+          <div class="text">
+            تخيل المصفوفة كقائمة أو خزانة ذات أدراج مرقمة، حيث يمكنك وضع أي نوع
+            من البيانات في كل درج (أرقام، نصوص، كائنات، وحتى دوال).
+          </div>
+        </div>
+
+        <div class="analogy-box">
+          <div class="icon">📦</div>
+          <div class="text">
+            المصفوفة هي <strong>"كائن" (Object)</strong> عملاق، يحتوي على قطع
+            صغيرة بداخله.
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <p>
+            ما يميزها هو <span class="highlight-pink">النظام الصارم</span>:
+            اللعبة الأولى تظل في <span class="badge-index">المكان الأول</span>،
+            والثانية في <span class="badge-index">المكان الثاني</span>.
+          </p>
+        </div>
+
+        <div class="rule-box">
+          <h3 style="color: var(--secondary); margin-bottom: 10px">
+            خصائص المصفوفة:
+          </h3>
+          <ul class="concept-list">
+            <li>
+              <strong>مرتبة (Ordered):</strong> العناصر لها ترتيب محدد يبدأ من
+              الفهرس (Index) صفر.
+            </li>
+            <li>
+              <strong>ديناميكية (Dynamic):</strong> حجمها يتغير تلقائياً عند
+              الإضافة أو الحذف.
+            </li>
+            <li>
+              <strong>غير محددة النوع:</strong> يمكنها تخزين أنواع مختلفة في نفس
+              المصفوفة.
+            </li>
+            <li>
+              <strong>تمرير بالمرجع (Pass by Reference):</strong> تغيير النسخة
+              قد يؤثر على الأصل.
+            </li>
+          </ul>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-comment">// هذا مثال لمصفوفة بسيطة</span>
+<span class="code-comment">// قمنا بإنشاء خزانة اسمها "toys" ووضعنا فيها 3 ألعاب</span>
+<span class="code-keyword">const</span> <span class="code-function">toys</span> <span class="code-operator">=</span> [<span class="code-string">"Car"</span>, <span class="code-string">"Doll"</span>, <span class="code-string">"Ball"</span>];
+                
+<span class="code-comment">// طبعاً المصفوفة نفسها تعتبر "كائن" (Object) لكنه ذكي ومرتب</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">toys</span>); <span class="code-comment">// سيطبع: ["Car", "Doll", "Ball"]</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">02</div>
+        <h2 class="section-title">
+          <span class="main-label">إنشاء المصفوفة</span>
+          <span class="sub-label">طرق بناء الخزانة (Creation Methods)</span>
+        </h2>
+
+        <div class="analogy-box">
+          <div class="icon">🛠️</div>
+          <div class="text">
+            هناك طريقتان لصناعة الخزانة (المصفوفة). واحدة
+            <span class="badge-index" style="color: #10b981">جيدة جداً</span>
+            والأخرى تحتاج <span class="highlight-pink">حذر</span>.
+          </div>
+        </div>
+
+        <div class="sub-grid">
+          <div class="sub-card safe-method">
+            <div class="method-header">
+              <span class="status-badge">✓</span>
+              <h3>الطريقة الأولى: الأقواس [ ]</h3>
+            </div>
+
+            <div class="rule-box">
+              <p>
+                الأفضل والأكثر أماناً، كأنك تجمع أدواتك في
+                <span class="highlight-pink">حقيبة بسرعة</span>.
+              </p>
+            </div>
+
+            <div class="code-terminal">
+              <div class="code-header">
+                <span></span><span></span><span></span>
+              </div>
+              <pre><code><span class="code-comment">// استخدمنا const لإنشاء ثابت اسمه myFavColors</span>
+<span class="code-comment">// القوسين [ ] يخبران الكمبيوتر: "اصنع لي مصفوفة جديدة"</span>
+<span class="code-keyword">const</span> <span class="code-function">myFavColors</span> <span class="code-operator">=</span> [<span class="code-string">"Red"</span>, <span class="code-string">"Blue"</span>, <span class="code-string">"Green"</span>];
+                        
+<span class="code-comment">// الآن لدينا مصفوفة جاهزة ومليئة بالألوان</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">myFavColors</span>); <span class="code-comment"> // Red  Blue  Green </span></code></pre>
+            </div>
+          </div>
+
+          <div class="sub-card danger">
+            <h3>⚠️ الطريقة الثانية: new Array()</h3>
+            <p>تحتاج حذر! الكمبيوتر يلعب بنا لعبة عندما نمرر رقماً واحداً.</p>
+            <div class="code-terminal">
+              <div class="code-header">
+                <span></span><span></span><span></span>
+              </div>
+              <pre><code><span class="code-keyword">const</span> <span class="code-function">riskyArray</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-function">Array</span>(<span class="code-number">5</span>); 
+<span class="code-comment">// [empty × 5] (خمس خانات فارغة)</span>
+    
+<span class="code-keyword">const</span> <span class="code-function">correctArray</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-function">Array</span>();
+<span class="code-function">correctArray</span>[<span class="code-number">0</span>] <span class="code-operator">=</span> <span class="code-number">5</span>; <span class="code-comment">// النتيجة: [5]</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">03</div>
+        <h2 class="section-title">
+          <span class="main-label">الفهرسة (Indexing)</span>
+          <span class="sub-label">العد يبدأ من الصفر</span>
+        </h2>
+
+        <div class="info-glow">
+          هذا أهم سر في البرمجة! في حياتنا نعد: 1، 2، 3... لكن في الكمبيوتر نعد:
+          0، 1، 2... اللعبة الأولى في المكان رقم 0.
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">animals</span> <span class="code-operator">=</span> [<span class="code-string">"Cat"</span>, <span class="code-string">"Dog"</span>, <span class="code-string">"Lion"</span>];
+            
+<span class="code-comment">// للوصول لأي لعبة، نكتب اسم المصفوفة ثم رقم مكانها</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">animals</span>[<span class="code-number">0</span>]); <span class="code-comment">// "Cat" (الحيوان الأول)</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">animals</span>[<span class="code-number">1</span>]); <span class="code-comment">// "Dog" (الحيوان الثاني)</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">animals</span>[<span class="code-number">2</span>]); <span class="code-comment">// "Lion" (الحيوان الثالث)</span>
+            
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span
+    class="code-function">animals</span>[<span class="code-function">animals</span>.<span
+    class="code-function">length</span> <span class="code-operator">-</span> <span class="code-number">1</span>]); <span
+    class="code-comment">// الوصول لآخر عنصر</span>
+
+<span class="code-comment">// ماذا لو طلبنا مكان غير موجود؟</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">animals</span>[<span class="code-number">10</span>]); <span class="code-comment">// undefined</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">04</div>
+        <h2 class="section-title">
+          <span class="main-label">الخاصية length</span>
+          <span class="sub-label">طول المصفوفة</span>
+        </h2>
+
+        <p
+          style="
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+          "
+        >
+          length يعطيك "رقم" يخبرك كم مكان في الخزانة. وهو (آخر رقم فهرس + 1).
+          يمكننا أيضاً تغيير حجم الخزانة بالقوة!
+        </p>
+
+        <div class="magic-zone">
+          <h3>سحر تغيير الحجم</h3>
+          <div class="code-terminal">
+            <div class="code-header">
+              <span></span><span></span><span></span>
+            </div>
+            <pre><code><span class="code-keyword">const</span> <span class="code-function">numbers</span> <span class="code-operator">=</span> [<span class="code-number">10</span>, <span class="code-number">20</span>, <span class="code-number">30</span>, <span class="code-number">40</span>];
+                
+<span class="code-comment">// length تسأل المصفوفة: كم طولك؟</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">numbers</span>.<span class="code-function">length</span>); <span class="code-comment">// 4</span>
+                
+<span class="code-comment">// --- السحر: تغيير الحجم ---</span>
+                
+<span class="code-comment">// 1. تكبير المصفوفة</span>
+<span class="code-function">numbers</span>.<span class="code-function">length</span> <span class="code-operator">=</span> <span class="code-number">6</span>;
+<span class="code-comment">// النتيجة: [10, 20, 30, 40, empty × 2]</span>
+                
+<span class="code-comment">// 2. تصغير المصفوفة (حذف نهائي!)</span>
+<span class="code-function">numbers</span>.<span class="code-function">length</span> <span class="code-operator">=</span> <span class="code-number">2</span>;
+<span class="code-comment">// النتيجة: [10, 20]</span></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">05</div>
+        <h2 class="section-title">
+          <span class="main-label">التحقق من النوع</span>
+          <span class="sub-label">Array.isArray() مقابل typeof</span>
+        </h2>
+
+        <div class="comp-box">
+          <div class="tool">
+            <span>typeof</span>
+            <p>أداة "غبية" تقول عن المصفوفة "object" فقط.</p>
+          </div>
+          <div class="tool">
+            <span>Array.isArray()</span>
+            <p>أداة "ذكية" تعرف المصفوفة بدقة مطلقة.</p>
+          </div>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">myArr</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>];
+<span class="code-keyword">const</span> <span class="code-function">myObj</span> <span class="code-operator">=</span> { <span class="code-function">name</span>: <span class="code-string">"Ali"</span> };
+            
+<span class="code-comment">// 1. تجربة typeof (الأداة الغبية)</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-keyword">typeof</span> <span class="code-function">myArr</span>);  <span class="code-comment">// "object" ❌</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-keyword">typeof</span> <span class="code-function">myObj</span>);  <span class="code-comment">// "object" ❌</span>
+            
+<span class="code-comment">// 2. تجربة Array.isArray() (الأداة الذكية)</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">Array</span>.<span class="code-function">isArray</span>(<span class="code-function">myArr</span>)); <span class="code-comment">// true ✅</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">Array</span>.<span class="code-function">isArray</span>(<span class="code-function">myObj</span>)); <span class="code-comment">// false ✅</span></code></pre>
+        </div>
+        <div class="comp-box">
+          <div class="tool">
+            <span>Array.from()</span>
+            <p>تحويل النصوص أو الـ NodeList إلى مصفوفة حقيقية.</p>
+          </div>
+        </div>
+        <div class="code-terminal">
+          <pre><code>
+<span class="code-keyword">let</span> <span class="code-function">chars</span> <span class="code-operator">=</span> <span class="code-function">Array</span>.<span class="code-function">from</span>(<span class="code-string">"Hello"</span>); <span class="code-comment">// ['H','e','l','l','o']</span></code></pre>
+        </div>
+      </section>
+
+      <footer class="final-summary reveal">
+        <h2>💡 ملخص</h2>
+        <div class="grid-summary">
+          <div class="item">المصفوفة مثل خزانة مرتبة.</div>
+          <div class="item">أنشئها دائماً بالأقواس [] لتجنب المشاكل.</div>
+          <div class="item">أول صندوق رقمه 0 (وليس 1).</div>
+          <div class="item">length يخبرك بعدد الصناديق.</div>
+          <div class="item">استخدم Array.isArray() للتحقق.</div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="notification-container"></div>
+
+    <!-- <script src="../js/main.js"></script>-->
+    <script src="../js/level.js"></script>
+  </body>
+</html>
