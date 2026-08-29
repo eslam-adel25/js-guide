@@ -36,13 +36,44 @@ body {
 
 .container.lesson-card,
 .lesson-card {
-  width: min(1100px, calc(100% - 30px));
+  width: 100%;
+  max-width: 1100px;
   margin: 18px auto 22px;
   background: var(--panel-bg);
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
   padding: 30px 28px 22px;
   border: 1px solid rgba(15, 23, 42, 0.06);
+  max-width: 100%;
+}
+
+.container.lesson-card *,
+.lesson-card *,
+.mega-card,
+.rule-box,
+.sub-card,
+.tool,
+.analogy-box,
+.info-glow,
+.magic-zone,
+.final-summary,
+.code-terminal {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.table-responsive,
+table {
+  width: 100%;
+  max-width: 100%;
+}
+
+th,
+td {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .main-header {
@@ -477,8 +508,13 @@ p[style*="border-right: 4px solid #f97316"] {
 @media (max-width: 768px) {
   .container.lesson-card,
   .lesson-card {
-    width: min(100% - 20px, 1100px);
+    width: calc(100% - 20px);
+    max-width: 1100px;
     padding: 22px 16px 18px;
+  }
+
+  table {
+    table-layout: fixed;
   }
 
   .section-title {
