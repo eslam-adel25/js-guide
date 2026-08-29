@@ -12,7 +12,9 @@
     <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/basics.css" />
+    <link rel="stylesheet" href="../css/advancd.css" />
     <link rel="stylesheet" href="../css/monsterLevel.css" />
+    <link rel="stylesheet" href="../css/compiler.css" />
   </head>
 
   <body>
@@ -25,7 +27,7 @@
           <li><a href="../index.html">الرئيسية</a></li>
           <li><a href="basics.html">الأساسيات</a></li>
           <li><a href="advanced.html">متقدم</a></li>
-          <li><a href="monsterLevel.html" class="active">Monster Level</a></li>
+          <li><a href="monsterLevel.html">Monster Level</a></li>
           <li><a href="#">مشاريع</a></li>
         </ul>
 
@@ -36,7 +38,6 @@
 
     <div class="container lesson-card luxury-design">
       <header class="main-header reveal">
-        <div class="badge-new">✨ الدليل الشامل</div>
         <h1 class="main-title">شرح المصفوفات (Arrays) في JavaScript</h1>
         <p class="hero-text">
           تخيل أن المصفوفة (Array) مثل <span>"خزانة أدراج مرقمة"</span>. كل درج
@@ -129,6 +130,16 @@
           </div>
         </div>
 
+        <div class="rule-box">
+          <p>
+            عند إنشاء مصفوفة، نريد أن نكون واضحين جدًا بشأن المعنى. الطريقة
+            الأولى <strong>[ ]</strong> تُنشئ مصفوفة حقيقية مع عناصر فعليّة
+            فوراً، بينما <strong>new Array(5)</strong> يفسّر الرقم كطول فقط
+            وليس كقيمة أولية. هذه اللمسة الصغيرة تغيّر سلوك المصفوفة بالكامل،
+            لذلك من السهل أن نخلط بين الطريقتين إذا لم ننتبه.
+          </p>
+        </div>
+
         <div class="sub-grid">
           <div class="sub-card safe-method">
             <div class="method-header">
@@ -182,7 +193,20 @@
 
         <div class="info-glow">
           هذا أهم سر في البرمجة! في حياتنا نعد: 1، 2، 3... لكن في الكمبيوتر نعد:
-          0، 1، 2... اللعبة الأولى في المكان رقم 0.
+          0، 1، 2... اللعبة الأولى في المكان رقم 0. عندما نكتب
+          <strong>arr[0]</strong> فإننا نطلب العنصر الأول، و
+          <strong>arr[1]</strong> هو الثاني، وهكذا. هذا النظام يفرض أن الوصول إلى
+          آخر عنصر يكون غالباً عبر <strong>arr.length - 1</strong>، أو عبر
+          <strong>arr.at(-1)</strong> في النسخ الحديثة.
+        </div>
+
+        <div class="rule-box">
+          <p>
+            إذا طلبت فهرساً غير موجود، لا يحدث خطأ في معظم الحالات. ستُرجع JavaScript
+            <strong>undefined</strong> لأن المكان لا يوجد فعلياً. هذا سلوك مهم
+            لأن كثيراً من المبتدئين يظنون أن الوصول إلى فهرس غير موجود يسبب
+            استثناء، لكنه في الواقع عادةً يكون <strong>undefined</strong>.
+          </p>
         </div>
 
         <div class="code-terminal">
@@ -219,8 +243,12 @@
             line-height: 1.7;
           "
         >
-          length يعطيك "رقم" يخبرك كم مكان في الخزانة. وهو (آخر رقم فهرس + 1).
-          يمكننا أيضاً تغيير حجم الخزانة بالقوة!
+          <strong>length</strong> يعطيك "رقم" يخبرك كم مكان في الخزانة. وهو
+          يساوي <strong>آخر فهرس + 1</strong>، لأن الفهرس يبدأ من الصفر. هذا
+          يعني أنه إذا كانت المصفوفة فيها ثلاثة عناصر، فـ length تساوي 3، بينما
+          آخر فهرس هو 2. والشيء المهم هنا هو أن <strong>length</strong> قابل
+          للتغيير، لذلك يمكننا توسيع أو تقليص المصفوفة يدويًا، لكن هذا لا يعني
+          أننا نضيف عناصر حقيقية دائماً؛ أحياناً نترك فراغات.
         </p>
 
         <div class="magic-zone">
@@ -265,6 +293,17 @@
           </div>
         </div>
 
+        <div class="rule-box">
+          <p>
+            عند التعامل مع القيم من مصادر مختلفة، نحتاج أحياناً إلى معرفة: "هل هذا
+            فعلاً مصفوفة؟" لأن <strong>typeof</strong> لا يكفي. في JavaScript,
+            المصفوفة هي <strong>object</strong> من ناحية النوع العام، لذلك لو
+            أردنا اختبارها بدقة نستعمل <strong>Array.isArray()</strong>.
+            هذا مهم عندما نتحقق من بيانات المستخدم، أو عند كتابة دوال تأخذ مصفوفة
+            كمدخل وتعمل عليها.
+          </p>
+        </div>
+
         <div class="code-terminal">
           <div class="code-header"><span></span><span></span><span></span></div>
           <pre><code><span class="code-keyword">const</span> <span class="code-function">myArr</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>];
@@ -290,21 +329,662 @@
         </div>
       </section>
 
-      <footer class="final-summary reveal">
-        <h2>💡 ملخص</h2>
-        <div class="grid-summary">
-          <div class="item">المصفوفة مثل خزانة مرتبة.</div>
-          <div class="item">أنشئها دائماً بالأقواس [] لتجنب المشاكل.</div>
-          <div class="item">أول صندوق رقمه 0 (وليس 1).</div>
-          <div class="item">length يخبرك بعدد الصناديق.</div>
-          <div class="item">استخدم Array.isArray() للتحقق.</div>
+      <section class="mega-card reveal">
+        <div class="card-icon">06</div>
+        <h2 class="section-title">
+          <span class="main-label">الإنشاء المتقدم</span>
+          <span class="sub-label">Array literals و Array.from() و Array.of()</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            هناك أكثر من طريقة لإنشاء مصفوفة، وكل طريقة لها سلوك مختلف. هذا مهم
+            لأن بعض الطرق تترك "فراغات" في المصفوفة، بينما أخرى تنشئ عناصر فعليّة.
+            فالـ <strong>Array literal</strong> واضح ومباشر، أما
+            <strong>new Array()</strong> فله سلوك خاص عند تمرير رقم واحد فقط،
+            ويحمل في هذا الحالة معنى الطول وليس معنى العنصر. أما
+            <strong>Array.from()</strong> فمفيدة عندما نريد تحويل شيء قابل
+            للتكرار مثل النص أو قائمة DOM إلى مصفوفة حقيقية.
+          </p>
         </div>
-      </footer>
+
+        <div class="sub-grid">
+          <div class="sub-card">
+            <div class="method-header">
+              <span class="status-badge">1</span>
+              <h3>Array literal</h3>
+            </div>
+            <div class="code-terminal">
+              <div class="code-header"><span></span><span></span><span></span></div>
+              <pre><code><span class="code-keyword">const</span> <span class="code-function">numbers</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>]; <span class="code-comment">// إنشاء مصفوفة مباشرة مع القيم</span>
+<span class="code-keyword">const</span> <span class="code-function">empty</span> <span class="code-operator">=</span> []; <span class="code-comment">// مصفوفة فارغة</span>
+<span class="code-keyword">const</span> <span class="code-function">mix</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-string">"Ali"</span>, <span class="code-keyword">true</span>, { <span class="code-function">name</span>: <span class="code-string">"Eslam"</span> }]; <span class="code-comment">// أنواع مختلفة داخل نفس المصفوفة</span></code></pre>
+            </div>
+          </div>
+
+          <div class="sub-card">
+            <div class="method-header">
+              <span class="status-badge">2</span>
+              <h3>new Array()</h3>
+            </div>
+            <div class="code-terminal">
+              <div class="code-header"><span></span><span></span><span></span></div>
+              <pre><code><span class="code-keyword">const</span> <span class="code-function">a</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-function">Array</span>(<span class="code-number">3</span>); <span class="code-comment">// ينتج ثلاث فراغات، لا ثلاث عناصر</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">a</span>.<span class="code-function">length</span>); <span class="code-comment">// 3</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">a</span>[<span class="code-number">0</span>]); <span class="code-comment">// undefined</span>
+
+<span class="code-keyword">const</span> <span class="code-function">b</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-function">Array</span>(<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>); <span class="code-comment">// هنا يتم إنشاء 3 عناصر فعليّة</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <h3>Array.of() و Array.from()</h3>
+          <div class="code-terminal">
+            <div class="code-header"><span></span><span></span><span></span></div>
+            <pre><code><span class="code-keyword">const</span> <span class="code-function">arrOf</span> <span class="code-operator">=</span> <span class="code-function">Array</span>.<span class="code-function">of</span>(<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>); <span class="code-comment">// ينشئ مصفوفة من القيم مباشرة</span>
+<span class="code-keyword">const</span> <span class="code-function">letters</span> <span class="code-operator">=</span> <span class="code-function">Array</span>.<span class="code-function">from</span>(<span class="code-string">"Java"</span>); <span class="code-comment">// ['J', 'a', 'v', 'a']</span>
+<span class="code-keyword">const</span> <span class="code-function">numbers2</span> <span class="code-operator">=</span> <span class="code-function">Array</span>.<span class="code-function">from</span>({ <span class="code-function">length</span>: <span class="code-number">4</span> }, (_, <span class="code-function">i</span>) <span class="code-operator">=&gt;</span> <span class="code-function">i</span> <span class="code-operator">+</span> <span class="code-number">1</span>); <span class="code-comment">// [1, 2, 3, 4]</span></code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">07</div>
+        <h2 class="section-title">
+          <span class="main-label">الفهرسة المتقدمة</span>
+          <span class="sub-label">القراءة، الكتابة، آخر عنصر، at()</span>
+        </h2>
+
+        <div class="info-glow">
+          في JavaScript، الوصول إلى آخر عنصر بطريقة تقليدية هو:
+          <strong>arr[arr.length - 1]</strong>. لكن اليوم توجد طريقة أكثر وضوحاً:
+          <strong>arr.at(-1)</strong>. الفكرة هنا أن الرقم السالب في
+          <strong>at()</strong> يعني: "ابدأ من آخر العنصر"، وهذا يحول مفهوم
+          الوصول من الحساب اليدوي إلى قراءة أسهل وأكثر قابلية للفهم.
+        </div>
+
+        <div class="rule-box">
+          <p>
+            هذا مفيد جداً عندما نريد الوصول إلى آخر عنصر أو الثاني من آخر بدون حساب
+            يدوي. كما أنه يمنع الأخطاء الشائعة عند التعامل مع المصفوفات الطويلة أو
+            عند كتابة منطق يعتمد على آخر قيمها. الفهرس السالب لا يعمل مع
+            الوصول العادي <strong>arr[-1]</strong>؛ العمل الحقيقي يكون عبر
+            <strong>at()</strong>.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">colors</span> <span class="code-operator">=</span> [<span class="code-string">"Red"</span>, <span class="code-string">"Green"</span>, <span class="code-string">"Blue"</span>]; <span class="code-comment">// مصفوفة بثلاثة ألوان</span>
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">colors</span>[<span class="code-number">0</span>]); <span class="code-comment">// Red</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">colors</span>[<span class="code-function">colors</span>.<span class="code-function">length</span> <span class="code-operator">-</span> <span class="code-number">1</span>]); <span class="code-comment">// Blue</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">colors</span>.<span class="code-function">at</span>(<span class="code-operator">-</span><span class="code-number">1</span>)); <span class="code-comment">// Blue</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">colors</span>.<span class="code-function">at</span>(<span class="code-operator">-</span><span class="code-number">2</span>)); <span class="code-comment">// Green</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">colors</span>[<span class="code-number">99</span>]); <span class="code-comment">// undefined لأن الفهرس غير موجود</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">08</div>
+        <h2 class="section-title">
+          <span class="main-label">length وملء الفراغات</span>
+          <span class="sub-label">ماذا يحدث عند تغيير طول المصفوفة؟</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            مفهوم <strong>length</strong> لا يقتصر على "عدد العناصر المملوءة" فقط؛
+            بل يمكن أن يكون أكبر من ذلك إذا تركنا فراغات. هذا يحدث عندما تغير طول
+            المصفوفة إلى رقم أكبر، أو عندما تستخدم <strong>new Array(3)</strong>.
+            في هذه الحالة لا توجد قيم حقيقية في الأماكن الفارغة، لذلك قد يخلط
+            المبتدئون بين "فراغ" و "undefined". الفرق مهم: الفراغ يعني أن
+            المكان لا يحتوي على قيمة فعليّة، لكن الخاصية نفسها موجودة في المصفوفة.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">arr</span> <span class="code-operator">=</span> [<span class="code-number">10</span>, <span class="code-number">20</span>, <span class="code-number">30</span>]; <span class="code-comment">// طولها 3</span>
+<span class="code-function">arr</span>.<span class="code-function">length</span> <span class="code-operator">=</span> <span class="code-number">5</span>; <span class="code-comment">// تزيد الطول وتترك فراغات</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>); <span class="code-comment">// [10, 20, 30, <empty>, <empty>]</span>
+
+<span class="code-function">arr</span>.<span class="code-function">length</span> <span class="code-operator">=</span> <span class="code-number">2</span>; <span class="code-comment">// تقطع المصفوفة من آخرها</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>); <span class="code-comment">// [10, 20]</span>
+
+<span class="code-keyword">const</span> <span class="code-function">sparse</span> <span class="code-operator">=</span> <span class="code-keyword">new</span> <span class="code-function">Array</span>(<span class="code-number">3</span>); <span class="code-comment">// مصفوفة فيها 3 فراغات</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">sparse</span>.<span class="code-function">length</span>); <span class="code-comment">// 3</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-number">0</span> <span class="code-keyword">in</span> <span class="code-function">sparse</span>); <span class="code-comment">// false لأن هذا فراغ لا قيمة حقيقية</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">09</div>
+        <h2 class="section-title">
+          <span class="main-label">الإضافة والإزالة</span>
+          <span class="sub-label">push, pop, shift, unshift, splice</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            هذه الطرق تغير المصفوفة الأصلية مباشرة. بعض الطرق تعطيك قيمة مرتجعة
+            مثل العدد الجديد أو العنصر المحذوف، وأخرى تعطيك مصفوفة جديدة. من هنا
+            يأتي فرق أساسي بين <strong>push</strong> و <strong>slice</strong>:
+            الأولى تعدّل الأصل، والثانية تعطيك نسخة جديدة. في التطبيقات الحقيقية
+            هذا يعني أن اختيار الطريقة المناسبة يمكن أن يقيك من أخطاء صعبة في
+            البيانات أو في حالة المتابعة.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">items</span> <span class="code-operator">=</span> [<span class="code-string">"A"</span>, <span class="code-string">"B"</span>]; <span class="code-comment">// مصفوفة أولية</span>
+<span class="code-function">items</span>.<span class="code-function">push</span>(<span class="code-string">"C"</span>); <span class="code-comment">// يضيف في النهاية</span>
+<span class="code-function">items</span>.<span class="code-function">unshift</span>(<span class="code-string">"Z"</span>); <span class="code-comment">// يضيف في البداية</span>
+<span class="code-function">items</span>.<span class="code-function">pop</span>(); <span class="code-comment">// يحذف آخر عنصر ويعيده</span>
+<span class="code-function">items</span>.<span class="code-function">shift</span>(); <span class="code-comment">// يحذف أول عنصر ويعيده</span>
+<span class="code-function">items</span>.<span class="code-function">splice</span>(<span class="code-number">1</span>, <span class="code-number">1</span>, <span class="code-string">"X"</span>, <span class="code-string">"Y"</span>); <span class="code-comment">// يستبدل أو يضيف في وسط المصفوفة</span>
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">items</span>); <span class="code-comment">// مثال النتيجة: ['Z', 'X', 'Y']</span></code></pre>
+        </div>
+
+        <div class="code-terminal" style="margin-top: 20px;">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">players</span> <span class="code-operator">=</span> [<span class="code-string">"Ali"</span>, <span class="code-string">"Sami"</span>, <span class="code-string">"Huda"</span>];
+<span class="code-function">players</span>.<span class="code-function">splice</span>(<span class="code-number">1</span>, <span class="code-number">0</span>, <span class="code-string">"Omar"</span>); <span class="code-comment">// إدراج بدون حذف</span>
+<span class="code-function">players</span>.<span class="code-function">splice</span>(<span class="code-number">2</span>, <span class="code-number">1</span>); <span class="code-comment">// حذف عنصر واحد من مكان محدد</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">players</span>); <span class="code-comment">// النتيجة النهائية تعكس التعديلات</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">10</div>
+        <h2 class="section-title">
+          <span class="main-label">المتغيرات المدمرة وغير المدمرة</span>
+          <span class="sub-label">mutating vs non-mutating methods</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            بعض الطرق تعدّل الأصل مباشرة، وبعضها يخرج نسخة جديدة. هذا فرق مهم في
+            التطبيقات الحقيقية، لأن التعديل المباشر قد يسبب أخطاء في البيانات.
+            مثلاً إذا كنت تحتفظ بنسخة من قائمة الطلبات وتريد أن تعرف ما إذا كان
+            المستخدم قد عدل قائمة أخرى، فالمتغيرات التي تشير إلى نفس المرجع ستتقاسم
+            نفس التغييرات، بينما النسخ الجديدة تبقى مستقلة.
+          </p>
+        </div>
+
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden;">
+          <thead>
+            <tr>
+              <th style="padding: 12px; text-align: right; background: #f1f5f9; color: #1f2937; border-bottom: 1px solid #e2e8f0;">الطريقة</th>
+              <th style="padding: 12px; text-align: right; background: #f1f5f9; color: #1f2937; border-bottom: 1px solid #e2e8f0;">يعدل الأصل؟</th>
+              <th style="padding: 12px; text-align: right; background: #f1f5f9; color: #1f2937; border-bottom: 1px solid #e2e8f0;">النوع</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155;">push, pop, shift, unshift</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155;">نعم</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155;">Mutating</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155;">slice, concat, map, filter</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155;">لا</td>
+              <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; color: #334155;">Non-mutating</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px; color: #334155;">sort, reverse, fill</td>
+              <td style="padding: 12px; color: #334155;">نعم</td>
+              <td style="padding: 12px; color: #334155;">Mutating</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="code-terminal" style="margin-top: 20px;">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">numbers</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>];
+<span class="code-keyword">const</span> <span class="code-function">copy</span> <span class="code-operator">=</span> <span class="code-function">numbers</span>.<span class="code-function">slice</span>(); <span class="code-comment">// نسخة جديدة</span>
+<span class="code-keyword">const</span> <span class="code-function">doubled</span> <span class="code-operator">=</span> <span class="code-function">numbers</span>.<span class="code-function">map</span>(<span class="code-function">n</span> <span class="code-operator">=&gt;</span> <span class="code-function">n</span> <span class="code-operator">*</span> <span class="code-number">2</span>); <span class="code-comment">// مصفوفة جديدة</span>
+
+<span class="code-function">numbers</span>.<span class="code-function">push</span>(<span class="code-number">4</span>); <span class="code-comment">// يغير الأصل</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">numbers</span>); <span class="code-comment">// [1, 2, 3, 4]</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">copy</span>); <span class="code-comment">// [1, 2, 3]</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">11</div>
+        <h2 class="section-title">
+          <span class="main-label">البحث والاختبارات</span>
+          <span class="sub-label">includes, indexOf, find, findIndex</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            البحث في المصفوفة ليس مجرد وجود قيمة، بل يعني معرفة إن كانت قيمة موجودة
+            أم لا، وأين ظهرت، وما إذا كنا نريد العنصر نفسه أم موقعه فقط. تستخدم
+            <strong>includes()</strong> و <strong>indexOf()</strong> عندما تعمل
+            مع القيم الأساسية، أما <strong>find()</strong> و
+            <strong>findIndex()</strong> فهي مناسبة عندما تكون العناصر كائنات أو
+            تحتاج إلى شروط أكثر تعقيداً، مثل "ابحث عن المستخدم الذي له id يساوي 2".
+            هنا يكون الفرق بين <strong>العنصر</strong> و <strong>الفهرس</strong>
+            محور القرار.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">students</span> <span class="code-operator">=</span> [<span class="code-string">"Ali"</span>, <span class="code-string">"Huda"</span>, <span class="code-string">"Omar"</span>, <span class="code-string">"Huda"</span>];
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">students</span>.<span class="code-function">indexOf</span>(<span class="code-string">"Huda"</span>)); <span class="code-comment">// 1</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">students</span>.<span class="code-function">lastIndexOf</span>(<span class="code-string">"Huda"</span>)); <span class="code-comment">// 3</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">students</span>.<span class="code-function">includes</span>(<span class="code-string">"Omar"</span>)); <span class="code-comment">// true</span>
+
+<span class="code-keyword">const</span> <span class="code-function">users</span> <span class="code-operator">=</span> [
+  { <span class="code-function">id</span>: <span class="code-number">1</span>, <span class="code-function">name</span>: <span class="code-string">"Ali"</span>, <span class="code-function">active</span>: <span class="code-keyword">true</span> },
+  { <span class="code-function">id</span>: <span class="code-number">2</span>, <span class="code-function">name</span>: <span class="code-string">"Huda"</span>, <span class="code-function">active</span>: <span class="code-keyword">false</span> }
+];
+
+<span class="code-keyword">const</span> <span class="code-function">found</span> <span class="code-operator">=</span> <span class="code-function">users</span>.<span class="code-function">find</span>(<span class="code-function">user</span> <span class="code-operator">=&gt;</span> <span class="code-function">user</span>.<span class="code-function">id</span> <span class="code-operator">===</span> <span class="code-number">2</span>); <span class="code-comment">// يعيد العنصر نفسه</span>
+<span class="code-keyword">const</span> <span class="code-function">index</span> <span class="code-operator">=</span> <span class="code-function">users</span>.<span class="code-function">findIndex</span>(<span class="code-function">user</span> <span class="code-operator">=&gt;</span> <span class="code-function">user</span>.<span class="code-function">name</span> <span class="code-operator">===</span> <span class="code-string">"Ali"</span>); <span class="code-comment">// يعيد رقم الفهرس</span>
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">found</span>.<span class="code-function">name</span>); <span class="code-comment">// Huda</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">index</span>); <span class="code-comment">// 0</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">12</div>
+        <h2 class="section-title">
+          <span class="main-label">التكرار والتحويل</span>
+          <span class="sub-label">forEach, map, filter, reduce, some, every</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            التكرار هو قلب المصفوفة الحي: نريد أن نمر على كل عنصر ونفعل شيئاً معه.
+            بعض الطرق مثل <strong>forEach()</strong> لا تعيد مصفوفة جديدة، بل تكرر
+            فقط لأغراض التأثير الجانبي. أما <strong>map()</strong> و
+            <strong>filter()</strong> و <strong>reduce()</strong> فهي طرق تحويل
+            وتجميع، وتعود بقيمة جديدة مفيدة. هذا التمييز مهم لأن كثيراً من الأخطاء
+            تنشأ عندما نستخدم دالة تؤثر على الأصل بدل إنشاء نسخة جديدة.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">scores</span> <span class="code-operator">=</span> [<span class="code-number">50</span>, <span class="code-number">80</span>, <span class="code-number">90</span>, <span class="code-number">60</span>];
+
+<span class="code-function">scores</span>.<span class="code-function">forEach</span>((<span class="code-function">score</span>, <span class="code-function">index</span>) <span class="code-operator">=&gt;</span> {
+  <span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-string">"المركز:"</span>, <span class="code-function">index</span>, <span class="code-string">"الدرجة:"</span>, <span class="code-function">score</span>); <span class="code-comment">// تنفيذ لكل عنصر</span>
+});
+
+<span class="code-keyword">const</span> <span class="code-function">doubled</span> <span class="code-operator">=</span> <span class="code-function">scores</span>.<span class="code-function">map</span>(<span class="code-function">score</span> <span class="code-operator">=&gt;</span> <span class="code-function">score</span> <span class="code-operator">*</span> <span class="code-number">2</span>); <span class="code-comment">// [100, 160, 180, 120]</span>
+<span class="code-keyword">const</span> <span class="code-function">passed</span> <span class="code-operator">=</span> <span class="code-function">scores</span>.<span class="code-function">filter</span>(<span class="code-function">score</span> <span class="code-operator">=&gt;</span> <span class="code-function">score</span> <span class="code-operator">&gt;=</span> <span class="code-number">70</span>); <span class="code-comment">// [80, 90]</span>
+<span class="code-keyword">const</span> <span class="code-function">total</span> <span class="code-operator">=</span> <span class="code-function">scores</span>.<span class="code-function">reduce</span>((<span class="code-function">sum</span>, <span class="code-function">score</span>) <span class="code-operator">=&gt;</span> <span class="code-function">sum</span> <span class="code-operator">+</span> <span class="code-function">score</span>, <span class="code-number">0</span>); <span class="code-comment">// 280</span>
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">scores</span>.<span class="code-function">some</span>(<span class="code-function">score</span> <span class="code-operator">=&gt;</span> <span class="code-function">score</span> <span class="code-operator">&gt;</span> <span class="code-number">90</span>)); <span class="code-comment">// true</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">scores</span>.<span class="code-function">every</span>(<span class="code-function">score</span> <span class="code-operator">=&gt;</span> <span class="code-function">score</span> <span class="code-operator">&gt;</span> <span class="code-number">0</span>)); <span class="code-comment">// true</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">13</div>
+        <h2 class="section-title">
+          <span class="main-label">reduce() وgrouping</span>
+          <span class="sub-label">تجميع البيانات في كائن أو مصفوفة</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            <strong>reduce()</strong> هو أحد أقوى أدوات المصفوفات، لكنه يسبب ارتباكاً
+            كبيراً عند أول مرة. فكرتها أن لديك <strong>accumulator</strong>
+            (المجمع) وكل عنصر جديد يضيف إليه شيئاً. هذا يجعلها مناسبة جدًا لحفظ
+            المجاميع، تجميع البيانات، وتكوين كائنات التحليل مثل "كم عدد الطلبات لكل
+            منتج؟". إذا لم تحدد قيمة أولية، فإنها تبدأ من العنصر الأول وتبدأ
+            الحساب من الثاني، وهذا نقطة تحتاج إلى انتباه.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">orders</span> <span class="code-operator">=</span> [
+  { <span class="code-function">item</span>: <span class="code-string">"Apple"</span>, <span class="code-function">qty</span>: <span class="code-number">2</span> },
+  { <span class="code-function">item</span>: <span class="code-string">"Banana"</span>, <span class="code-function">qty</span>: <span class="code-number">3</span> },
+  { <span class="code-function">item</span>: <span class="code-string">"Apple"</span>, <span class="code-function">qty</span>: <span class="code-number">1</span> }
+];
+
+<span class="code-keyword">const</span> <span class="code-function">summary</span> <span class="code-operator">=</span> <span class="code-function">orders</span>.<span class="code-function">reduce</span>((<span class="code-function">acc</span>, <span class="code-function">order</span>) <span class="code-operator">=&gt;</span> {
+  <span class="code-function">acc</span>[<span class="code-function">order</span>.<span class="code-function">item</span>] <span class="code-operator">=</span> (<span class="code-function">acc</span>[<span class="code-function">order</span>.<span class="code-function">item</span>] <span class="code-operator">||</span> <span class="code-number">0</span>) <span class="code-operator">+</span> <span class="code-function">order</span>.<span class="code-function">qty</span>;
+  <span class="code-keyword">return</span> <span class="code-function">acc</span>;
+}, {});
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">summary</span>); <span class="code-comment">// { Apple: 3, Banana: 3 }</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">14</div>
+        <h2 class="section-title">
+          <span class="main-label">sort() وtoSorted()</span>
+          <span class="sub-label">الفرز، الترتيب، ومقارنة القيم</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            <strong>sort()</strong> يفرز المصفوفة داخلها مباشرة، لذلك فهو مدمّر
+            (mutating)، بينما <strong>toSorted()</strong> يعيد نسخة مرتبة دون
+            لمس الأصل. وهذا فرق مهم، خاصة عند التعامل مع قائمة المستخدمين أو
+            النتائج التي لا تريد أن تتغير عن طريق الخطأ. كما أن ترتيب الأرقام في
+            JavaScript ليس دائماً "صحيحاً" إذا استخدمت <strong>sort()</strong>
+            بدون دالة مقارنة، لأن JavaScript يفرز القيم كـ strings في بعض الحالات.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">scores</span> <span class="code-operator">=</span> [<span class="code-number">10</span>, <span class="code-number">2</span>, <span class="code-number">30</span>];
+<span class="code-function">scores</span>.<span class="code-function">sort</span>((<span class="code-function">a</span>, <span class="code-function">b</span>) <span class="code-operator">=&gt;</span> <span class="code-function">a</span> <span class="code-operator">-</span> <span class="code-function">b</span>); <span class="code-comment">// فرز رقمي تصاعدي</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">scores</span>); <span class="code-comment">// [2, 10, 30]</span>
+
+<span class="code-keyword">const</span> <span class="code-function">names</span> <span class="code-operator">=</span> [<span class="code-string">"Zahra"</span>, <span class="code-string">"Ali"</span>, <span class="code-string">"Mona"</span>];
+<span class="code-keyword">const</span> <span class="code-function">sortedNames</span> <span class="code-operator">=</span> <span class="code-function">names</span>.<span class="code-function">toSorted</span>(); <span class="code-comment">// نسخة مرتبة بطريقة غير مدمرة</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">sortedNames</span>); <span class="code-comment">// ['Ali', 'Mona', 'Zahra']</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">names</span>); <span class="code-comment">// ['Zahra', 'Ali', 'Mona']</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">15</div>
+        <h2 class="section-title">
+          <span class="main-label">النسخ والمراجع</span>
+          <span class="sub-label">reference vs shallow copy vs deep copy</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            أهم فكرة في JavaScript هي أن المتغيرات لا تملك القيم دائماً بنفس الطريقة.
+            عندما تكتب <strong>const b = a</strong> فإنك لا تنشئ نسخة جديدة، بل تشير
+            إلى نفسه نفس المصفوفة. لذلك أي تعديل في <strong>b</strong> يظهر في
+            <strong>a</strong> أيضاً. هذا يسبب أخطاء شديدة عندما نعتقد أننا قد
+            زودنا نسخة آمنة بينما في الواقع كلتا المتغيرين يشيران إلى نفس المكان في
+            الذاكرة. النسخ السطحية والنسخ العميقة تنقذنا من هذا المشهد.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">a</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>];
+<span class="code-keyword">const</span> <span class="code-function">b</span> <span class="code-operator">=</span> <span class="code-function">a</span>; <span class="code-comment">// نفس المرجع، لا نسخة</span>
+<span class="code-function">b</span>.<span class="code-function">push</span>(<span class="code-number">4</span>);
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">a</span>); <span class="code-comment">// [1, 2, 3, 4]</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">b</span>); <span class="code-comment">// [1, 2, 3, 4]</span>
+
+<span class="code-keyword">const</span> <span class="code-function">c</span> <span class="code-operator">=</span> [...<span class="code-function">a</span>]; <span class="code-comment">// نسخة سطحية</span>
+<span class="code-function">c</span>[<span class="code-number">0</span>] <span class="code-operator">=</span> <span class="code-number">99</span>;
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">a</span>); <span class="code-comment">// [1, 2, 3, 4]</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">c</span>); <span class="code-comment">// [99, 2, 3, 4]</span></code></pre>
+        </div>
+
+        <div class="code-terminal" style="margin-top: 20px;">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">nested</span> <span class="code-operator">=</span> [[<span class="code-number">1</span>, <span class="code-number">2</span>], [<span class="code-number">3</span>, <span class="code-number">4</span>]];
+<span class="code-keyword">const</span> <span class="code-function">shallow</span> <span class="code-operator">=</span> [...<span class="code-function">nested</span>];
+<span class="code-function">shallow</span>[<span class="code-number">0</span>][<span class="code-number">0</span>] <span class="code-operator">=</span> <span class="code-number">99</span>;
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">nested</span>); <span class="code-comment">// التغيير يظهر أيضاً في الأصل لأن النسخة سطحية</span>
+
+<span class="code-keyword">const</span> <span class="code-function">deep</span> <span class="code-operator">=</span> <span class="code-function">structuredClone</span>(<span class="code-function">nested</span>); <span class="code-comment">// نسخة عميقة</span>
+<span class="code-function">deep</span>[<span class="code-number">0</span>][<span class="code-number">0</span>] <span class="code-operator">=</span> <span class="code-number">42</span>;
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">nested</span>[<span class="code-number">0</span>][<span class="code-number">0</span>]); <span class="code-comment">// 99</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">16</div>
+        <h2 class="section-title">
+          <span class="main-label">المصفوفات المتداخلة</span>
+          <span class="sub-label">Nested Arrays and arrays of objects</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            عندما تصبح العناصر داخل المصفوفة نفسها مصفوفات أخرى، فهذا يُسمى
+            مصفوفة متداخلة أو <strong>nested array</strong>. هذا الشكل شائع جداً في
+            الجداول، الألعاب، حسابات الشبكات، وتمثيل البيانات الرباعية. بدلاً من
+            التعامل مع مصفوفة واحدة كبيرة، نستخدم مصفوفة من مصفوفات، ثم نصل إلى
+            العنصر الداخلي عبر فهرسين متتاليين مثل <strong>matrix[1][2]</strong>.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">matrix</span> <span class="code-operator">=</span> [
+  [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>],
+  [<span class="code-number">4</span>, <span class="code-number">5</span>, <span class="code-number">6</span>]
+];
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">matrix</span>[<span class="code-number">1</span>][<span class="code-number">2</span>]); <span class="code-comment">// 6</span>
+
+<span class="code-keyword">const</span> <span class="code-function">users</span> <span class="code-operator">=</span> [
+  { <span class="code-function">id</span>: <span class="code-number">1</span>, <span class="code-function">name</span>: <span class="code-string">"Ali"</span>, <span class="code-function">score</span>: <span class="code-number">90</span> },
+  { <span class="code-function">id</span>: <span class="code-number">2</span>, <span class="code-function">name</span>: <span class="code-string">"Huda"</span>, <span class="code-function">score</span>: <span class="code-number">84</span> }
+];
+
+<span class="code-keyword">const</span> <span class="code-function">topStudents</span> <span class="code-operator">=</span> <span class="code-function">users</span>.<span class="code-function">filter</span>(<span class="code-function">user</span> <span class="code-operator">=&gt;</span> <span class="code-function">user</span>.<span class="code-function">score</span> <span class="code-operator">&gt;=</span> <span class="code-number">85</span>);
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">topStudents</span>.<span class="code-function">map</span>(<span class="code-function">u</span> <span class="code-operator">=&gt;</span> <span class="code-function">u</span>.<span class="code-function">name</span>)); <span class="code-comment">// ['Ali']</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">17</div>
+        <h2 class="section-title">
+          <span class="main-label">التفكيك، الـ spread، والـ rest</span>
+          <span class="sub-label">Destructuring + spread + rest</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            <strong>destructuring</strong> يجعل قراءة المصفوفة أسهل لأنك تخرج عناصرها
+            إلى متغيرات مباشرة. هذا مفيد في التفاعل مع البيانات من API أو عند
+            كتابة تعليمات سريعة. أما <strong>spread</strong> ... فهو ينسخ عناصر
+            المصفوفة أو يدمجها في مصفوفة جديدة، while <strong>rest</strong>
+            يجمع العناصر المتبقية في مصفوفة جديدة. هذه الأدوات تقصّر الروتين وتُبقي
+            الشيفرة أوضح، لكن من المهم معرفة أن <strong>spread</strong> ينسخ
+            على مستوى العنصر الأول فقط في النسخ السطحية.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> [<span class="code-function">first</span>, <span class="code-function">second</span>, ...<span class="code-function">rest</span>] <span class="code-operator">=</span> [<span class="code-string">"A"</span>, <span class="code-string">"B"</span>, <span class="code-string">"C"</span>, <span class="code-string">"D"</span>]; <span class="code-comment">// أول عنصران، والباقي في rest</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">first</span>); <span class="code-comment">// A</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">second</span>); <span class="code-comment">// B</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">rest</span>); <span class="code-comment">// ['C', 'D']</span>
+
+<span class="code-keyword">const</span> <span class="code-function">numbers</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>];
+<span class="code-keyword">const</span> <span class="code-function">more</span> <span class="code-operator">=</span> [...<span class="code-function">numbers</span>, <span class="code-number">4</span>, <span class="code-number">5</span>]; <span class="code-comment">// دمج وقيمة إضافية</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">more</span>); <span class="code-comment">// [1, 2, 3, 4, 5]</span>
+
+<span class="code-keyword">const</span> [<span class="code-function">x</span>, <span class="code-function">y</span>] <span class="code-operator">=</span> [<span class="code-number">10</span>, <span class="code-number">20</span>];
+[<span class="code-function">x</span>, <span class="code-function">y</span>] <span class="code-operator">=</span> [<span class="code-function">y</span>, <span class="code-function">x</span>]; <span class="code-comment">// تبادل القيم بدون متغير مؤقت</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">18</div>
+        <h2 class="section-title">
+          <span class="main-label">حفر المصفوفة والسلوك الخاص</span>
+          <span class="sub-label">Sparse Arrays, holes, delete, undefined</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            بعض المصفوفات لا تكون "ممتلئة" بالكامل؛ تسمى هذه المصفوفات
+            <strong>sparse arrays</strong>، وتحتوي على فراغات. هذا يحدث عندما
+            تترك مكاناً بلا قيمة، أو تستخدم <strong>delete</strong> لحذف عنصر.
+            الفرق بين <strong>delete</strong> و <strong>splice</strong> مهم: أول
+            طريقة تترك فراغاً في المصفوفة، بينما الثانية تزيل العنصر فعلياً وتعيد
+            ترتيب المصفوفة وتقلّل الطول. هذا يسبب أخطاء إذا لم تنظر إلى طول
+            المصفوفة وفهرساتها بدقة.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">arr</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, , <span class="code-number">3</span>]; <span class="code-comment">// فراغ في المنتصف</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>.<span class="code-function">length</span>); <span class="code-comment">// 3</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>[<span class="code-number">1</span>]); <span class="code-comment">// undefined</span>
+
+<span class="code-keyword">delete</span> <span class="code-function">arr</span>[<span class="code-number">1</span>]; <span class="code-comment">// لا يخفّض الطول، بل يترك فراغاً</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>.<span class="code-function">length</span>); <span class="code-comment">// ما زالت 3</span>
+
+<span class="code-function">arr</span>.<span class="code-function">splice</span>(<span class="code-number">1</span>, <span class="code-number">1</span>); <span class="code-comment">// حذف فعليّ، يقلّل الطول ويعيد العناصر المحذوفة</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>); <span class="code-comment">// المصفوفة تم تنظيفها</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">19</div>
+        <h2 class="section-title">
+          <span class="main-label">Array.isArray() وEquality</span>
+          <span class="sub-label">هل هذا مصفوفة؟ هل المصفوفتان متساويتان؟</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            عندما تقول "المصفوفتان متساويتان" في JavaScript، فالمقارنة لا تعتمد
+            على المحتوى فقط، بل على <strong>المرجع</strong>. لذلك إذا كتبت
+            <strong>[] === []</strong> فالناتج يكون <strong>false</strong>
+            رغم أن كل منهما يبدو فارغًا، لأن كل مصفوفة جديدة لها عنوان مختلف في
+            الذاكرة. هذا يخلط كثيراً المبتدئين، لذلك نستخدم النسخ الجديدة عند نريد
+            مقارنة القيم بدون ربط المرجع.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">arr</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>];
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-keyword">typeof</span> <span class="code-function">arr</span>); <span class="code-comment">// "object"</span>
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">Array</span>.<span class="code-function">isArray</span>(<span class="code-function">arr</span>)); <span class="code-comment">// true</span>
+
+<span class="code-function">console</span>.<span class="code-function">log</span>([] <span class="code-operator">===</span> []); <span class="code-comment">// false لأن كل مصفوفة لها مرجع مختلف</span>
+<span class="code-keyword">const</span> <span class="code-function">copy</span> <span class="code-operator">=</span> [...<span class="code-function">arr</span>];
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">copy</span> <span class="code-operator">===</span> <span class="code-function">arr</span>); <span class="code-comment">// false، رغم أن القيم متماثلة</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">20</div>
+        <h2 class="section-title">
+          <span class="main-label">الأداء والاعتبارات العملية</span>
+          <span class="sub-label">push/pop أفضل من shift/unshift في كثير من الحالات</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            لا تحتاج إلى فهم الخوارزميات بشكل عميق، لكن من المفيد أن تعرف أن بعض
+            العمليات تحتاج إلى إعادة ترتيب العناصر في المصفوفة، وهذا يؤثر على
+            الأداء. عند إضافة عنصر في نهاية المصفوفة باستخدام
+            <strong>push()</strong> يكون الأمر عادةً أسرع وأبسط من إدخاله في
+            البداية باستخدام <strong>unshift()</strong> لأن الأخير يتطلب تحريك
+            كل العناصر إلى اليمين. هذا فرق عملي مهم في الأنظمة الكبيرة.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">list</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>, <span class="code-number">4</span>];
+<span class="code-function">list</span>.<span class="code-function">push</span>(<span class="code-number">5</span>); <span class="code-comment">// عادة سريعة جدًا</span>
+<span class="code-function">list</span>.<span class="code-function">pop</span>(); <span class="code-comment">// أيضًا سريع جدًا</span>
+<span class="code-function">list</span>.<span class="code-function">shift</span>(); <span class="code-comment">// يحتاج إلى إعادة ترتيب كل العناصر</span>
+<span class="code-function">list</span>.<span class="code-function">unshift</span>(<span class="code-number">0</span>); <span class="code-comment">// يطلب نقلًا أكبر للبيانات</span>
+
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">list</span>); <span class="code-comment">// النتيجة تعتمد على الأسلوب المستخدم</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">21</div>
+        <h2 class="section-title">
+          <span class="main-label">الأخطاء الشائعة</span>
+          <span class="sub-label">Common mistakes and traps</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            هذه أخطاء شائعة لأن JavaScript تتيح لك كتابة الأكواد بشكل مرن، لكن
+            المرونة قد تُشعِل أخطاءً خفية. من أهمها: استخدام <strong>length - 1</strong>
+            على مصفوفة فارغة، الخلط بين <strong>find</strong> و
+            <strong>filter</strong>، أو استخدام <strong>sort()</strong> بدون
+            مقارنات رقمية. كما أن نسيان <strong>return</strong> داخل
+            <strong>map</strong> أو <strong>filter</strong> يؤدي إلى نتائج لا
+            تُفهم، خاصةً عندما نتوقع مصفوفة جديدة ولكننا نحصل على undefined.
+          </p>
+          <ul class="concept-list">
+            <li>استخدام <strong>length - 1</strong> بشكل خاطئ عند التعامل مع مصفوفة فارغة.</li>
+            <li>الخلط بين <strong>find</strong> و <strong>filter</strong>.</li>
+            <li>وضع <strong>sort()</strong> بدون مقارنة رقمية عند التعامل مع الأرقام.</li>
+            <li>نسيان <strong>return</strong> داخل <strong>map</strong> أو <strong>filter</strong>.</li>
+            <li>الاعتقاد أن <strong>const arr = [...]</strong> يجعلها ثابتة في المحتوى وليس في المرجع.</li>
+            <li>استخدام <strong>delete</strong> بدل <strong>splice</strong> عند حذف عنصر حقيقي.</li>
+          </ul>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">nums</span> <span class="code-operator">=</span> [<span class="code-number">10</span>, <span class="code-number">2</span>, <span class="code-number">30</span>];
+<span class="code-function">nums</span>.<span class="code-function">sort</span>(); <span class="code-comment">// ['10', '2', '30'] بسبب الترتيب النصّي</span>
+<span class="code-function">nums</span>.<span class="code-function">sort</span>((<span class="code-function">a</span>, <span class="code-function">b</span>) <span class="code-operator">=&gt;</span> <span class="code-function">a</span> <span class="code-operator">-</span> <span class="code-function">b</span>); <span class="code-comment">// [2, 10, 30] الصحيح للفرز الرقمي</span>
+
+<span class="code-keyword">const</span> <span class="code-function">arr</span> <span class="code-operator">=</span> [<span class="code-number">1</span>, <span class="code-number">2</span>, <span class="code-number">3</span>];
+<span class="code-keyword">const</span> <span class="code-function">copy</span> <span class="code-operator">=</span> <span class="code-function">arr</span>;
+<span class="code-function">copy</span>.<span class="code-function">push</span>(<span class="code-number">4</span>);
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">arr</span>); <span class="code-comment">// [1, 2, 3, 4] لأنهما نفس المرجع</span></code></pre>
+        </div>
+      </section>
+
+      <section class="mega-card reveal">
+        <div class="card-icon">22</div>
+        <h2 class="section-title">
+          <span class="main-label">المصفوفات في التطبيق الحقيقي</span>
+          <span class="sub-label">shopping cart, grades, users, filters, totals</span>
+        </h2>
+
+        <div class="rule-box">
+          <p>
+            في التطبيق الحقيقي، المصفوفات لا تتواجد فقط في أمثلة صغيرة؛ بل تُستخدم
+            في عربات التسوق، إدارة الطلاب، الفلاتر، تحليل البيانات، وبناء القوائم.
+            مثال: تريد جمع قيمة كل سلعة في السلة في مبلغ واحد، أو اختيار العناصر
+            التي تتجاوز سعرًا معينًا، أو تحويل قائمة كائنات إلى قائمة أسماء فقط.
+            هذه الأنماط هي جزء أساسي من عمل المطورين في الواقع.
+          </p>
+        </div>
+
+        <div class="code-terminal">
+          <div class="code-header"><span></span><span></span><span></span></div>
+          <pre><code><span class="code-keyword">const</span> <span class="code-function">cart</span> <span class="code-operator">=</span> [
+  { <span class="code-function">name</span>: <span class="code-string">"Laptop"</span>, <span class="code-function">price</span>: <span class="code-number">5000</span>, <span class="code-function">qty</span>: <span class="code-number">1</span> },
+  { <span class="code-function">name</span>: <span class="code-string">"Mouse"</span>, <span class="code-function">price</span>: <span class="code-number">200</span>, <span class="code-function">qty</span>: <span class="code-number">2</span> }
+];
+
+<span class="code-keyword">const</span> <span class="code-function">total</span> <span class="code-operator">=</span> <span class="code-function">cart</span>.<span class="code-function">reduce</span>((<span class="code-function">sum</span>, <span class="code-function">item</span>) <span class="code-operator">=&gt;</span> <span class="code-function">sum</span> <span class="code-operator">+</span> (<span class="code-function">item</span>.<span class="code-function">price</span> <span class="code-operator">*</span> <span class="code-function">item</span>.<span class="code-function">qty</span>), <span class="code-number">0</span>);
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">total</span>); <span class="code-comment">// 5400</span>
+
+<span class="code-keyword">const</span> <span class="code-function">expensiveItems</span> <span class="code-operator">=</span> <span class="code-function">cart</span>.<span class="code-function">filter</span>(<span class="code-function">item</span> <span class="code-operator">=&gt;</span> <span class="code-function">item</span>.<span class="code-function">price</span> <span class="code-operator">&gt;</span> <span class="code-number">1000</span>);
+<span class="code-function">console</span>.<span class="code-function">log</span>(<span class="code-function">expensiveItems</span>.<span class="code-function">map</span>(<span class="code-function">item</span> <span class="code-operator">=&gt;</span> <span class="code-function">item</span>.<span class="code-function">name</span>)); <span class="code-comment">// ['Laptop']</span></code></pre>
+        </div>
+      </section>
+
     </div>
 
+    <div id="fab-root"></div>
     <div id="notification-container"></div>
 
     <script src="../js/main.js"></script>
     <script src="../js/level.js"></script>
+    <script src="../js/compiler.js"></script>
   </body>
 </html>

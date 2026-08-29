@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // 2. زر ابدأ الآن في الصفحة الرئيسية
+  // 2. تنشيط الرابط النشط في شريط التنقل حسب الصفحة الحالية
+  setCurrentNavLinkState();
+
+  // 3. زر ابدأ الآن في الصفحة الرئيسية
   const startBtn = document.getElementById("startBtn");
   if (startBtn) {
     startBtn.addEventListener("click", () => {
@@ -25,6 +28,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   highlightJavaScriptCode();
 });
+
+function setCurrentNavLinkState() {
+  const navLinks = document.querySelectorAll(".nav-links a");
+  if (!navLinks.length) return;
+
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#") || href.startsWith("http")) {
+      link.classList.remove("active");
+      return;
+    }
+
+    const pageName = href.split("/").pop();
+    const isCurrentPage = pageName === currentPath;
+    link.classList.toggle("active", isCurrentPage);
+  });
+}
 
 function createTokenElement(tokenClass, tokenText) {
   const span = document.createElement("span");

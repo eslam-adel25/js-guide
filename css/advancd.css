@@ -58,8 +58,6 @@
   background-color: #c6c9cd;
   padding: 15px;
   border-radius: 8px;
-  border-right: 4px solid #3b82f6;
-  /* إطار أزرق جانبي */
   margin-top: 15px;
 }
 
@@ -267,8 +265,6 @@ h3 {
     rgba(99, 102, 241, 0.1) 0%,
     transparent 100%
   );
-  border-right: 4px solid #6366f1;
-  /* خط جانبي بلون البراند */
   border-radius: 4px 12px 12px 4px;
   margin: 25px 0 15px 0;
   position: relative;
@@ -482,7 +478,6 @@ h3:hover {
 /* تنسيق صندوق المعلومات */
 .info-box.accent-border {
   background: rgba(99, 102, 241, 0.05);
-  border-right: 4px solid #6366f1;
   padding: 15px;
   border-radius: 8px;
   margin: 15px 0;
@@ -601,7 +596,6 @@ h3:hover {
     rgba(30, 41, 59, 0.8),
     rgba(15, 23, 42, 0.9)
   );
-  border-right: 4px solid #818cf8;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   padding: 20px;
 }
