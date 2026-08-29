@@ -851,8 +851,8 @@ switch(rank) {
       <div class="topic-section">
         <h2 class="bold-text section-head">🧪 مثال بسيط جدًا</h2>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">for (let i = 1; i <= 5; i++) {
-        console.log(i);
+          <pre><code class="language-javascript">for (let i = 1; i <= 5; i++) { // تكرار 5 مرات: i من 1 إلى 5
+        console.log(i); // طباعة قيمة العداد في كل دورة
     }</code></pre>
         </div>
         <div class="info-box bold-text">النتيجة: 1 2 3 4 5</div>
@@ -903,10 +903,10 @@ switch(rank) {
 
         <p class="bold-text">🔹 مثال 4: التكرار على Array</p>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">let names = ["Ali", "Eslam", "Ahmed"];
-for (let i = 0; i < names.length; i++) {
-        console.log(names[i]);
-    }     // Ali  Eslam  Ahmed </code></pre>
+          <pre><code class="language-javascript">let names = ["Ali", "Eslam", "Ahmed"]; // إنشاء مصفوفة تحتوي على 3 أسماء
+for (let i = 0; i < names.length; i++) { // تكرار حتى نصل لنهاية المصفوفة
+        console.log(names[i]); // طباعة كل اسم من المصفوفة
+    } // النتيجة: Ali  Eslam  Ahmed </code></pre>
         </div>
       </div>
 
@@ -915,10 +915,10 @@ for (let i = 0; i < names.length; i++) {
           استخدام for للمرور على عناصر مصفوفة
         </h2>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">const colors = ["red", "green", "blue"];
-for (let i = 0; i < colors.length; i++) {
-      console.log(colors[i]);
-    }  // red  green blue </code></pre>
+          <pre><code class="language-javascript">const colors = ["red", "green", "blue"]; // إنشاء مصفوفة الألوان
+for (let i = 0; i < colors.length; i++) { // تكرار للمرور على جميع الألوان
+      console.log(colors[i]); // طباعة كل لون
+    } // النتيجة: red  green blue </code></pre>
         </div>
         <p class="bold-text">
           هذا نمط كلاسيكي وشائع جداً: نستخدم i كـ index للوصول لكل عنصر:
@@ -942,10 +942,10 @@ for (let i = 0; i < colors.length; i++) {
           استخدام for للمرور على أحرف نص (String)
         </h2>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">const name = "Ali";
-for (let i = 0; i < name.length; i++) {
-      console.log(name[i]);
-    }  //A  l  i</code></pre>
+          <pre><code class="language-javascript">const name = "Ali"; // نص يتكون من 3 أحرف
+for (let i = 0; i < name.length; i++) { // تكرار على كل حرف في النص
+      console.log(name[i]); // طباعة كل حرف
+    } // النتيجة: A  l  i</code></pre>
         </div>
         <p class="bold-text">
           النص في JS أيضاً iterable، فنستطيع استخدامه مثل المصفوفة
@@ -955,10 +955,10 @@ for (let i = 0; i < name.length; i++) {
       <div class="topic-section">
         <h2 class="bold-text section-head">استخدام for للمرور بالعكس</h2>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">const arr = [10, 20, 30, 40, 50];
-for (let i = arr.length - 1; i >= 0; i--) {
-      console.log(arr[i]);
-    }  // 50  40  30  20  10 </code></pre>
+          <pre><code class="language-javascript">const arr = [10, 20, 30, 40, 50]; // مصفوفة تحتوي على 5 أرقام
+for (let i = arr.length - 1; i >= 0; i--) { // ابدأ من آخر عنصر وانقص العداد
+      console.log(arr[i]); // طباعة كل عنصر (من الأخير للأول)
+    } // النتيجة: 50  40  30  20  10 </code></pre>
         </div>
         <p class="bold-text">
           نبدأ من آخر index: arr.length - 1. الشرط i >= 0 وننقص i في كل مرة:
@@ -1161,20 +1161,21 @@ console.log(total);</code></pre>
 
         <h4 class="bold-text">مثال بسيط جدًا</h4>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">let i = 1;
-while (i <= 5) {
-    console.log(i);
-    i++;
- }  // 1  2  3  4  5  </code></pre>
+          <pre><code class="language-javascript">let i = 1; // بداية العداد
+while (i <= 5) { // طالما i أل 5
+    console.log(i); // طباعة قيمة i
+    i++; // زيارة i بمقدار 1 (مهم جداً لعدم الطعنم)
+ }
+ // النتيجة: 1  2  3  4  5  </code></pre>
         </div>
 
         <h4 class="bold-text">مثال بسيط (العد التنازلي):</h4>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">let count = 5;
-while (count > 0) {
-    console.log("العد: " + count);
-    count--; // نقصنا 1 (بدون هذا السطر سيعلق البرنامج للأبد)
- }  // العد : 5 العد : 4 العد : 3 العد : 2 العد : 1  </code></pre>
+          <pre><code class="language-javascript">let count = 5; // بداية العد من 5
+while (count > 0) { // طالما count أكبر من صفر
+    console.log("العد: " + count); // طباعة قيمة العد
+    count--; // نقص count بمقدار 1 (بدون هذا السطر سيعلق البرنامج للأبد)
+ } // النتيجة: العد: 5 العد: 4 العد: 3 العد: 2 العد: 1  </code></pre>
         </div>
 
         <h4 class="bold-text">مثال شائع (انتظار حدوث شيء):</h4>
@@ -1234,12 +1235,12 @@ while (count > 0) {
 
         <h4 class="bold-text">مثال عملي:</h4>
         <div class="code-wrapper">
-          <pre><code class="language-javascript">let number = 0;
+          <pre><code class="language-javascript">let number = 0; // بداية المتغير من صفر
 do {
     // لنفترض أننا نزيد الرقم هنا
-    number += 5;  // number = number + 5
-    console.log("الرقم الحالي: " + number);
- } while (number < 20);</code></pre>
+    number += 5;  // number = number + 5 (إضافة 5)
+    console.log("الرقم الحالي: " + number); // طباعة القيمة الحالية
+ } while (number < 20); // استمر طالما الرقم أقل من 20</code></pre>
         </div>
         <button
           class="btn-test success bold-text"
@@ -1323,12 +1324,12 @@ do {
         <h2 class="bold-text" style="color: #3b82f6">🧠 اختبار الـ while</h2>
         <div class="code-wrapper">
           <pre><code class="language-javascript">
-    let count = 0;
-    let x = 1;
-    while (x < 10) {
-        x += 3;
-        count++;
-    }</code></pre>
+    let count = 0; // عداد يبدأ من صفر
+    let x = 1; // متغير يبدأ من 1
+    while (x < 10) { // طالما x أقل من 10
+        x += 3; // أضف 3 لـ x
+        count++; // زيادة العداد بمقدار 1
+    } // النتيجة النهائية: count=3, x=10</code></pre>
         </div>
         <p class="bold-text" style="color: #fff">
           ما هي القيمة النهائية للمتغير <code>count</code>؟

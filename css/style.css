@@ -10,9 +10,17 @@
   --main-color: #f97316;
   --dark-bg: #323330;
   --text-color: #333;
-  --code-bg: #282c34;
-  --code-text: #9ba3b3;
+  --code-bg: #1e293b;
+  --code-text: #e2e8f0;
   --code-textt: #5e5b4e;
+  --code-keyword: #c084fc;
+  --code-variable: #60a5fa;
+  --code-string: #4ade80;
+  --code-number: #f472b6;
+  --code-comment: #94a3b8;
+  --code-function: #7dd3fc;
+  --code-operator: #e2e8f0;
+  --code-literal: #f9a8d4;
 }
 
 #particles-js {
@@ -394,4 +402,90 @@ button:not(.fab-main-btn):not(.fab-sub-btn):hover {
   .menu-icon {
     display: block;
   }
+}
+
+pre code .code-comment,
+pre code .code-keyword,
+pre code .code-string,
+pre code .code-number,
+pre code .code-literal,
+pre code .code-function,
+pre code .code-property,
+pre code .code-variable,
+pre code .code-operator,
+pre code .code-punctuation,
+.code-terminal .code-comment,
+.code-terminal .code-keyword,
+.code-terminal .code-string,
+.code-terminal .code-number,
+.code-terminal .code-literal,
+.code-terminal .code-function,
+.code-terminal .code-property,
+.code-terminal .code-variable,
+.code-terminal .code-operator,
+.code-terminal .code-punctuation,
+.code-wrapper .code-comment,
+.code-wrapper .code-keyword,
+.code-wrapper .code-string,
+.code-wrapper .code-number,
+.code-wrapper .code-literal,
+.code-wrapper .code-function,
+.code-wrapper .code-property,
+.code-wrapper .code-variable,
+.code-wrapper .code-operator,
+.code-wrapper .code-punctuation {
+  color: inherit !important;
+}
+
+pre code .code-comment,
+.code-terminal .code-comment,
+.code-wrapper .code-comment {
+  color: var(--code-comment) !important;
+  font-style: italic;
+}
+
+pre code .code-keyword,
+.code-terminal .code-keyword,
+.code-wrapper .code-keyword {
+  color: var(--code-keyword) !important;
+  font-weight: 600;
+}
+
+pre code .code-string,
+.code-terminal .code-string,
+.code-wrapper .code-string {
+  color: var(--code-string) !important;
+}
+
+pre code .code-number,
+pre code .code-literal,
+.code-terminal .code-number,
+.code-terminal .code-literal,
+.code-wrapper .code-number,
+.code-wrapper .code-literal {
+  color: var(--code-number) !important;
+}
+
+pre code .code-function,
+pre code .code-property,
+.code-terminal .code-function,
+.code-terminal .code-property,
+.code-wrapper .code-function,
+.code-wrapper .code-property {
+  color: var(--code-function) !important;
+}
+
+pre code .code-variable,
+.code-terminal .code-variable,
+.code-wrapper .code-variable {
+  color: var(--code-variable) !important;
+}
+
+pre code .code-operator,
+pre code .code-punctuation,
+.code-terminal .code-operator,
+.code-terminal .code-punctuation,
+.code-wrapper .code-operator,
+.code-wrapper .code-punctuation {
+  color: var(--code-operator) !important;
 }

@@ -332,7 +332,6 @@ td {
 
 .section-head {
   color: #2d3748;
-  border-right: 5px solid #3b82f6;
   padding-right: 15px;
   margin: 25px 0 15px 0;
 }
@@ -375,10 +374,97 @@ td {
 
 .example-box code,
 .code-wrapper code {
-  color: #f97316 !important;
-  font-weight: 900 !important;
+  color: var(--code-text);
+  font-weight: 500;
   direction: ltr;
   display: block;
+  font-family: "Fira Code", "Courier New", monospace;
+}
+
+.code-wrapper span.code-comment,
+.code-wrapper span.code-keyword,
+.code-wrapper span.code-string,
+.code-wrapper span.code-number,
+.code-wrapper span.code-literal,
+.code-wrapper span.code-function,
+.code-wrapper span.code-property,
+.code-wrapper span.code-variable,
+.code-wrapper span.code-operator,
+.code-wrapper span.code-punctuation,
+.code-terminal span.code-comment,
+.code-terminal span.code-keyword,
+.code-terminal span.code-string,
+.code-terminal span.code-number,
+.code-terminal span.code-literal,
+.code-terminal span.code-function,
+.code-terminal span.code-property,
+.code-terminal span.code-variable,
+.code-terminal span.code-operator,
+.code-terminal span.code-punctuation,
+pre code span.code-comment,
+pre code span.code-keyword,
+pre code span.code-string,
+pre code span.code-number,
+pre code span.code-literal,
+pre code span.code-function,
+pre code span.code-property,
+pre code span.code-variable,
+pre code span.code-operator,
+pre code span.code-punctuation {
+  color: inherit !important;
+}
+
+.code-wrapper span.code-comment,
+.code-terminal span.code-comment,
+pre code span.code-comment {
+  color: var(--code-comment) !important;
+  font-style: italic;
+}
+
+.code-wrapper span.code-keyword,
+.code-terminal span.code-keyword,
+pre code span.code-keyword {
+  color: var(--code-keyword) !important;
+  font-weight: 600;
+}
+
+.code-wrapper span.code-string,
+.code-terminal span.code-string,
+pre code span.code-string {
+  color: var(--code-string) !important;
+}
+
+.code-wrapper span.code-number,
+.code-wrapper span.code-literal,
+.code-terminal span.code-number,
+.code-terminal span.code-literal,
+pre code span.code-number,
+pre code span.code-literal {
+  color: var(--code-number) !important;
+}
+
+.code-wrapper span.code-function,
+.code-wrapper span.code-property,
+.code-terminal span.code-function,
+.code-terminal span.code-property,
+pre code span.code-function,
+pre code span.code-property {
+  color: var(--code-function) !important;
+}
+
+.code-wrapper span.code-variable,
+.code-terminal span.code-variable,
+pre code span.code-variable {
+  color: var(--code-variable) !important;
+}
+
+.code-wrapper span.code-operator,
+.code-wrapper span.code-punctuation,
+.code-terminal span.code-operator,
+.code-terminal span.code-punctuation,
+pre code span.code-operator,
+pre code span.code-punctuation {
+  color: var(--code-operator) !important;
 }
 
 .highlight {
