@@ -276,6 +276,10 @@ code {
   font-family: "Fira Code", monospace;
   font-size: 0.92rem;
   line-height: 1.7;
+  color: var(--strong-text);
+}
+
+.code-terminal code {
   color: var(--code-text);
 }
 
@@ -444,6 +448,14 @@ code {
   border-right: none !important;
   border-left: none !important;
   color: var(--body-text) !important;
+}
+
+p[style*="border-left: 4px solid #f97316"],
+p[style*="border-right: 4px solid #f97316"] {
+  border-left: none !important;
+  border-right: none !important;
+  border-inline-start: none !important;
+  border-inline-end: none !important;
 }
 
 .explanation-details li,
