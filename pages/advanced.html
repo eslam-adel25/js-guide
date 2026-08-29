@@ -1,195 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>advancced</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> advancced </title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/basics.css" />
+    <link rel="stylesheet" href="../css/advancd.css" />
+    <link rel="stylesheet" href="../css/compiler.css" />
+  </head>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/assets/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/basics.css">
-    <link rel="stylesheet" href="../css/advancd.css">
-    <link rel="stylesheet" href="../css/compiler.css">
-</head>
-
-<body>
-
+  <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">JS Guide</div>
+      <div class="nav-container">
+        <div class="logo">JS Guide</div>
 
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html">الرئيسية</a></li>
-                <li><a href="basics.html">الأساسيات</a></li>
-                <li><a href="advanced.html">متقدم</a></li>
-                <li><a href="monsterLevel.html">Monster Level</a></li>
-                <li><a href="#">مشاريع</a></li>
-            </ul>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="basics.html">الأساسيات</a></li>
+          <li><a href="advanced.html">متقدم</a></li>
+          <li><a href="monsterLevel.html">Monster Level</a></li>
+          <li><a href="#">مشاريع</a></li>
+        </ul>
 
-            <!-- Menu Icon (Mobile) -->
-            <div class="menu-icon" id="menuIcon">
-                ☰
-            </div>
-        </div>
+        <!-- Menu Icon (Mobile) -->
+        <div class="menu-icon" id="menuIcon">☰</div>
+      </div>
     </nav>
 
-
     <section class="lesson-card luxury-design">
-        <h1 class="bold-text main-title">⚡ الدوال (Functions): القلب النابض للبرمجة</h1>
+      <h1 class="bold-text main-title">
+        ⚡ الدوال (Functions): القلب النابض للبرمجة
+      </h1>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 1. ما هي الـ Function؟</h2>
-            <p class="bold-text">الدالة هي عبارة عن "كتلة من الكود" (Code Block) مصممة لتنفيذ مهمة محددة. بدلاً من كتابة
-                نفس
-                الكود 10 مرات، تكتبه مرة واحدة وتستدعيه وقتما شئت.</p>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🔹 1. ما هي الـ Function؟</h2>
+        <p class="bold-text">
+          الدالة هي عبارة عن "كتلة من الكود" (Code Block) مصممة لتنفيذ مهمة
+          محددة. بدلاً من كتابة نفس الكود 10 مرات، تكتبه مرة واحدة وتستدعيه
+          وقتما شئت.
+        </p>
 
-            <div class="info-box bold-text">
-                💡 <strong>المبدأ:</strong> Write Once, Use Many (اكتب مرة، استخدم كثيراً). <br>
-                🥤 <strong>التشبيه:</strong> الدالة مثل "الخلاط". تضع فيه مكونات (مدخلات)، يقوم هو بالعمل (معالجة)، ثم
-                يعطيك
-                العصير (مخرجات).
-            </div>
+        <div class="info-box bold-text">
+          💡 <strong>المبدأ:</strong> Write Once, Use Many (اكتب مرة، استخدم
+          كثيراً). <br />
+          🥤 <strong>التشبيه:</strong> الدالة مثل "الخلاط". تضع فيه مكونات
+          (مدخلات)، يقوم هو بالعمل (معالجة)، ثم يعطيك العصير (مخرجات).
         </div>
+      </div>
 
-        <div class="topic-section function-declaration-box">
-            <h2 class="bold-text section-head">🔹 2. Function Declaration (تعريف الدالة)</h2>
-            <p class="bold-text">دي الطريقة التقليدية لكتابة الدالة في JavaScript.</p>
+      <div class="topic-section function-declaration-box">
+        <h2 class="bold-text section-head">
+          🔹 2. Function Declaration (تعريف الدالة)
+        </h2>
+        <p class="bold-text">
+          دي الطريقة التقليدية لكتابة الدالة في JavaScript.
+        </p>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">
 function sayHello() {
     console.log("Hello");
     // السطر ده هيطبع كلمة Hello في الـ console
 }</code></pre>
-            </div>
-
-            <div class="explanation-details bold-text">
-                <p class="detail-item">📌 <strong>هنا:</strong></p>
-                <ul class="details-list">
-                    <li><span class="highlight">function</span> : كلمة محجوزة لتعريف الدالة.</li>
-                    <li><span class="highlight">sayHello</span> : اسم الدالة اللي اخترناه.</li>
-                    <li>الكود جوه الأقواس <span class="highlight">{ }</span> هو اللي بيتنفّذ عند الاستدعاء.</li>
-                </ul>
-            </div>
         </div>
 
-        <div class="topic-section calling-function-box">
-            <h2 class="bold-text section-head">🔹 3. Calling the Function (استدعاء الدالة)</h2>
-            <p class="bold-text">الدالة لا تعمل أبداً وهي "نائمة" إلا إذا قمت بمناداتها (استدعائها).</p>
+        <div class="explanation-details bold-text">
+          <p class="detail-item">📌 <strong>هنا:</strong></p>
+          <ul class="details-list">
+            <li>
+              <span class="highlight">function</span> : كلمة محجوزة لتعريف
+              الدالة.
+            </li>
+            <li>
+              <span class="highlight">sayHello</span> : اسم الدالة اللي اخترناه.
+            </li>
+            <li>
+              الكود جوه الأقواس <span class="highlight">{ }</span> هو اللي
+              بيتنفّذ عند الاستدعاء.
+            </li>
+          </ul>
+        </div>
+      </div>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">sayHello(); // هنا بنقول للبرنامج: نفّذ الدالة الآن!</code></pre>
-            </div>
+      <div class="topic-section calling-function-box">
+        <h2 class="bold-text section-head">
+          🔹 3. Calling the Function (استدعاء الدالة)
+        </h2>
+        <p class="bold-text">
+          الدالة لا تعمل أبداً وهي "نائمة" إلا إذا قمت بمناداتها (استدعائها).
+        </p>
 
-            <div class="tip-box bold-text">
-                <span class="icon">💡</span>
-                <p>بدون الأقواس <code>()</code>، أنت تشير للدالة فقط ولا تشغلها. الأقواس هي "زر التشغيل".</p>
-            </div>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">sayHello(); // هنا بنقول للبرنامج: نفّذ الدالة الآن!</code></pre>
         </div>
 
-        <div class="topic-section">
+        <div class="tip-box bold-text">
+          <span class="icon">💡</span>
+          <p>
+            بدون الأقواس <code>()</code>، أنت تشير للدالة فقط ولا تشغلها.
+            الأقواس هي "زر التشغيل".
+          </p>
+        </div>
+      </div>
 
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">function sayHello() {
+      <div class="topic-section">
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">function sayHello() {
       console.log("مرحباً بك في موقعنا!");
     }
     
     sayHello(); // استدعاء: سيطبع الجملة</code></pre>
-            </div>
-            <button class="btn-test primary bold-text"
-                onclick="openCustomModal('ماذا سيحدث لو كتبنا sayHello  بدون أقواس؟ اجب ب  تعمل او لا تعمل', 'callWithoutParentheses')">اختبر
-                انتباهك</button>
-            <div id="explain-callWithoutParentheses" class="persistent-explain" style="display: none;"></div>
         </div>
-        <div class="topic-section parameters-box">
-            <h2 class="bold-text section-head">🔹 4. Parameters & Arguments</h2>
-            <p class="bold-text">الدالة ممكن تستقبل بيانات عشان تكون مرنة وتنفذ مهام مختلفة لنفس الكود.</p>
+        <button
+          class="btn-test primary bold-text"
+          onclick="
+            openCustomModal(
+              'ماذا سيحدث لو كتبنا sayHello  بدون أقواس؟ اجب ب  تعمل او لا تعمل',
+              'callWithoutParentheses',
+            )
+          "
+        >
+          اختبر انتباهك
+        </button>
+        <div
+          id="explain-callWithoutParentheses"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
+      <div class="topic-section parameters-box">
+        <h2 class="bold-text section-head">🔹 4. Parameters & Arguments</h2>
+        <p class="bold-text">
+          الدالة ممكن تستقبل بيانات عشان تكون مرنة وتنفذ مهام مختلفة لنفس الكود.
+        </p>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">function greet(name) { // name هنا هو Parameter
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">function greet(name) { // name هنا هو Parameter
             console.log("Hello " + name);
         }
         
         greet("Eslam"); // "Eslam" هنا هو Argument</code></pre>
-            </div>
-
-            <div class="concept-box bold-text">
-                <p>📌 <strong>الفكرة:</strong></p>
-                <ul class="details-list">
-                    <li><span class="highlight-param">Parameter</span> : المتغير اللي بيستقبل القيمة (وعاء فارغ).</li>
-                    <li><span class="highlight-arg">Argument</span> : القيمة الحقيقية اللي بنبعتها فعليًا للدالة.</li>
-                </ul>
-            </div>
-
-            <div class="analogy-box bold-text">
-                <div class="analogy-item">
-                    <span class="emoji">🥛</span>
-                    <p><strong class="C">Parameter:</strong> هو الكوب الفاضي.</p>
-                </div>
-                <div class="analogy-item">
-                    <span class="emoji">💧</span>
-                    <p><strong class="W">Argument:</strong> هو الماية اللي بتحطها في الكوب.</p>
-                </div>
-            </div>
         </div>
 
+        <div class="concept-box bold-text">
+          <p>📌 <strong>الفكرة:</strong></p>
+          <ul class="details-list">
+            <li>
+              <span class="highlight-param">Parameter</span> : المتغير اللي
+              بيستقبل القيمة (وعاء فارغ).
+            </li>
+            <li>
+              <span class="highlight-arg">Argument</span> : القيمة الحقيقية اللي
+              بنبعتها فعليًا للدالة.
+            </li>
+          </ul>
+        </div>
 
+        <div class="analogy-box bold-text">
+          <div class="analogy-item">
+            <span class="emoji">🥛</span>
+            <p><strong class="C">Parameter:</strong> هو الكوب الفاضي.</p>
+          </div>
+          <div class="analogy-item">
+            <span class="emoji">💧</span>
+            <p>
+              <strong class="W">Argument:</strong> هو الماية اللي بتحطها في
+              الكوب.
+            </p>
+          </div>
+        </div>
+      </div>
 
+      <div class="topic-section parameters-box">
+        <h2 class="bold-text section-head">
+          🔹 5. return vs console.log (فرق مهم جدًا)
+        </h2>
 
-        <div class="topic-section parameters-box">
-            <h2 class="bold-text section-head">🔹 5. return vs console.log (فرق مهم جدًا)</h2>
-
-            <div class="grid-comparison">
-                <div class="comparison-card">
-                    <h3 class="bold-text" style="color: #94a3b8;">📢 console.log</h3>
-                    <p class="bold-text">يستخدم للعرض فقط (للمبرمج) لتصحيح الأخطاء.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">function sum(a, b) {
+        <div class="grid-comparison">
+          <div class="comparison-card">
+            <h3 class="bold-text" style="color: #94a3b8">📢 console.log</h3>
+            <p class="bold-text">يستخدم للعرض فقط (للمبرمج) لتصحيح الأخطاء.</p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">function sum(a, b) {
    console.log(a + b); // عرض فقط
   }</code></pre>
-                    </div>
-                    <p class="error-text bold-text">❌ المشكلة: لا يمكن تخزين النتيجة أو استخدامها في عملية حسابية أخرى.
-                    </p>
-                </div>
+            </div>
+            <p class="error-text bold-text">
+              ❌ المشكلة: لا يمكن تخزين النتيجة أو استخدامها في عملية حسابية
+              أخرى.
+            </p>
+          </div>
 
-                <div class="comparison-card highlight-card">
-                    <h3 class="bold-text" style="color: #ffcc00;">💰 return </h3>
-                    <p class="bold-text">يُرجع قيمة حقيقية للكود لكي نستخدمها لاحقاً.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">function sum(a, b) {
+          <div class="comparison-card highlight-card">
+            <h3 class="bold-text" style="color: #f97316">💰 return</h3>
+            <p class="bold-text">
+              يُرجع قيمة حقيقية للكود لكي نستخدمها لاحقاً.
+            </p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">function sum(a, b) {
  return a + b; // إرجاع الناتج
  }
 let result = sum(3, 5); // result = 8  </code></pre>
-                    </div>
-                    <p class="success-text bold-text">✅ الميزة: النتيجة أصبحت ملكك، يمكنك ضربها، جمعها، أو تخزينها.</p>
-                </div>
             </div>
-
-            <div class="topic-section challenge-card important-rule">
-                <h2 class="bold-text">📌قاعدة </h2>
-                <p class="bold-text" style="color: #ffffff !important;">بمجرد وصول الدالة لسطر <span
-                        class="highlight-return">return</span>، تتوقف فوراً وتخرج. أي كود مكتوب بعدها <strong>لا يتم
-                        تنفيذه
-                        نهائياً</strong>.</p>
-            </div>
-            <button class="btn-test success bold-text"
-                onclick="openCustomModal('دالة تحسب السعر، هل نستخدم return أم console.log لنخزن النتيجة في متغير؟', 'returnVsLog')">تحدي
-                الفهم</button>
-            <div id="explain-returnVsLog" class="persistent-explain" style="display: none;"></div>
+            <p class="success-text bold-text">
+              ✅ الميزة: النتيجة أصبحت ملكك، يمكنك ضربها، جمعها، أو تخزينها.
+            </p>
+          </div>
         </div>
 
-        <div class="topic-section real-example-box">
-            <h2 class="bold-text section-head">🔹 6. Examples 🚀</h2>
-            <p class="bold-text">تعال نطبق اللي اتعلمناه في مثال حقيقي: حساب السعر النهائي لمنتج في متجر إلكتروني بعد
-                إضافة
-                الضريبة.</p>
+        <div class="topic-section challenge-card important-rule">
+          <h2 class="bold-text">📌قاعدة</h2>
+          <p class="bold-text" style="color: #ffffff !important">
+            بمجرد وصول الدالة لسطر <span class="highlight-return">return</span>،
+            تتوقف فوراً وتخرج. أي كود مكتوب بعدها
+            <strong>لا يتم تنفيذه نهائياً</strong>.
+          </p>
+        </div>
+        <button
+          class="btn-test success bold-text"
+          onclick="
+            openCustomModal(
+              'دالة تحسب السعر، هل نستخدم return أم console.log لنخزن النتيجة في متغير؟',
+              'returnVsLog',
+            )
+          "
+        >
+          تحدي الفهم
+        </button>
+        <div
+          id="explain-returnVsLog"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">function calculateFinalPrice(price, tax) {
+      <div class="topic-section real-example-box">
+        <h2 class="bold-text section-head">🔹 6. Examples 🚀</h2>
+        <p class="bold-text">
+          تعال نطبق اللي اتعلمناه في مثال حقيقي: حساب السعر النهائي لمنتج في
+          متجر إلكتروني بعد إضافة الضريبة.
+        </p>
+
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">function calculateFinalPrice(price, tax) {
     // price = سعر المنتج الحقيقي
     // tax = نسبة الضريبة (مثلاً 0.14 للـ 14%)
             
@@ -199,115 +260,125 @@ let result = sum(3, 5); // result = 8  </code></pre>
         
 let productPrice = calculateFinalPrice(100, 0.14);  //  price=100, tax=0.14 
 console.log("السعر النهائي: " + productPrice);  // الناتج = 114</code></pre>
-            </div>
-
-            <div class="analysis-panel bold-text">
-                <div class="analysis-item">
-                    <span class="label">المدخلات (Params):</span>
-                    <span class="value">السعر والضريبة (بيانات متغيرة)</span>
-                </div>
-                <div class="analysis-item">
-                    <span class="label">المعالجة (Logic):</span>
-                    <span class="value">معادلة حسابية بسيطة</span>
-                </div>
-                <div class="analysis-item">
-                    <span class="label">المخرجات (Return):</span>
-                    <span class="value">القيمة اللي هندفعها فعلياً</span>
-                </div>
-            </div>
         </div>
 
+        <div class="analysis-panel bold-text">
+          <div class="analysis-item">
+            <span class="label">المدخلات (Params):</span>
+            <span class="value">السعر والضريبة (بيانات متغيرة)</span>
+          </div>
+          <div class="analysis-item">
+            <span class="label">المعالجة (Logic):</span>
+            <span class="value">معادلة حسابية بسيطة</span>
+          </div>
+          <div class="analysis-item">
+            <span class="label">المخرجات (Return):</span>
+            <span class="value">القيمة اللي هندفعها فعلياً</span>
+          </div>
+        </div>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 7. Arrow Functions (مهمة جدًا جدًا)</h2>
-            <p class="bold-text">Arrow Functions هي طريقة مختصرة لكتابة الدوال.</p>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 7. Arrow Functions (مهمة جدًا جدًا)
+        </h2>
+        <p class="bold-text">Arrow Functions هي طريقة مختصرة لكتابة الدوال.</p>
 
-            <div class="grid-comparison">
-                <div class="comparison-card">
-                    <h4 class="bold-textt">الشكل العادي</h4>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">function sum(a, b) {
+        <div class="grid-comparison">
+          <div class="comparison-card">
+            <h4 class="bold-textt">الشكل العادي</h4>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">function sum(a, b) {
     return a + b;
   }</code></pre>
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="comparison-card highlight-card">
-                    <h4 class="bold-textt">Arrow Function</h4>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">const sum = (a, b) => {
+          <div class="comparison-card highlight-card">
+            <h4 class="bold-textt">Arrow Function</h4>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">const sum = (a, b) => {
     return a + b;
   };</code></pre>
-                    </div>
-                </div>
             </div>
-
-            <div class="explanation-details">
-                <h4 class="bold-text">اختصار أكتر</h4>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">const sum = (a, b) => a + b;</code></pre>
-                </div>
-                <p class="bold-text" style="margin-top: 15px;">📌 <strong>مميزات Arrow Functions:</strong></p>
-                <ul class="bold-text">
-                    <li>✅ كود أقصر</li>
-                    <li>✅ أسهل قراءة</li>
-                    <li>✅ مستخدمة في React و Vue و Angular</li>
-                </ul>
-            </div>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 8. Scope (Local / Global)</h2>
+        <div class="explanation-details">
+          <h4 class="bold-text">اختصار أكتر</h4>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">const sum = (a, b) => a + b;</code></pre>
+          </div>
+          <p class="bold-text" style="margin-top: 15px">
+            📌 <strong>مميزات Arrow Functions:</strong>
+          </p>
+          <ul class="bold-text">
+            <li>✅ كود أقصر</li>
+            <li>✅ أسهل قراءة</li>
+            <li>✅ مستخدمة في React و Vue و Angular</li>
+          </ul>
+        </div>
+      </div>
 
-            <div class="grid-comparison">
-                <div class="comparison-card">
-                    <h4 class="bold-text">Global Scope</h4>
-                    <p class="bold-text">متغير متعرف بره الدالة.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">let siteName = "JS Guide";
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🔹 8. Scope (Local / Global)</h2>
+
+        <div class="grid-comparison">
+          <div class="comparison-card">
+            <h4 class="bold-text">Global Scope</h4>
+            <p class="bold-text">متغير متعرف بره الدالة.</p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">let siteName = "JS Guide";
 function showName() {
     console.log(siteName);
     // يقدر يشوف المتغير
  }</code></pre>
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="comparison-card">
-                    <h4 class="bold-text">Local Scope</h4>
-                    <p class="bold-text">متغير جوه الدالة.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">function testScope() {
+          <div class="comparison-card">
+            <h4 class="bold-text">Local Scope</h4>
+            <p class="bold-text">متغير جوه الدالة.</p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">function testScope() {
     let x = 10;
     console.log(x);
   }
 // console.log(x); ❌ Error</code></pre>
-                    </div>
-                </div>
             </div>
-
-            <div class="explanation-details">
-                <p class="bold-text">📌 <strong>السبب:</strong> المتغير x عايش جوه الدالة بس، بره الدالة مش موجود.</p>
-            </div>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 9. Default Parameters (قيم افتراضية)</h2>
-            <p class="bold-text">لو المستخدم مبعتش قيمة.</p>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">function welcome(name = "Guest") {
+        <div class="explanation-details">
+          <p class="bold-text">
+            📌 <strong>السبب:</strong> المتغير x عايش جوه الدالة بس، بره الدالة
+            مش موجود.
+          </p>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 9. Default Parameters (قيم افتراضية)
+        </h2>
+        <p class="bold-text">لو المستخدم مبعتش قيمة.</p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">function welcome(name = "Guest") {
     return "Welcome " + name;
     }
 welcome();        // Welcome Guest
 welcome("Islam"); // Welcome Islam</code></pre>
-            </div>
-            <p class="bold-text">✔️ تمنع Errors | ✔️ تجعل الدالة أذكى</p>
         </div>
+        <p class="bold-text">✔️ تمنع Errors | ✔️ تجعل الدالة أذكى</p>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 10. Callback Function (مقدمة بسيطة)</h2>
-            <p class="bold-text">Callback = دالة بتتبعت لدالة تانية.</p>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">function runTask(task) {
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 10. Callback Function (مقدمة بسيطة)
+        </h2>
+        <p class="bold-text">Callback = دالة بتتبعت لدالة تانية.</p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">function runTask(task) {
     task();
     // هنا بنشغّل الدالة اللي جت
  }
@@ -315,191 +386,250 @@ welcome("Islam"); // Welcome Islam</code></pre>
 runTask(function () {
     console.log("Task Done");
   });</code></pre>
-            </div>
-            <div class="explanation-details">
-                <p class="bold-text">📌 <strong>تستخدم في:</strong> click events | setTimeout | async code</p>
-            </div>
+        </div>
+        <div class="explanation-details">
+          <p class="bold-text">
+            📌 <strong>تستخدم في:</strong> click events | setTimeout | async
+            code
+          </p>
+        </div>
 
-            <button class="btn-test primary bold-text" style="background: #e11d48;"
-                onclick="openCustomModal('لو عرفنا متغير x  داخل دالة، هل يمكننا استخدامه في دالة أخرى؟ اجب ب لا او نعم', 'scopeTest')">اختبر
-                النطاق</button>
-            <div id="explain-scopeTest" class="persistent-explain" style="display: none;"></div>
-            </div>
+        <button
+          class="btn-test primary bold-text"
+          style="background: #e11d48"
+          onclick="
+            openCustomModal(
+              'لو عرفنا متغير x  داخل دالة، هل يمكننا استخدامه في دالة أخرى؟ اجب ب لا او نعم',
+              'scopeTest',
+            )
+          "
+        >
+          اختبر النطاق
+        </button>
+        <div
+          id="explain-scopeTest"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
 
-            <div class="topic-section challenge-card" style="border-color: #ef4444;">
-                <h2 class="bold-text" style="color: #ef4444;">❌ أخطاء شائعة (تجنبها!)</h2>
-                <ul class="bold-text">
-                    <li>1. <strong>كود ميت:</strong> أي كود يكتب بعد سطر return لن ينفذ أبداً.</li>
+      <div class="topic-section challenge-card" style="border-color: #ef4444">
+        <h2 class="bold-text" style="color: #ef4444">
+          ❌ أخطاء شائعة (تجنبها!)
+        </h2>
+        <ul class="bold-text">
+          <li>
+            1. <strong>كود ميت:</strong> أي كود يكتب بعد سطر return لن ينفذ
+            أبداً.
+          </li>
 
-                    <li>2. <strong>نسيان الأقواس:</strong> كتابة اسم الدالة بدون () لن يشغلها بل سيعطيك وصفها فقط.</li>
-                    <li>3. <strong>إعادة التعريف:</strong> لا تستخدم let داخل الدالة لمتغير موجود أصلاً كـ Parameter.
-                    </li>
-                </ul>
-            </div>
+          <li>
+            2. <strong>نسيان الأقواس:</strong> كتابة اسم الدالة بدون () لن
+            يشغلها بل سيعطيك وصفها فقط.
+          </li>
+          <li>
+            3. <strong>إعادة التعريف:</strong> لا تستخدم let داخل الدالة لمتغير
+            موجود أصلاً كـ Parameter.
+          </li>
+        </ul>
+      </div>
 
-            <div class="topic-section challenge-card">
-                <h2 class="bold-text">🧠 الملخص </h2>
-                <ul class="bold-text">
-                    <li>✅ <strong>Function:</strong> خلاط الكود (إدخال -> معالجة -> إخراج).</li>
-                    <li>✅ <strong>return:</strong> هي "الورقة" التي تخرج من الدالة بالنتيجة.</li>
-                    <li>✅ <strong>Arrow Function:</strong> الاختصار السحري للمبرمجين المحترفين.</li>
-                    <li>✅ <strong>Scope:</strong> حماية المتغيرات داخل "جدران" الدالة.</li>
-                </ul>
-            </div>
+      <div class="topic-section challenge-card">
+        <h2 class="bold-text">🧠 الملخص</h2>
+        <ul class="bold-text">
+          <li>
+            ✅ <strong>Function:</strong> خلاط الكود (إدخال -> معالجة -> إخراج).
+          </li>
+          <li>
+            ✅ <strong>return:</strong> هي "الورقة" التي تخرج من الدالة
+            بالنتيجة.
+          </li>
+          <li>
+            ✅ <strong>Arrow Function:</strong> الاختصار السحري للمبرمجين
+            المحترفين.
+          </li>
+          <li>
+            ✅ <strong>Scope:</strong> حماية المتغيرات داخل "جدران" الدالة.
+          </li>
+        </ul>
+      </div>
 
-            <div class="topic-section challenge-card quiz-container">
-                <h2 class="bold-text quiz-title">🏆 تحدي الدوال (Final Challenge)</h2>
-                <p class="bold-text quiz-instruction">
-                    اكتب دالة مختصرة (Arrow Function) باسم <code>getDiscount</code> تحسب السعر بعد خصم 20%.
-                </p>
+      <div class="topic-section challenge-card quiz-container">
+        <h2 class="bold-text quiz-title">🏆 تحدي الدوال (Final Challenge)</h2>
+        <p class="bold-text quiz-instruction">
+          اكتب دالة مختصرة (Arrow Function) باسم <code>getDiscount</code> تحسب
+          السعر بعد خصم 20%.
+        </p>
 
-                <div class="code-wrapper quiz-requirements">
-                    <pre><code class="language-javascript">// المطلوب منك:
+        <div class="code-wrapper quiz-requirements">
+          <pre><code class="language-javascript">// المطلوب منك:
 // 1. الدالة تستقبل السعر (price) كـ Parameter.
 // 2. ترجع السعر بعد الخصم (السعر مضروب في 0.8).
 // 3. استخدم الـ Arrow Function للاختصار.
 // مثلاً: const getDiscount = (price) => ...</code></pre>
-                </div>
+        </div>
 
-                <div class="quiz-controls">
-                    <input type="text" id="quiz-input" placeholder="مثلاً: const getDiscount = (price) => ..."
-                        dir="ltr">
+        <div class="quiz-controls">
+          <input
+            type="text"
+            id="quiz-input"
+            placeholder="مثلاً: const getDiscount = (price) => ..."
+            dir="ltr"
+          />
 
-                    <button onclick="checkFunctionQuiz()" class="quiz-btn">
-                        تحقق من الإجابة ✅
-                    </button>
-                </div>
+          <button onclick="checkFunctionQuiz()" class="quiz-btn">
+            تحقق من الإجابة ✅
+          </button>
+        </div>
 
-                <div id="quiz-explain" class="persistent-explain" style="display: none;">
-                </div>
-            </div>
+        <div
+          id="quiz-explain"
+          class="persistent-explain"
+          style="display: none"
+        ></div>
+      </div>
     </section>
 
-
-
-
     <section class="lesson-card luxury-design">
-        <h1 class="bold-text main-title">⚡ النصوص (Strings): لغة البيانات</h1>
+      <h1 class="bold-text main-title">⚡ النصوص (Strings): لغة البيانات</h1>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 يعني إيه String؟</h2>
-            <p class="bold-text">الـ String هو نص. أي حاجة بين العلامات دي تعتبر String:</p>
-            <div class="info-box bold-text">
-                <code>" "</code> أو <code>' '</code> أو <code> ` `</code>
-            </div>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🔹 يعني إيه String؟</h2>
+        <p class="bold-text">
+          الـ String هو نص. أي حاجة بين العلامات دي تعتبر String:
+        </p>
+        <div class="info-box bold-text">
+          <code>" "</code> أو <code>' '</code> أو <code> ` `</code>
+        </div>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">let name = "Eslam";
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let name = "Eslam";
 let city = 'Cairo';
 let message = `Hello`;</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 الفرق بين أنواع علامات التنصيص
+        </h2>
+
+        <div class="grid-comparison">
+          <div class="comparison-card highlight-card">
+            <h3 class="bold-textt">1️⃣ " " و ' '</h3>
+
+            <ul class="bold-text">
+              <li>✅ الاتنين نفس الوظيفة تماماً.</li>
+              <li>✅ يخزن بها حرف ' '</li>
+            </ul>
+          </div>
+          <div class="comparison-card highlight-card">
+            <h3 class="bold-textt">2️⃣ ` ` (Backticks)</h3>
+            <p class="bold-text">مهمة جدًا لأنها تسمح بـ:</p>
+            <ul class="bold-text">
+              <li>✅ كتابة متغير داخل النص.</li>
+              <li>✅ كتابة النص في أكتر من سطر.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 الفرق بين أنواع علامات التنصيص</h2>
-
-            <div class="grid-comparison">
-                <div class="comparison-card highlight-card">
-                    <h3 class="bold-textt">1️⃣ " " و ' '</h3>
-
-                    <ul class="bold-text">
-                        <li>✅ الاتنين نفس الوظيفة تماماً. </li>
-                        <li>✅ يخزن بها حرف ' ' </li>
-                    </ul>
-                </div>
-                <div class="comparison-card highlight-card">
-                    <h3 class="bold-textt">2️⃣ ` ` (Backticks)</h3>
-                    <p class="bold-text">مهمة جدًا لأنها تسمح بـ:</p>
-                    <ul class="bold-text">
-                        <li>✅ كتابة متغير داخل النص.</li>
-                        <li>✅ كتابة النص في أكتر من سطر.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">let name = "Eslam";
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let name = "Eslam";
 let text = `Hello ${name}`; // دي اسمها: Template Literals</code></pre>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🔹 جمع النصوص (Concatenation)</h2>
+        <div class="grid-comparison">
+          <div class="comparison-card">
+            <h4 class="bold-text">الطريقة القديمة</h4>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">let result = first + " " + second;</code></pre>
             </div>
+          </div>
+          <div class="comparison-card highlight-card">
+            <h4 class="bold-text">الطريقة الحديثة (الأفضل)</h4>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">let result = `${first} ${second}`;</code></pre>
+            </div>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 جمع النصوص (Concatenation)</h2>
-            <div class="grid-comparison">
-                <div class="comparison-card">
-                    <h4 class="bold-text">الطريقة القديمة</h4>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">let result = first + " " + second;</code></pre>
-                    </div>
-                </div>
-                <div class="comparison-card highlight-card">
-                    <h4 class="bold-text">الطريقة الحديثة (الأفضل)</h4>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">let result = `${first} ${second}`;</code></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="topic-section challenge-card">
-                <h2 class="bold-text">⚠️ مهم جدًا</h2>
-                <p style="color: #e11d48;"><code>"10" + 5 // "105"</code><br>
-                    لو في String → العملية تبقى دمج مش جمع حسابي.</p>
-            </div>
+        <div class="topic-section challenge-card">
+          <h2 class="bold-text">⚠️ مهم جدًا</h2>
+          <p style="color: #e11d48">
+            <code>"10" + 5 // "105"</code><br />
+            لو في String → العملية تبقى دمج مش جمع حسابي.
+          </p>
         </div>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 خصائص الـ String</h2>
-            <div class="concept-box bold-text">
-                <p>📌 <strong>الطول (length):</strong></p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let name = "Eslam";
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🔹 خصائص الـ String</h2>
+        <div class="concept-box bold-text">
+          <p>📌 <strong>الطول (length):</strong></p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let name = "Eslam";
     console.log(name.length); // 5</code></pre>
-                </div>
-                <p>📌 <strong>الوصول لحرف معين:</strong></p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let word = "Hello";
+          </div>
+          <p>📌 <strong>الوصول لحرف معين:</strong></p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let word = "Hello";
     console.log(word[0]); // H
     console.log(word[1]); // e</code></pre>
-                </div>
-                <p style="color: #ffcc00;">💡 أول حرف دايمًا index = 0</p>
-            </div>
+          </div>
+          <p style="color: #f97316">💡 أول حرف دايمًا index = 0</p>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 أهم String Methods (لازم تحفظهم)
+        </h2>
+
+        <div class="comparison-card">
+          <p class="bold-text">
+            1️⃣ <strong>toUpperCase()</strong> : تحويل النص لحروف كبيرة <br />
+            2️⃣ <strong>toLowerCase()</strong> : تحويل لحروف صغيرة
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">"hello".toUpperCase(); // HELLO // تحويل النص لحروف كبيرة toUpperCase
+"HELLO".toLowerCase(); // hello // تحويل لحروف صغيرة  toLowerCase </code></pre>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 أهم String Methods (لازم تحفظهم)</h2>
-
-            <div class="comparison-card">
-                <p class="bold-text">1️⃣ <strong>toUpperCase()</strong> : تحويل النص لحروف كبيرة <br> 2️⃣
-                    <strong>toLowerCase()</strong> : تحويل لحروف صغيرة
-                </p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">"hello".toUpperCase(); // HELLO // تحويل النص لحروف كبيرة toUpperCase
-"HELLO".toLowerCase(); // hello // تحويل لحروف صغيرة  toLowerCase </code></pre>
-                </div>
-            </div>
-
-            <div class="comparison-card">
-                <p class="bold-text">3️⃣ <strong>trim()</strong>: إزالة المسافات من البداية والنهاية.</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "  hello  ";
+        <div class="comparison-card">
+          <p class="bold-text">
+            3️⃣ <strong>trim()</strong>: إزالة المسافات من البداية والنهاية.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "  hello  ";
 console.log(text.trim()); // "hello"</code></pre>
-                </div>
-                <p class="tip-box bold-text">💡 مهم جدًا في: إدخال المستخدم والفورمات.</p>
-            </div>
+          </div>
+          <p class="tip-box bold-text">
+            💡 مهم جدًا في: إدخال المستخدم والفورمات.
+          </p>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">4️⃣ <strong>includes()</strong> : يتأكد هل النص يحتوي على جزء معين</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello World";
+        <div class="comparison-card">
+          <p class="bold-text">
+            4️⃣ <strong>includes()</strong> : يتأكد هل النص يحتوي على جزء معين
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello World";
 console.log(text.includes("World")); // true
            </code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">5️⃣ <strong>startsWith()</strong>: بتتحقق هل النص بيبدأ بجزء معين ولا لأ. </p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello"; // متغير فيه نص   
+        <div class="comparison-card">
+          <p class="bold-text">
+            5️⃣ <strong>startsWith()</strong>: بتتحقق هل النص بيبدأ بجزء معين ولا
+            لأ.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello"; // متغير فيه نص   
 
 console.log(text.startsWith("He"));
     // بيتأكد هل النص يبدأ بـ "He"
@@ -509,24 +639,19 @@ console.log(text.startsWith("he"));
     // هنا الحروف مختلفة (H كبيرة)
     // JavaScript حساسة لحالة الحروف
     // النتيجة: false</code></pre>
-                </div>
-                <p class="tip-box bold-text">💡
+          </div>
+          <p class="tip-box bold-text">
+            💡 مفيدة جدًا في: التحقق من بداية إيميل التأكد من صيغة معينة فلترة
+            بيانات
+          </p>
+        </div>
 
-                    مفيدة جدًا في:
-
-                    التحقق من بداية إيميل
-
-                    التأكد من صيغة معينة
-
-                    فلترة بيانات </p>
-            </div>
-
-            <div class="comparison-card">
-                <p class="bold-text">6️⃣
-                    <strong>endsWith()</strong>: بتتحقق هل النص بينتهي بجزء معين.
-                </p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello"; // متغير فيه نص
+        <div class="comparison-card">
+          <p class="bold-text">
+            6️⃣ <strong>endsWith()</strong>: بتتحقق هل النص بينتهي بجزء معين.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello"; // متغير فيه نص
                     
 console.log(text.endsWith("lo"));
     // بيتأكد هل النص بينتهي بـ "lo"
@@ -535,15 +660,16 @@ console.log(text.endsWith("lo"));
 console.log(text.endsWith("Lo"));
     // اختلاف في حالة الحروف
     // النتيجة: false</code></pre>
-                </div>
+          </div>
+        </div>
 
-            </div>
-
-            <div class="comparison-card">
-                <p class="bold-text">7️⃣ <strong>indexOf()</strong>: ترجع رقم مكان أول ظهور لقيمة داخل النص . لو مش
-                    موجودة → ترجع -1</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello World"; // النص الأساسي
+        <div class="comparison-card">
+          <p class="bold-text">
+            7️⃣ <strong>indexOf()</strong>: ترجع رقم مكان أول ظهور لقيمة داخل
+            النص . لو مش موجودة → ترجع -1
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello World"; // النص الأساسي
                     
 console.log(text.indexOf("o"));
     // بيدور على أول حرف o
@@ -553,26 +679,30 @@ console.log(text.indexOf("o"));
 console.log(text.indexOf("z"));
     // الحرف z مش موجود
     // النتيجة: -1</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">8️⃣ <strong>lastIndexOf()</strong>: ترجع رقم مكان أخر ظهور لقيمة داخل النص لو مش
-                    موجودة → ترجع -1 </p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello World";
+        <div class="comparison-card">
+          <p class="bold-text">
+            8️⃣ <strong>lastIndexOf()</strong>: ترجع رقم مكان أخر ظهور لقيمة داخل
+            النص لو مش موجودة → ترجع -1
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello World";
                     
 console.log(text.lastIndexOf("o"));
     // فيه o مرتين
     // آخر واحدة في المكان رقم 7
     // النتيجة: 7</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">9️⃣ <strong>slice(start, end)</strong>: تستخدم لاستخراج جزء من النص.</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "JavaScript"; // النص الأساسي
+        <div class="comparison-card">
+          <p class="bold-text">
+            9️⃣ <strong>slice(start, end)</strong>: تستخدم لاستخراج جزء من النص.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "JavaScript"; // النص الأساسي
                     
 console.log(text.slice(0, 4));
     // يبدأ من index 0
@@ -583,27 +713,31 @@ console.log(text.slice(4));
     // لو حددنا بداية فقط
     // هياخد من 4 لآخر النص
     // النتيجة: "Script"</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">🔟 <strong>substring()</strong>: شبيهة بـ slice
-                    لكن لا تدعم الأرقام السالبة
-                    وأقل استخدامًا.</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "JavaScript";
+        <div class="comparison-card">
+          <p class="bold-text">
+            🔟 <strong>substring()</strong>: شبيهة بـ slice لكن لا تدعم الأرقام
+            السالبة وأقل استخدامًا.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "JavaScript";
                     
 console.log(text.substring(0, 4));
     // نفس فكرة slice
     // النتيجة: "Java"</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">1️⃣1️⃣ <strong>replace()</strong> : تغير جزء من النص
-                    لكن تغير أول تطابق فقط <br> <strong>replaceAll()</strong> : تغير كل التطابقات.</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello World World";
+        <div class="comparison-card">
+          <p class="bold-text">
+            1️⃣1️⃣ <strong>replace()</strong> : تغير جزء من النص لكن تغير أول
+            تطابق فقط <br />
+            <strong>replaceAll()</strong> : تغير كل التطابقات.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello World World";
 console.log(text.replace("World", "Ali"));
     // هيغير أول World بس
     // النتيجة: "Hello Ali World"
@@ -611,46 +745,51 @@ console.log(text.replace("World", "Ali"));
 console.log(text.replaceAll("World", "Ali"));
     // هيغير كل الكلمات
     // النتيجة: "Hello Ali Ali"</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card highlight-card">
-                <p class="bold-text">1️⃣2️⃣ <strong>split()</strong>: تحويل النص إلى Array (مهمة جدًا).</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "apple,banana,orange";
+        <div class="comparison-card highlight-card">
+          <p class="bold-text">
+            1️⃣2️⃣ <strong>split()</strong>: تحويل النص إلى Array (مهمة جدًا).
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "apple,banana,orange";
     let result = text.split(","); // ["apple", "banana", "orange"]</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div class="comparison-card">
-                <p class="bold-text">1️⃣3️⃣ <strong>charAt()</strong>: ترجع حرف معين حسب مكانه.</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">let text = "Hello";
+        <div class="comparison-card">
+          <p class="bold-text">
+            1️⃣3️⃣ <strong>charAt()</strong>: ترجع حرف معين حسب مكانه.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">let text = "Hello";
                     
 console.log(text.charAt(0));
     // يرجع الحرف في المكان 0
     // النتيجة: H</code></pre>
-                </div>
-            </div>
-            <div class="comparison-card">
-                <p class="bold-text">1️⃣4️⃣ <strong>repeat()</strong>: تكرر النص عدد معين من المرات.</p>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">console.log("Hi ".repeat(3));
+          </div>
+        </div>
+        <div class="comparison-card">
+          <p class="bold-text">
+            1️⃣4️⃣ <strong>repeat()</strong>: تكرر النص عدد معين من المرات.
+          </p>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">console.log("Hi ".repeat(3));
     // يكرر النص 3 مرات
     // النتيجة: "Hi Hi Hi "</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-
-
-            <div class="topic-section">
-                <h2 class="bold-text section-head">🔹 أشياء مهمة جدًا عن Strings</h2>
-                <div class="comparison-card">
-                    <p class="bold-text">1️⃣ <strong> Strings غير قابلة للتعديل (Immutable) </strong>: لا يمكن تعديل حرف
-                        داخل النص مباشرة.
-                        لازم تنشئ نص جديد.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">let name = "Ali"; // النص الأصلي
+        <div class="topic-section">
+          <h2 class="bold-text section-head">🔹 أشياء مهمة جدًا عن Strings</h2>
+          <div class="comparison-card">
+            <p class="bold-text">
+              1️⃣ <strong> Strings غير قابلة للتعديل (Immutable) </strong>: لا
+              يمكن تعديل حرف داخل النص مباشرة. لازم تنشئ نص جديد.
+            </p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">let name = "Ali"; // النص الأصلي
                         
 name[0] = "M"; // نحاول نغير أول حرف
                         
@@ -658,64 +797,76 @@ console.log(name);
     // النتيجة: Ali
     // لم يتغير لأنه Immutable
 </code></pre>
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="comparison-card">
-                    <p class="bold-text">
-                        2️⃣ <strong>مقارنة النصوص:</strong> JavaScript حساسة لحالة الحروف.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">console.log("Ali" === "Ali");
+          <div class="comparison-card">
+            <p class="bold-text">
+              2️⃣ <strong>مقارنة النصوص:</strong> JavaScript حساسة لحالة الحروف.
+            </p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">console.log("Ali" === "Ali");
     // نفس النص → true
                         
 console.log("ali" === "Ali");
     // اختلاف في حالة الحروف → false</code></pre>
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="comparison-card">
-                    <p class="bold-text">
-                        3️⃣ <strong> تحويل رقم إلى String </strong> </p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">let num = 100; // رقم
+          <div class="comparison-card">
+            <p class="bold-text">3️⃣ <strong> تحويل رقم إلى String </strong></p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">let num = 100; // رقم
                         
 let text = String(num); // تحويل إلى نص
                         
 console.log(typeof text);
     // النتيجة: "string"</code></pre>
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="comparison-card">
-                    <p class="bold-text">
-                        4️⃣<strong> تحويل String إلى رقم</strong> </p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">let text = "100"; // نص
+          <div class="comparison-card">
+            <p class="bold-text">4️⃣<strong> تحويل String إلى رقم</strong></p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">let text = "100"; // نص
                         
 let num = Number(text); // تحويل إلى رقم
                         
 console.log(typeof num);
     // النتيجة: "number"</code></pre>
-                    </div>
-                </div>
             </div>
+          </div>
+        </div>
 
-            <div class="topic-section challenge-card" style="border-color: #ef4444;">
-                <h2 class="bold-text" style="color: #ef4444;">❌ أخطاء شائعة (تجنبها!)</h2>
-                <ul class="bold-text">
-                    <li>1. نسيان <code style="color: #e11d48;"> trim() </code> عند استقبال بيانات من المستخدم. </li>
-                    <li>2. نسيان إن الـ <code style="color: #e11d48;"> index </code> يبدأ من 0. </li>
-                    <li>3. استخدام <code style="color: #e11d48;">replace</code> وتوقع إنه يغير كل الكلمات (استخدم <code
-                            style="color: #e11d48;">replaceAll</code>).</li>
-                    <li>4. مقارنة نصوص بدون توحيد الحروف باستخدام <code style="color: #e11d48;">toLowerCase()</code>.
-                    </li>
-                </ul>
-            </div>
+        <div class="topic-section challenge-card" style="border-color: #ef4444">
+          <h2 class="bold-text" style="color: #ef4444">
+            ❌ أخطاء شائعة (تجنبها!)
+          </h2>
+          <ul class="bold-text">
+            <li>
+              1. نسيان <code style="color: #e11d48"> trim() </code> عند استقبال
+              بيانات من المستخدم.
+            </li>
+            <li>
+              2. نسيان إن الـ <code style="color: #e11d48"> index </code> يبدأ
+              من 0.
+            </li>
+            <li>
+              3. استخدام <code style="color: #e11d48">replace</code> وتوقع إنه
+              يغير كل الكلمات (استخدم
+              <code style="color: #e11d48">replaceAll</code>).
+            </li>
+            <li>
+              4. مقارنة نصوص بدون توحيد الحروف باستخدام
+              <code style="color: #e11d48">toLowerCase()</code>.
+            </li>
+          </ul>
+        </div>
 
-            <div class="topic-section challenge-card quiz-container">
-                <h2 class="bold-text quiz-title">🏆 تحدي الـ String</h2>
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">function formatUserData(input) {
+        <div class="topic-section challenge-card quiz-container">
+          <h2 class="bold-text quiz-title">🏆 تحدي الـ String</h2>
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">function formatUserData(input) {
                 
   // 1️⃣ إزالة المسافات الزائدة من البداية والنهاية
   let cleanedInput = input.trim();
@@ -750,36 +901,48 @@ console.log(typeof num);
 
 console.log(formatUserData("  eslam, 21, frontend developer  "));
 </code></pre>
-                </div>
-                <div class="quiz-controls">
-                    <input type="text" id="string-quiz-input" placeholder="اكتب الاجابة هنا..." dir="ltr">
-                    <button onclick="checkStringQuiz()" class="quiz-btn">تحقق من الإجابة ✅ </button>
-                </div>
-
-            </div>
-            <div id="string-quiz-explain" class="persistent-explain" style="display: none !important;"></div>
+          </div>
+          <div class="quiz-controls">
+            <input
+              type="text"
+              id="string-quiz-input"
+              placeholder="اكتب الاجابة هنا..."
+              dir="ltr"
+            />
+            <button onclick="checkStringQuiz()" class="quiz-btn">
+              تحقق من الإجابة ✅
+            </button>
+          </div>
         </div>
+        <div
+          id="string-quiz-explain"
+          class="persistent-explain"
+          style="display: none !important"
+        ></div>
+      </div>
     </section>
 
-
     <section class="lesson-card luxury-design">
-        <h1 class="bold-text main-title"> 📦 الكائنات (Objects) </h1>
+      <h1 class="bold-text main-title">📦 الكائنات (Objects)</h1>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 أولاً: الأساسيات (The Basics)</h2>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">🔹 أولاً: الأساسيات (The Basics)</h2>
 
-            <h3 class="bold-text">1. تعريف الـ Object وإنشائه</h3>
-            <p class="bold-text">الـ Object في JavaScript هو هيكل بيانات يخزن البيانات في شكل أزواج (مفتاح: قيمة). يمكن
-                إنشاؤه بطريقتين رئيسيتين: القول الحرفي (Literal) وهو الأكثر شيوعاً، أو باستخدام الكلمة new.</p>
+        <h3 class="bold-text">1. تعريف الـ Object وإنشائه</h3>
+        <p class="bold-text">
+          الـ Object في JavaScript هو هيكل بيانات يخزن البيانات في شكل أزواج
+          (مفتاح: قيمة). يمكن إنشاؤه بطريقتين رئيسيتين: القول الحرفي (Literal)
+          وهو الأكثر شيوعاً، أو باستخدام الكلمة new.
+        </p>
 
+        <div class="info-box bold-text">
+          نستخدم الأقواس المعقوفة { } لإنشاء الكائن. بداخلها نكتب اسم الخاصية
+          (Key) ثم نقطتين : ثم القيمة (Value)، ونفصل بين الخصائص بفاصلة ,.
+        </div>
 
-            <div class="info-box bold-text">
-                نستخدم الأقواس المعقوفة { } لإنشاء الكائن. بداخلها نكتب اسم الخاصية (Key) ثم
-                نقطتين : ثم القيمة (Value)، ونفصل بين الخصائص بفاصلة ,.
-            </div>
-
-
-            <pre class="code-1"><code class="language-javascript">// الطريقة الأولى: باستخدام Object Literal (الأكثر شيوعاً)
+        <pre
+          class="code-1"
+        ><code class="language-javascript">// الطريقة الأولى: باستخدام Object Literal (الأكثر شيوعاً)
 const person = {            // تعريف كائن اسمه person وتخزينه في ثابت const
     firstName: "Ahmed",       // تعريف خاصية firstName وقيمتها "Ahmed"
     lastName: "Mohamed",      // تعريف خاصية lastName وقيمتها "Mohamed"
@@ -793,17 +956,20 @@ car.brand = "Toyota";       // إضافة خاصية brand للكائن car وت
 car.model = "Corolla";      // إضافة خاصية model للكائن car
 car.year = 2022;            // إضافة خاصية year للكائن car</code></pre>
 
+        <h3 class="bold-text mt-4">2. الوصول للخصائص (Accessing Properties)</h3>
+        <p class="bold-text">
+          للوصول لقيمة خاصية معينة، لدينا طريقتان: النقطة . والأقواس المربعة [
+          ].
+        </p>
 
-            <h3 class="bold-text mt-4">2. الوصول للخصائص (Accessing Properties)</h3>
-            <p class="bold-text">للوصول لقيمة خاصية معينة، لدينا طريقتان: النقطة . والأقواس المربعة [ ].</p>
+        <div class="info-box bold-text">
+          طريقة النقطة تستخدم عندما نعرف اسم الخاصية مسبقاً. طريقة الأقواس
+          المربعة تستخدم عندما يكون اسم الخاصية مخزناً في متغير، أو عندما يحتوي
+          الاسم على مسافات أو رموز خاصة.
+        </div>
 
-            <div class="info-box bold-text">
-                طريقة النقطة تستخدم عندما نعرف اسم الخاصية مسبقاً. طريقة الأقواس المربعة
-                تستخدم عندما يكون اسم الخاصية مخزناً في متغير، أو عندما يحتوي الاسم على مسافات أو رموز خاصة.
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const user = {             // تعريف كائن user
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const user = {             // تعريف كائن user
       name: "Sara",            // خاصية name
       "user age": 30           // خاصية تحتوي على مسافة (يجب استخدام علامات تنصيص)
     };                       
@@ -821,19 +987,21 @@ console.log(user["user age"]); // طباعة القيمة 30 (صحيح)
 // استخدام متغير لاسم المفتاح (Computed Property Name)
 let key = "name";          // تعريف متغير يحمل اسم الخاصية
 console.log(user[key]);    // طباعة القيمة باستخدام المتغير key (النتيجة: Sara)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">3. التعديل والحذف (Modify & Delete)</h3>
-            <p class="bold-text">الكائنات في JavaScript قابلة للتغيير (Mutable)، مما يعني أننا يمكننا تعديل قيمها، إضافة
-                خصائص جديدة، أو حذفها في أي وقت.</p>
+        <h3 class="bold-text mt-4">3. التعديل والحذف (Modify & Delete)</h3>
+        <p class="bold-text">
+          الكائنات في JavaScript قابلة للتغيير (Mutable)، مما يعني أننا يمكننا
+          تعديل قيمها، إضافة خصائص جديدة، أو حذفها في أي وقت.
+        </p>
 
-            <div class="info-box bold-text">
-                لإضافة خاصية جديدة أو تعديل موجودة، نستخدم اسم الكائن ثم النقطة ثم الاسم
-                الجديد والقيمة. للحذف، نستخدم الكلمة المحجوزة delete.
-            </div>
+        <div class="info-box bold-text">
+          لإضافة خاصية جديدة أو تعديل موجودة، نستخدم اسم الكائن ثم النقطة ثم
+          الاسم الجديد والقيمة. للحذف، نستخدم الكلمة المحجوزة delete.
+        </div>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">let book = {              // تعريف كائن book
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">let book = {              // تعريف كائن book
       title: "JS Guide",      // خاصية العنوان
       pages: 200              // خاصية عدد الصفحات
     };
@@ -849,23 +1017,26 @@ book.isAvailable = true;  // إضافة خاصية isAvailable
 delete book.isAvailable;  // حذف الخاصية isAvailable من الكائن تماماً
     
 console.log(book);        // طباعة الكائن (لن نجد isAvailable)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 ثانياً: الأساليب (Methods) وكلمة this
+        </h2>
+
+        <h3 class="bold-text">1. تعريف الـ Methods</h3>
+        <p class="bold-text">
+          الـ Method هي دالة (Function) يتم تخزينها كقيمة لأحد خصائص الكائن.
+          تسمح للكائن بتنفيذ أفعال.
+        </p>
+        <div class="info-box bold-text">
+          نكتب اسم الخاصية، ثم نتبعها بدالة عادية أو دالة سهمية (ولكن انتبه لـ
+          this مع السهمية).
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 ثانياً: الأساليب (Methods) وكلمة this</h2>
-
-            <h3 class="bold-text">1. تعريف الـ Methods</h3>
-            <p class="bold-text">الـ Method هي دالة (Function) يتم تخزينها كقيمة لأحد خصائص الكائن. تسمح للكائن بتنفيذ
-                أفعال.</p>
-            <div class="info-box bold-text">
-                نكتب اسم الخاصية، ثم نتبعها بدالة عادية أو دالة سهمية (ولكن انتبه لـ this
-                مع
-                السهمية).
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const calculator = {                // تعريف كائن آلة حاسبة
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const calculator = {                // تعريف كائن آلة حاسبة
    add: function(a, b) {        // تعريف دالة (Method) اسمها add
         return a + b;             // إرجاع حاصل الجمع
       },
@@ -874,18 +1045,20 @@ console.log(book);        // طباعة الكائن (لن نجد isAvailable)</
     
 console.log(calculator.add(5, 3));      // استدعاء الدالة add وطباعة النتيجة (8)
 console.log(calculator.subtract(10, 4)); // استدعاء الدالة subtract (6)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">2. كلمة this</h3>
-            <p class="bold-text">كلمة this تشير إلى الكائن الذي "يملك" الكود الذي يتم تنفيذه حالياً. داخل الـ Method،
-                تشير
-                this إلى الكائن نفسه.</p>
-            <div class="info-box bold-text">
-                تساعدنا this في الوصول إلى خصائص الكائن الأخرى من داخل الدوال الخاصة به.
-            </div>
+        <h3 class="bold-text mt-4">2. كلمة this</h3>
+        <p class="bold-text">
+          كلمة this تشير إلى الكائن الذي "يملك" الكود الذي يتم تنفيذه حالياً.
+          داخل الـ Method، تشير this إلى الكائن نفسه.
+        </p>
+        <div class="info-box bold-text">
+          تساعدنا this في الوصول إلى خصائص الكائن الأخرى من داخل الدوال الخاصة
+          به.
+        </div>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const profile = {                     // تعريف كائن profile
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const profile = {                     // تعريف كائن profile
     name: "Eslam",                // خاصية الاسم
     age: 21,                      // خاصية العمر
     introduce: function() {       // دالة للتعريف بالنفس
@@ -894,43 +1067,48 @@ console.log(calculator.subtract(10, 4)); // استدعاء الدالة subtract
     }
   };    
 console.log(profile.introduce());   // طباعة: My name is Eslam and I am 21</code></pre>
-            </div>
         </div>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 ثالثاً: التعامل مع الكائنات وتعقيداتها (Manipulation)</h2>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 ثالثاً: التعامل مع الكائنات وتعقيداتها (Manipulation)
+        </h2>
 
-            <div>
-                <h3 class="bold-text">1. النسخ بالمرجع (Copy by Reference)</h3>
-                <p class="bold-text">عندما نسخ كائناً إلى متغير آخر، لا يتم نسخ البيانات، بل يتم نسخ "الإشارة" أو
-                    "العنوان"
-                    في الذاكرة.</p>
-                <div class="info-box bold-text">
-                    أي تعديل يحدث على المتغير الجديد سينعكس على الأصلي لأنهما يشيران إلى
-                    نفس
-                    المكان في الذاكرة.
-                </div>
+        <div>
+          <h3 class="bold-text">1. النسخ بالمرجع (Copy by Reference)</h3>
+          <p class="bold-text">
+            عندما نسخ كائناً إلى متغير آخر، لا يتم نسخ البيانات، بل يتم نسخ
+            "الإشارة" أو "العنوان" في الذاكرة.
+          </p>
+          <div class="info-box bold-text">
+            أي تعديل يحدث على المتغير الجديد سينعكس على الأصلي لأنهما يشيران إلى
+            نفس المكان في الذاكرة.
+          </div>
 
-                <div class="code-wrapper small-code">
-                    <pre><code class="language-javascript">const obj1 = { a: 1 };   // تعريف كائن أصلي
+          <div class="code-wrapper small-code">
+            <pre><code class="language-javascript">const obj1 = { a: 1 };   // تعريف كائن أصلي
 const obj2 = obj1;       // نسخ المرجع (obj2 يشير لنفس مكان obj1)
     
 obj2.a = 99;             // تعديل القيمة باستخدام obj2
     
 console.log(obj1.a);     // طباعة obj1 سيعطي 99 (تأثر بالتعديل!)
 console.log(obj2.a);     // طباعة obj2 سيعطي 99</code></pre>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <h3 class="bold-text mt-4">2. النسخ السطحي (Shallow Copy)</h3>
-            <p class="bold-text">لحل مشكلة المرجع، نستخدم طرقاً لإنشاء نسخة جديدة، لكن هذه الطرق (مثل Spread أو
-                Object.assign) تنسخ فقط الطبقة الأولى.</p>
-            <div class="info-box bold-text">
-                <strong>الشرح النظري:</strong> إذا كان الكائن يحتوي على كائن آخر داخله (Nested Objects)، فالنسخة السطحية
-                ستنسخ مرجع الكائن الداخلي وليس نسخة منه.
-            </div>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const original = {       // كائن أصلي
+        <h3 class="bold-text mt-4">2. النسخ السطحي (Shallow Copy)</h3>
+        <p class="bold-text">
+          لحل مشكلة المرجع، نستخدم طرقاً لإنشاء نسخة جديدة، لكن هذه الطرق (مثل
+          Spread أو Object.assign) تنسخ فقط الطبقة الأولى.
+        </p>
+        <div class="info-box bold-text">
+          <strong>الشرح النظري:</strong> إذا كان الكائن يحتوي على كائن آخر داخله
+          (Nested Objects)، فالنسخة السطحية ستنسخ مرجع الكائن الداخلي وليس نسخة
+          منه.
+        </div>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const original = {       // كائن أصلي
       name: "Test",          // خاصية بسيطة
       details: {             // كائن داخلي (Nested)
         id: 5
@@ -945,16 +1123,19 @@ shallowCopy.details.id = 100; // تغيير خاصية داخل الكائن ا�
     
 console.log(original.name);    // الناتج: "Test" (لم يتغير)
 console.log(original.details.id); // الناتج: 100 (تغير! لأن details لا يزال مشتركاً)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">3. النسخ العميق (Deep Copy)</h3>
-            <p class="bold-text">للحصول على استقلالية تامة، يجب عمل نسخة عميقة تنسخ الكائنات الداخلية أيضاً.</p>
-            <div class="info-box bold-text">
-                JSON.stringify يحول الكائن لنص، و JSON.parse يعيد النص لكائن جديد تماماً.
-                (ملاحظة: هذه الطريقة لا تدعم الدوال أو undefined).
-            </div>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const original = {
+        <h3 class="bold-text mt-4">3. النسخ العميق (Deep Copy)</h3>
+        <p class="bold-text">
+          للحصول على استقلالية تامة، يجب عمل نسخة عميقة تنسخ الكائنات الداخلية
+          أيضاً.
+        </p>
+        <div class="info-box bold-text">
+          JSON.stringify يحول الكائن لنص، و JSON.parse يعيد النص لكائن جديد
+          تماماً. (ملاحظة: هذه الطريقة لا تدعم الدوال أو undefined).
+        </div>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const original = {
       name: "Deep",
       data: { x: 10 }
   };
@@ -965,42 +1146,72 @@ const deepCopy = JSON.parse(JSON.stringify(original));
 deepCopy.data.x = 999; // تعديل الكائن الداخلي في النسخة العميقة
     
 console.log(original.data.x); // الناتج: 10 (الأصلي لم يتأثر، هذا هو الهدف من النسخ العميق)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">4. دمج الكائنات (Merging)</h3>
-            <p class="bold-text">يمكننا دمج أكثر من كائن في كائن واحد.</p>
-            <div class="code-wrapper small-code">
-                <pre><code class="language-javascript">const objA = { a: 1, b: 2 }; // الكائن الأول
+        <h3 class="bold-text mt-4">4. دمج الكائنات (Merging)</h3>
+        <p class="bold-text">يمكننا دمج أكثر من كائن في كائن واحد.</p>
+        <div class="code-wrapper small-code">
+          <pre><code class="language-javascript">const objA = { a: 1, b: 2 }; // الكائن الأول
 const objB = { c: 3, b: 4 }; // الكائن الثاني (لاحظ تكرار المفتاح b)
     
 // استخدام Spread لدمجهم (الكائن الأخير يطابق القيم المتكررة)
 const merged = { ...objA, ...objB }; 
     
 console.log(merged); // الناتج: { a: 1, b: 4, c: 3 } (قيمة b أخذت من objB)</code></pre>
-            </div>
         </div>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 رابعاً: ميزات حديثة ES6+ (Modern Object Features)</h2>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 رابعاً: ميزات حديثة ES6+ (Modern Object Features)
+        </h2>
 
-            <div class="grid-comparison">
-                <div class="comparison-card">
-                    <h4 class="bold-text">1. التفكيك (Destructuring)</h4>
-                    <p class="bold-text">تقنية لاستخراج قيم من الكائن ووضعها في متغيرات بسرعة.</p>
-                    <div style="color: aliceblue; line-height: 1.8; text-align: right; direction: rtl; padding: 10px;">
-                        <span>بدلاً من كتابة</span>
-                        <code
-                            style="background: #1e293b; color: #f472b6; padding: 2px 6px; border-radius: 4px; direction: ltr; display: inline-block; margin: 0 5px;">
-                            const name = user.name;
-                        </code>
-                        <span>نكتب</span>
-                        <code
-                            style="background: #1e293b; color: #60a5fa; padding: 2px 6px; border-radius: 4px; direction: ltr; display: inline-block; margin: 0 5px;">
-                            const { name } = user;
-                        </code>
-                    </div>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">const user = { id: 1, username: "admin", role: "editor" };
+        <div class="grid-comparison">
+          <div class="comparison-card">
+            <h4 class="bold-text">1. التفكيك (Destructuring)</h4>
+            <p class="bold-text">
+              تقنية لاستخراج قيم من الكائن ووضعها في متغيرات بسرعة.
+            </p>
+            <div
+              style="
+                color: aliceblue;
+                line-height: 1.8;
+                text-align: right;
+                direction: rtl;
+                padding: 10px;
+              "
+            >
+              <span>بدلاً من كتابة</span>
+              <code
+                style="
+                  background: #1e293b;
+                  color: #f472b6;
+                  padding: 2px 6px;
+                  border-radius: 4px;
+                  direction: ltr;
+                  display: inline-block;
+                  margin: 0 5px;
+                "
+              >
+                const name = user.name;
+              </code>
+              <span>نكتب</span>
+              <code
+                style="
+                  background: #1e293b;
+                  color: #60a5fa;
+                  padding: 2px 6px;
+                  border-radius: 4px;
+                  direction: ltr;
+                  display: inline-block;
+                  margin: 0 5px;
+                "
+              >
+                const { name } = user;
+              </code>
+            </div>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">const user = { id: 1, username: "admin", role: "editor" };
                         
 // استخراج username و role إلى متغيرات مستقلة
 const { username, role } = user;
@@ -1008,14 +1219,14 @@ const { username, role } = user;
 console.log(username); // الناتج: "admin"
 console.log(role); // الناتج: "editor"
 // console.log(id); // خطأ لأننا لم نستخرج id</code></pre>
-                    </div>
-                </div>
+            </div>
+          </div>
 
-                <div class="comparison-card">
-                    <h4 class="bold-text">2. المفاتيح المحسوبة</h4>
-                    <p class="bold-text">إنشاء مفاتيح للكائن تعتمد على قيم متغيرات.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">const keyName = "dynamicKey"; // متغير يحمل اسم المفتاح
+          <div class="comparison-card">
+            <h4 class="bold-text">2. المفاتيح المحسوبة</h4>
+            <p class="bold-text">إنشاء مفاتيح للكائن تعتمد على قيم متغيرات.</p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">const keyName = "dynamicKey"; // متغير يحمل اسم المفتاح
 const value = 100; // متغير يحمل القيمة
                         
 const obj = { // تعريف كائن
@@ -1023,50 +1234,57 @@ const obj = { // تعريف كائن
  };
                         
 console.log(obj.dynamicKey); // الناتج: 100</code></pre>
-                    </div>
-                </div>
             </div>
+          </div>
+        </div>
 
-            <h3 class="bold-text mt-4">3. Optional Chaining (?.)</h3>
-            <p class="bold-text">الوصول الآمن للخصائص لتجنب الأخطاء إذا كانت الخاصية null أو undefined.</p>
-            <div class="info-box bold-text">
-                إذا كان الجزء الأيسر من ?. غير موجود، يتوقف الكود ويعيد undefined بدلاً
-                من
-                إلقاء خطأ.
-            </div>
-            <div class="code-wrapper small-code">
-                <pre><code class="language-javascript">const user = { name: "Khaled" }; // كائن ليس لديه خاصية address
+        <h3 class="bold-text mt-4">3. Optional Chaining (?.)</h3>
+        <p class="bold-text">
+          الوصول الآمن للخصائص لتجنب الأخطاء إذا كانت الخاصية null أو undefined.
+        </p>
+        <div class="info-box bold-text">
+          إذا كان الجزء الأيسر من ?. غير موجود، يتوقف الكود ويعيد undefined
+          بدلاً من إلقاء خطأ.
+        </div>
+        <div class="code-wrapper small-code">
+          <pre><code class="language-javascript">const user = { name: "Khaled" }; // كائن ليس لديه خاصية address
                 
 console.log(user.address.street); // خطأ! (Cannot read properties of undefined)
 console.log(user.address?.street); // آمن: الناتج undefined (بدون خطأ)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">4. Nullish Coalescing (??)</h3>
-            <p class="bold-text">توفير قيمة افتراضية فقط إذا كانت القيمة null أو undefined (وليس 0 أو false).</p>
-            <div class="code-wrapper small-code">
-                <pre><code class="language-javascript">const settings = { volume: 0 }; // الصفر قيمة صالحة
+        <h3 class="bold-text mt-4">4. Nullish Coalescing (??)</h3>
+        <p class="bold-text">
+          توفير قيمة افتراضية فقط إذا كانت القيمة null أو undefined (وليس 0 أو
+          false).
+        </p>
+        <div class="code-wrapper small-code">
+          <pre><code class="language-javascript">const settings = { volume: 0 }; // الصفر قيمة صالحة
                 
 // || تعتبر الصفر قيمة خاطئة (falsy)
 const v1 = settings.volume || 10; // الناتج: 10 (خطأ لأننا أردنا 0)
                 
 // ?? تعتبر فقط null و undefined قيم مفقودة
 const v2 = settings.volume ?? 10; // الناتج: 0 (صحيح، لأن القيمة موجودة)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 خامساً: الوراثة والبرمجة كائنية التوجه (Prototypes & OOP)
+        </h2>
+
+        <h3 class="bold-text">1. سلسلة النموذج الأولي (Prototype Chain)</h3>
+        <p class="bold-text">
+          كل كائن في JavaScript له خاصية مخفية تسمى prototype ترث منها الخصائص.
+        </p>
+        <div class="info-box bold-text">
+          إذا طلبت خاصية غير موجودة في الكائن، سيبحث JavaScript في prototype
+          الخاص به، ثم prototype الكائن الأب، وهكذا.
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 خامساً: الوراثة والبرمجة كائنية التوجه (Prototypes & OOP)</h2>
-
-            <h3 class="bold-text">1. سلسلة النموذج الأولي (Prototype Chain)</h3>
-            <p class="bold-text">كل كائن في JavaScript له خاصية مخفية تسمى prototype ترث منها الخصائص.</p>
-            <div class="info-box bold-text">
-                إذا طلبت خاصية غير موجودة في الكائن، سيبحث JavaScript في prototype الخاص
-                به،
-                ثم prototype الكائن الأب، وهكذا.
-            </div>
-
-            <div class="code-wrapper small-code">
-                <pre><code class="language-javascript">const animal = { eats: true }; // كائن أب
+        <div class="code-wrapper small-code">
+          <pre><code class="language-javascript">const animal = { eats: true }; // كائن أب
                 
 const rabbit = { jumps: true }; // كائن ابن
                 
@@ -1075,12 +1293,14 @@ rabbit.__proto__ = animal; // (طريقة قديمة للشرح فقط)
                 
 console.log(rabbit.eats); // الناتج: true (ورثها من animal)
 console.log(rabbit.jumps); // الناتج: true (خاصية الأصل)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">2. المُنشئات (Constructor Functions)</h3>
-            <p class="bold-text">دوال تُستخدم لإنشاء كائنات متشابهة باستخدام الكلمة new.</p>
-            <div class="code-wrapper small-code">
-                <pre><code class="language-javascript">function User(name) { // تعريف دالة منشئ (نكتب أول حرف كبير عادة)
+        <h3 class="bold-text mt-4">2. المُنشئات (Constructor Functions)</h3>
+        <p class="bold-text">
+          دوال تُستخدم لإنشاء كائنات متشابهة باستخدام الكلمة new.
+        </p>
+        <div class="code-wrapper small-code">
+          <pre><code class="language-javascript">function User(name) { // تعريف دالة منشئ (نكتب أول حرف كبير عادة)
     this.name = name; // this هنا يشير للكائن الذي سيُنشأ
     this.isAdmin = false; // إضافة خاصية افتراضية
  }
@@ -1088,17 +1308,19 @@ console.log(rabbit.jumps); // الناتج: true (خاصية الأصل)</code><
 const user1 = new User("Omar"); // إنشاء كائن جديد
 console.log(user1.name); // الناتج: "Omar"
 console.log(user1.isAdmin); // الناتج: false</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">3. الـ Classes (ES6 Classes)</h3>
-            <p class="bold-text">طريقة حديثة وأكثر تنظيماً للكتابة البرمجية كائنية التوجه (OOP)، لكنها في الأساس "سكر
-                نحوي"
-                للـ Prototypes.</p>
-            <div class="info-box bold-text">
-                تحتوي الـ Class على دالة بناء خاصة constructor، ودوال للكائن (Methods).
-            </div>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">class Vehicle { // تعريف كلاس (قالب) اسمه Vehicle
+        <h3 class="bold-text mt-4">3. الـ Classes (ES6 Classes)</h3>
+        <p class="bold-text">
+          طريقة حديثة وأكثر تنظيماً للكتابة البرمجية كائنية التوجه (OOP)، لكنها
+          في الأساس "سكر نحوي" للـ Prototypes.
+        </p>
+        <div class="info-box bold-text">
+          تحتوي الـ Class على دالة بناء خاصة constructor، ودوال للكائن
+          (Methods).
+        </div>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">class Vehicle { // تعريف كلاس (قالب) اسمه Vehicle
     constructor(brand) { // دالة البناء تُنفذ عند إنشاء كائن جديد
     this.brand = brand; // تخزين العلامة التجارية في الكائن
      }
@@ -1110,12 +1332,15 @@ console.log(user1.isAdmin); // الناتج: false</code></pre>
                 
 const car = new Vehicle("BMW"); // إنشاء كائن (instance) من الكلاس
 car.showBrand(); // استدعاء الدالة (النتيجة: Brand: BMW)</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">4. الوراثة في الكلاس (Inheritance)</h3>
-            <p class="bold-text">استخدام extends لإنشاء كلاس جديد يرث خصائص كلاس قديم، و super لاستدعاء الكلاس الأب.</p>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">class Car extends Vehicle { // الكلاس Car يرث من Vehicle
+        <h3 class="bold-text mt-4">4. الوراثة في الكلاس (Inheritance)</h3>
+        <p class="bold-text">
+          استخدام extends لإنشاء كلاس جديد يرث خصائص كلاس قديم، و super لاستدعاء
+          الكلاس الأب.
+        </p>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">class Car extends Vehicle { // الكلاس Car يرث من Vehicle
     constructor(brand, model) {
         super(brand); // استدعاء constructor الأب لإرسال brand
         this.model = model; // إضافة خاصية خاصة بالابن
@@ -1128,21 +1353,24 @@ car.showBrand(); // استدعاء الدالة (النتيجة: Brand: BMW)</co
                 
 const myCar = new Car("Mercedes", "C200"); // إنشاء كائن من الابن
 myCar.showInfo(); // الناتج: Mercedes C200</code></pre>
-            </div>
         </div>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 سادساً: خصائص متقدمة (Advanced Properties)</h2>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 سادساً: خصائص متقدمة (Advanced Properties)
+        </h2>
 
-            <h3 class="bold-text">1. Getters و Setters</h3>
-            <p class="bold-text">دوال تسمح لنا بالتحكم في قراءة وتعديل الخصائص (كأنها خصائص عادية).</p>
-            <div class="info-box bold-text">
-                get تُستخدم عند قراءة القيمة، set تُستخدم عند تعيين قيمة جديدة. مفيدة
-                للتحقق
-                (Validation).
-            </div>
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const userObj = {
+        <h3 class="bold-text">1. Getters و Setters</h3>
+        <p class="bold-text">
+          دوال تسمح لنا بالتحكم في قراءة وتعديل الخصائص (كأنها خصائص عادية).
+        </p>
+        <div class="info-box bold-text">
+          get تُستخدم عند قراءة القيمة، set تُستخدم عند تعيين قيمة جديدة. مفيدة
+          للتحقق (Validation).
+        </div>
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const userObj = {
     firstName: "Ali",
     lastName: "Hassan",
                 
@@ -1163,15 +1391,20 @@ console.log(userObj.fullName); // تنفيذ get (النتيجة: Ali Hassan)
                 
 userObj.fullName = "Sara Ahmed"; // تنفيذ set وتحديث البيانات
 console.log(userObj.firstName); // النتيجة: Sara</code></pre>
-            </div>
+        </div>
 
-            <h3 class="bold-text mt-4">2. Property Descriptors & 3. Immutability</h3>
-            <div class="grid-comparison">
-                <div class="comparison-card">
-                    <h4 class="bold-text">Property Descriptors</h4>
-                    <div class="code-wrapper small-code">
-                        <p> التحكم الدقيق في سلوك الخاصية (قابلة للكتابة؟، تظهر في الحلقات؟، قابلة للحذف؟). </p>
-                        <pre><code class="language-javascript">const descriptorObj = { name: "Test" }; // كائن عادي
+        <h3 class="bold-text mt-4">
+          2. Property Descriptors & 3. Immutability
+        </h3>
+        <div class="grid-comparison">
+          <div class="comparison-card">
+            <h4 class="bold-text">Property Descriptors</h4>
+            <div class="code-wrapper small-code">
+              <p>
+                التحكم الدقيق في سلوك الخاصية (قابلة للكتابة؟، تظهر في الحلقات؟،
+                قابلة للحذف؟).
+              </p>
+              <pre><code class="language-javascript">const descriptorObj = { name: "Test" }; // كائن عادي
                         
 // منع كتابة (تعديل) الخاصية
 Object.defineProperty(descriptorObj, "name", {
@@ -1181,13 +1414,13 @@ Object.defineProperty(descriptorObj, "name", {
                         
 descriptorObj.name = "New Name"; // لن ينجح في الوضع الصارم
 console.log(descriptorObj.name); // النتيجة: Test</code></pre>
-                    </div>
-                </div>
-                <div class="comparison-card">
-                    <h4 class="bold-text">تجميد الكائنات</h4>
-                    <div class="code-wrapper small-code">
-                        <p> منع تغيير الكائن نهائياً أو جزئياً. </p>
-                        <pre><code class="language-javascript">const immutableObj = { a: 1, b: 2 };
+            </div>
+          </div>
+          <div class="comparison-card">
+            <h4 class="bold-text">تجميد الكائنات</h4>
+            <div class="code-wrapper small-code">
+              <p>منع تغيير الكائن نهائياً أو جزئياً.</p>
+              <pre><code class="language-javascript">const immutableObj = { a: 1, b: 2 };
                         
 // Freeze: يجمد الكائن (لا إضافة، لا حذف، لا تعديل)
 Object.freeze(immutableObj);
@@ -1201,109 +1434,122 @@ const sealedObj = { x: 10 };
 Object.seal(sealedObj);
 sealedObj.x = 20; // مسموح (تعديل)
 // sealedObj.y = 5; // ممنوع (إضافة)</code></pre>
-                    </div>
-                </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 سابعاً: التكرار والتطبيقات (Iteration & Utilities)</h2>
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 سابعاً: التكرار والتطبيقات (Iteration & Utilities)
+        </h2>
 
-            <h3 class="bold-text">1. التكرار باستخدام for...in</h3>
-            <p class="bold-text"> للمرور على مفاتيح الكائن (Keys). </p>
-            <div class="code-wrapper small-code">
-
-                <pre><code class="language-javascript">const data = { a: 10, b: 20, c: 30 };
+        <h3 class="bold-text">1. التكرار باستخدام for...in</h3>
+        <p class="bold-text">للمرور على مفاتيح الكائن (Keys).</p>
+        <div class="code-wrapper small-code">
+          <pre><code class="language-javascript">const data = { a: 10, b: 20, c: 30 };
                 
 for (let key in data) { // حلقة تمر على كل مفتاح
     console.log(key); // طباعة المفتاح (a, b, c)
     console.log(data[key]); // طباعة القيمة باستخدام المفتاح
 }</code></pre>
+        </div>
+
+        <h3 class="bold-text mt-4">2. دوال التحول (Transformation)</h3>
+        <p class="desc-text">
+          توفر JavaScript طرقاً سريعة لاستخراج البيانات من الكائن وتحويلها إلى
+          مصفوفات (Arrays) ليسهل التعامل معها:
+        </p>
+
+        <div class="utilities-grid">
+          <div class="util-card">
+            <div class="util-header">
+              <span class="util-icon">🔑</span>
+              <code class="util-name">Object.keys()</code>
             </div>
+            <p class="util-desc">
+              إرجاع مصفوفة تحتوي على جميع **المفاتيح** (Keys) الموجودة في
+              الكائن.
+            </p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">Object.keys(user); // ["id", "name"]</code></pre>
+            </div>
+          </div>
 
-            <h3 class="bold-text mt-4">2. دوال التحول (Transformation)</h3>
-            <p class="desc-text">توفر JavaScript طرقاً سريعة لاستخراج البيانات من الكائن وتحويلها إلى مصفوفات
-                (Arrays) ليسهل التعامل معها:</p>
+          <div class="util-card">
+            <div class="util-header">
+              <span class="util-icon">💎</span>
+              <code class="util-name">Object.values()</code>
+            </div>
+            <p class="util-desc">
+              إرجاع مصفوفة تحتوي على جميع **القيم** (Values) الموجودة في الكائن.
+            </p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">Object.values(user); // [1, "Ahmed"]</code></pre>
+            </div>
+          </div>
 
-            <div class="utilities-grid">
-                <div class="util-card">
-                    <div class="util-header">
-                        <span class="util-icon">🔑</span>
-                        <code class="util-name">Object.keys()</code>
-                    </div>
-                    <p class="util-desc">إرجاع مصفوفة تحتوي على جميع **المفاتيح** (Keys) الموجودة في الكائن.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">Object.keys(user); // ["id", "name"]</code></pre>
-                    </div>
-                </div>
-
-                <div class="util-card">
-                    <div class="util-header">
-                        <span class="util-icon">💎</span>
-                        <code class="util-name">Object.values()</code>
-                    </div>
-                    <p class="util-desc">إرجاع مصفوفة تحتوي على جميع **القيم** (Values) الموجودة في الكائن.</p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">Object.values(user); // [1, "Ahmed"]</code></pre>
-                    </div>
-                </div>
-
-                <div class="util-card">
-                    <div class="util-header">
-                        <span class="util-icon">🔗</span>
-                        <code class="util-name">Object.entries()</code>
-                    </div>
-                    <p class="util-desc">إرجاع مصفوفة من الأزواج، كل زوج عبارة عن مصفوفة صغيرة
-                        <code>[key, value]</code>.
-                    </p>
-                    <div class="code-wrapper small-code">
-                        <pre><code class="language-javascript">Object.entries(user);
+          <div class="util-card">
+            <div class="util-header">
+              <span class="util-icon">🔗</span>
+              <code class="util-name">Object.entries()</code>
+            </div>
+            <p class="util-desc">
+              إرجاع مصفوفة من الأزواج، كل زوج عبارة عن مصفوفة صغيرة
+              <code>[key, value]</code>.
+            </p>
+            <div class="code-wrapper small-code">
+              <pre><code class="language-javascript">Object.entries(user);
 // [["id", 1], ["name", "Ahmed"]]</code></pre>
-                    </div>
-                </div>
             </div>
+          </div>
+        </div>
 
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const session = { id: 1, user: "guest" };
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const session = { id: 1, user: "guest" };
                 
 const keys = Object.keys(session); // ['id', 'user']
 const values = Object.values(session); // [1, 'guest']
 const entries = Object.entries(session); // [['id', 1], ['user', 'guest']]
                 
 console.log(keys); // طباعة المفاتيح</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h2 class="bold-text section-head">
+          🔹 ثامناً: التعامل مع البيانات (JSON)
+        </h2>
+
+        <h3 class="bold-text mt-4">
+          1. التسلسل وإلغاء التسلسل (Serialization & Deserialization)
+        </h3>
+        <p class="desc-text">
+          نستخدم JSON (JavaScript Object Notation) كصيغة عالمية لتحويل الكائنات
+          إلى نصوص لإرسالها عبر الإنترنت إلى الخوادم (Servers)، ثم إعادتها
+          لأصلها عند الاستلام.
+        </p>
+
+        <div class="json-flow-container">
+          <div class="flow-step">
+            <span class="step-label">Object</span>
+            <div class="step-box object-box">{ id: 55 }</div>
+          </div>
+
+          <div class="flow-arrow">
+            <span class="arrow-text">JSON.stringify()</span>
+            <div class="arrow-line">➔</div>
+            <span class="arrow-text">JSON.parse()</span>
+          </div>
+
+          <div class="flow-step">
+            <span class="step-label">JSON String</span>
+            <div class="step-box string-box">'{id":55"}'</div>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h2 class="bold-text section-head">🔹 ثامناً: التعامل مع البيانات (JSON)</h2>
-
-            <h3 class="bold-text mt-4">1. التسلسل وإلغاء التسلسل (Serialization & Deserialization)</h3>
-            <p class="desc-text">نستخدم JSON (JavaScript Object Notation) كصيغة عالمية لتحويل الكائنات إلى نصوص لإرسالها
-                عبر
-                الإنترنت إلى الخوادم (Servers)، ثم إعادتها لأصلها عند الاستلام.</p>
-
-            <div class="json-flow-container">
-                <div class="flow-step">
-                    <span class="step-label">Object</span>
-                    <div class="step-box object-box">{ id: 55 }</div>
-                </div>
-
-                <div class="flow-arrow">
-                    <span class="arrow-text">JSON.stringify()</span>
-                    <div class="arrow-line">➔</div>
-                    <span class="arrow-text">JSON.parse()</span>
-                </div>
-
-                <div class="flow-step">
-                    <span class="step-label">JSON String</span>
-                    <div class="step-box string-box">'{id":55"}'</div>
-                </div>
-            </div>
-
-
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const myData = { id: 55, title: "Product A" };
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const myData = { id: 55, title: "Product A" };
         
 // 1. Serialization: تحويل الـ Object إلى نص JSON
 const jsonText = JSON.stringify(myData); 
@@ -1314,24 +1560,26 @@ console.log(jsonText);
 const backToObject = JSON.parse(jsonText);
 console.log(backToObject.title); 
 // الناتج: "Product A" (كائن يمكن التعامل معه برمجياً)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <h2 class="bold-text section-head">🔹 إضافات</h2>
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">
+          1. الحقول والأساليب الخاصة (Private Fields & Methods #)
+        </h3>
+        <p class="desc-text">
+          في عام 2022، أضافت JavaScript طريقة رسمية لعمل خصائص "خاصة" (Private)
+          لا يمكن الوصول إليها من خارج الكائن، باستخدام الرمز # قبل اسم الخاصية.
+        </p>
+
+        <div class="theory-box">
+          أي خاصية تبدأ بـ # تُعتبر خاصة تماماً ومحمية، ولا يمكن قراءتها أو
+          تعديلها إلا من داخل الكلاس نفسه.
         </div>
 
-
-        <h2 class="bold-text section-head">🔹 إضافات </h2>
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">1. الحقول والأساليب الخاصة (Private Fields & Methods #)</h3>
-            <p class="desc-text">في عام 2022، أضافت JavaScript طريقة رسمية لعمل خصائص "خاصة" (Private) لا يمكن الوصول
-                إليها من
-                خارج الكائن، باستخدام الرمز # قبل اسم الخاصية.</p>
-
-            <div class="theory-box">
-                أي خاصية تبدأ بـ # تُعتبر خاصة تماماً ومحمية، ولا يمكن قراءتها أو تعديلها إلا من
-                داخل الكلاس نفسه.
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">class BankAccount {
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">class BankAccount {
     #balance = 0; // خاصية خاصة (Private Field) - لا يمكن الوصول لها من خارج الكلاس
         
     constructor(owner) {
@@ -1353,22 +1601,25 @@ myAccount.deposit(500);
         
 // console.log(myAccount.#balance); // هذا سيعطي خطأ (SyntaxError) لأن الخاصية خاصة
 console.log(myAccount.showBalance()); // الطريقة الصحيحة للوصول (500)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">
+          2. كتابة الدوال المختصرة داخل الكائنات (Method Shorthand)
+        </h3>
+        <p class="desc-text">
+          في ES6، يمكننا كتابة الدوال داخل الكائنات (ليس الكلاسات) بطريقة مختصرة
+          دون استخدام الكلمة function.
+        </p>
+
+        <div class="theory-box">
+          بدلاً من <code>sayHello: function() {}</code>، نكتب
+          <code>sayHello() {}</code>. هذا يجعل الكود أنظف.
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">2. كتابة الدوال المختصرة داخل الكائنات (Method Shorthand)</h3>
-            <p class="desc-text">في ES6، يمكننا كتابة الدوال داخل الكائنات (ليس الكلاسات) بطريقة مختصرة دون استخدام
-                الكلمة
-                function.</p>
-
-            <div class="theory-box">
-                بدلاً من <code>sayHello: function() {}</code>، نكتب <code>sayHello() {}</code>.
-                هذا يجعل الكود أنظف.
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const user = {
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const user = {
     name: "Mona",
           
     // الطريقة القديمة (Old Syntax)
@@ -1383,41 +1634,46 @@ console.log(myAccount.showBalance()); // الطريقة الصحيحة للوص�
  };
         
 console.log(user.greetNew()); // الناتج: Hi, Mona</code></pre>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">3. معامل in للتحقق من وجود الخاصية</h3>
+        <div class="topic-section">
+          <p class="desc-text flex-container">
+            لدينا طريقتان للتحقق مما إذا كانت خاصية موجودة:
+            <code class="inline-code blue">hasOwnProperty</code>
+            و
+            <code class="inline-code pink">in</code>.
+          </p>
+
+          <div class="info-box accent-border">
+            <strong class="highlight-title">💡 الفرق الجوهري:</strong>
+            <div class="comparison-row">
+              <span class="term">hasOwnProperty</span>
+              <span class="explanation"
+                >لا يتحقق في الـ
+                <span class="proto-text">Prototype</span> (الوراثة).</span
+              >
             </div>
+            <div class="comparison-row">
+              <span class="term">in</span>
+              <span class="explanation"
+                >يتحقق في الكائن الحالي وفي سلسلة الوراثة بالكامل.</span
+              >
+            </div>
+          </div>
+
+          <div class="theory-box gold-border">
+            <strong>📝 </strong>
+            التعيير <code class="inline-code gold">key in obj</code> يعود بـ
+            <span class="bool-val">true</span> إذا وجد المفتاح في الكائن نفسه أو
+            ورثه من أب.
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">3. معامل in للتحقق من وجود الخاصية</h3>
-            <div class="topic-section">
-                <p class="desc-text flex-container">
-                    لدينا طريقتان للتحقق مما إذا كانت خاصية موجودة:
-                    <code class="inline-code blue">hasOwnProperty</code>
-                    و
-                    <code class="inline-code pink">in</code>.
-                </p>
-
-                <div class="info-box accent-border">
-                    <strong class="highlight-title">💡 الفرق الجوهري:</strong>
-                    <div class="comparison-row">
-                        <span class="term">hasOwnProperty</span>
-                        <span class="explanation">لا يتحقق في الـ <span class="proto-text">Prototype</span>
-                            (الوراثة).</span>
-                    </div>
-                    <div class="comparison-row">
-                        <span class="term">in</span>
-                        <span class="explanation">يتحقق في الكائن الحالي وفي سلسلة الوراثة بالكامل.</span>
-                    </div>
-                </div>
-
-                <div class="theory-box gold-border">
-                    <strong>📝 </strong>
-                    التعيير <code class="inline-code gold">key in obj</code>
-                    يعود بـ <span class="bool-val">true</span> إذا وجد المفتاح في الكائن نفسه أو ورثه من أب.
-                </div>
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const parent = { inheritedProp: 100 };
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const parent = { inheritedProp: 100 };
 const child = Object.create(parent); // child يرث من parent
 child.ownProp = 200;                 // خاصية خاصة بالابن
         
@@ -1426,43 +1682,50 @@ console.log("ownProp" in child);      // true (وجدت في الكائن نفس
         
 console.log(child.hasOwnProperty("inheritedProp")); // false (ليست خاصة به)
 console.log(child.hasOwnProperty("ownProp"));      // true (خاصة به)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">
+          4. مقارنة الكائنات (Object Comparison) & Object.is()
+        </h3>
+        <div class="topic-section">
+          <p class="desc-text flex-text">
+            في JavaScript، الكائنات تُقارن
+            <span class="badge ref">بالمرجع (Reference)</span>
+            وليس
+            <span class="badge val">بالقيمة (Value)</span>.
+          </p>
+
+          <p class="desc-text flex-text">
+            أيضاً، هناك دالة
+            <code class="inline-code blue">Object.is()</code> تختلف قليلاً عن
+            معامل المقارنة الصارم <code class="inline-code pink">===</code>.
+          </p>
+
+          <div class="theory-box memory-box">
+            <strong class="theory-title">🧠 الشرح النظري والمقارنة:</strong>
+            <ul class="styled-list">
+              <li>
+                <code class="code-pill">obj1 === obj2</code>
+                <span
+                  >تكون <b class="true-text">true</b> فقط إذا كانا يشيران لنفس
+                  المكان في الذاكرة.</span
+                >
+              </li>
+              <li>
+                <code class="code-pill">Object.is(v1, v2)</code>
+                <span
+                  >تشبه <code class="mini-code">===</code> لكنها تعتبر أن
+                  <code class="mini-code yellow">NaN</code> يساوي نفسه.</span
+                >
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">4. مقارنة الكائنات (Object Comparison) & Object.is()</h3>
-            <div class="topic-section">
-                <p class="desc-text flex-text">
-                    في JavaScript، الكائنات تُقارن
-                    <span class="badge ref">بالمرجع (Reference)</span>
-                    وليس
-                    <span class="badge val">بالقيمة (Value)</span>.
-                </p>
-
-                <p class="desc-text flex-text">
-                    أيضاً، هناك دالة <code class="inline-code blue">Object.is()</code> تختلف قليلاً عن معامل المقارنة
-                    الصارم <code class="inline-code pink">===</code>.
-                </p>
-
-                <div class="theory-box memory-box">
-                    <strong class="theory-title">🧠 الشرح النظري والمقارنة:</strong>
-                    <ul class="styled-list">
-                        <li>
-                            <code class="code-pill">obj1 === obj2</code>
-                            <span>تكون <b class="true-text">true</b> فقط إذا كانا يشيران لنفس المكان في الذاكرة.</span>
-                        </li>
-                        <li>
-                            <code class="code-pill">Object.is(v1, v2)</code>
-                            <span>تشبه <code class="mini-code">===</code> لكنها تعتبر أن <code
-                                    class="mini-code yellow">NaN</code>
-                                يساوي نفسه.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const a = { x: 1 };
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const a = { x: 1 };
 const b = { x: 1 };
         
 // 1. المقارنة بالمرجع
@@ -1472,24 +1735,25 @@ console.log(a === b); // false (هما كائنان مختلفان في الذا
 console.log(NaN === NaN);       // false (غريب لكن صحيح في JS)
 console.log(Object.is(NaN, NaN)); // true (تعالج هذه الحالة)
 console.log(Object.is(-0, 0));  // false (تفرق بين الصفر الموجب والسالب)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">5. معامل instanceof</h3>
+        <p class="desc-text">
+          يُستخدم للتحقق مما إذا كان كائن معين قد تم إنشاؤه بواسطة كلاس
+          <code class="inline-code blue">(Class)</code> معين أو دالة بناء
+          <code class="inline-code blue">(Constructor)</code> معينة.
+        </p>
+
+        <div class="theory-box">
+          يفحص سلسلة الـ <code class="inline-code blue">Prototype</code> ليرى ما
+          إذا كان <code class="inline-code blue">prototype</code> للدالة البناء
+          موجوداً في سلسلة وراثة الكائن.
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">5. معامل instanceof</h3>
-            <p class="desc-text">يُستخدم للتحقق مما إذا كان كائن معين قد تم إنشاؤه بواسطة كلاس <code
-                    class="inline-code blue">(Class)</code> معين أو دالة بناء
-                <code class="inline-code blue">(Constructor)</code> معينة.
-            </p>
-
-            <div class="theory-box">
-                يفحص سلسلة الـ <code class="inline-code blue">Prototype</code> ليرى ما إذا كان <code
-                    class="inline-code blue">prototype</code> للدالة البناء موجوداً في سلسلة
-                وراثة الكائن.
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">class Animal { }
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">class Animal { }
 class Dog extends Animal { }
         
 const myDog = new Dog();
@@ -1497,22 +1761,26 @@ const myDog = new Dog();
 console.log(myDog instanceof Dog);    // true (myDog كائن من نوع Dog)
 console.log(myDog instanceof Animal); // true (Dog يرث من Animal)
 console.log(myDog instanceof Object); // true (كل شيء يرث من Object في النهاية)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">6. الـ Symbols كـ مفاتيح للكائنات</h3>
+        <p class="desc-text">
+          <span class="badge ref">Symbol</span> هو نوع بيانات بدائي في JS يمكن
+          استخدامه كمفتاح للكائن. مميزته أنه فريد (Unique) ومخفي (غير مرئي) في
+          بعض عمليات التكرار.
+        </p>
+
+        <div class="theory-box">
+          إذا أردت إضافة خاصية لكائن دون أن تظهر في
+          <code class="inline-code blue">for...in</code> أو
+          <code class="inline-code blue">Object.keys</code>، استخدم
+          <span class="badge ref">Symbol</span>
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">6. الـ Symbols كـ مفاتيح للكائنات</h3>
-            <p class="desc-text"><span class="badge ref">Symbol</span> هو نوع بيانات بدائي في JS يمكن استخدامه كمفتاح
-                للكائن. مميزته أنه فريد (Unique) ومخفي
-                (غير مرئي) في بعض عمليات التكرار.</p>
-
-            <div class="theory-box">
-                إذا أردت إضافة خاصية لكائن دون أن تظهر في <code class="inline-code blue">for...in</code> أو
-                <code class="inline-code blue">Object.keys</code>، استخدم <span class="badge ref">Symbol</span>
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const id = Symbol("id"); // إنشاء رمز فريد
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const id = Symbol("id"); // إنشاء رمز فريد
         
 const user = {
     name: "Hassan",
@@ -1521,36 +1789,47 @@ const user = {
         
 console.log(user[id]); // 12345 (يمكن الوصول له فقط إذا كان لديك الرمز)
 console.log(Object.keys(user)); // ["name"] (المفتاح الرمزي مخفي)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">
+          7. الفرق بين Object.assign و Spread Operator (...) في التعديل
+        </h3>
+        <div class="topic-section">
+          <p class="desc-text">
+            استخدمنا الـ
+            <code class="inline-code blue">Spread (...)</code> للدمج والنسخ،
+            ولكن <code class="inline-code pink">Object.assign</code> له سلوك
+            مختلف فيما يخص <br /><span class="badge val"
+              >التعديل (Mutation)</span
+            >.
+          </p>
+
+          <div class="theory-box accent-border">
+            <strong class="theory-title"
+              >⚖️ الفرق في التعامل مع الذاكرة:</strong
+            >
+
+            <p>
+              <code class="code-pill">{...obj}</code>
+              <span
+                >يُنشئ دائماً <strong>كائناً جديداً</strong>
+                <span class="badge ref">(Immutable approach)</span>.</span
+              >
+            </p>
+            <p>
+              <code class="code-pill">Object.assign(target, source)</code>
+              <span
+                >يعدل الكائن الأول <code class="mini-code">target</code> مباشرة
+                ويرجعه.</span
+              >
+            </p>
+          </div>
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">7. الفرق بين Object.assign و Spread Operator (...) في التعديل</h3>
-            <div class="topic-section">
-                <p class="desc-text">
-                    استخدمنا الـ <code class="inline-code blue">Spread (...)</code> للدمج والنسخ، ولكن
-                    <code class="inline-code pink">Object.assign</code> له سلوك مختلف فيما يخص
-                    <br><span class="badge val">التعديل (Mutation)</span>.
-                </p>
-
-                <div class="theory-box accent-border">
-                    <strong class="theory-title">⚖️ الفرق في التعامل مع الذاكرة:</strong>
-
-                    <p>
-                        <code class="code-pill">{...obj}</code>
-                        <span>يُنشئ دائماً <strong>كائناً جديداً</strong> <span class="badge ref">(Immutable
-                                approach)</span>.</span>
-                    </p>
-                    <p>
-                        <code class="code-pill">Object.assign(target, source)</code>
-                        <span>يعدل الكائن الأول <code class="mini-code">target</code> مباشرة ويرجعه.</span>
-                    </p>
-
-                </div>
-            </div>
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">const target = { a: 1 };
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">const target = { a: 1 };
 const source = { b: 2 };
         
 // Spread: ينشئ كائناً جديداً ولا يلم الأصلي
@@ -1561,22 +1840,24 @@ const assignedObj = Object.assign(target, source);
         
 console.log(target); // { a: 1, b: 2 } (تغير لأنه كان الهدف!)
 console.log(newObj); // { a: 1, b: 2 } (كائن جديد مستقل)</code></pre>
-            </div>
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="bold-text mt-4">
+          8. Static Members (الأعضاء الساكنة) في الكلاس
+        </h3>
+        <p class="desc-text">
+          هي خصائص أو دوال تُستدعى من "الكلاس نفسه" وليس من "الكائن (Instance)".
+        </p>
+
+        <div class="theory-box">
+          نستخدمها عندما نريد دالة أو خاصية مشتركة بين جميع الكائنات ولا تعتمد
+          على بيانات كائن محدد (مثل عداد لعدد الكائنات المنشأة).
         </div>
 
-        <div class="topic-section">
-            <h3 class="bold-text mt-4">8. Static Members (الأعضاء الساكنة) في الكلاس</h3>
-            <p class="desc-text">هي خصائص أو دوال تُستدعى من "الكلاس نفسه" وليس من "الكائن (Instance)".</p>
-
-            <div class="theory-box">
-                نستخدمها عندما نريد دالة أو خاصية مشتركة بين جميع الكائنات ولا تعتمد على بيانات
-                كائن محدد (مثل عداد لعدد الكائنات المنشأة).
-            </div>
-
-
-
-            <div class="code-wrapper">
-                <pre><code class="language-javascript">class User {
+        <div class="code-wrapper">
+          <pre><code class="language-javascript">class User {
     static count = 0; // خاصية ساكنة مشتركة
         
     constructor(name) {
@@ -1594,55 +1875,52 @@ const u2 = new User("Sara");
         
 // console.log(u1.count); // undefined (لا يمكن الوصول لها من الكائن)
 console.log(User.getCount()); // 2 (نستدعيها من اسم الكلاس مباشرة)</code></pre>
-            </div>
         </div>
+      </div>
 
-
-
-
-
-
-
-
-        <div class="topic-section challenge-card quiz-container">
-            <h2 class="bold-text quiz-title">🏆 تحدي الكائنات (JSON Challenge)</h2>
-            <p class="bold-text quiz-instruction">
-                لدينا كائن: <code>const user = { id: 10 };</code><br>
-                اكتب كود لتحويله إلى نص JSON وتخزينه في متغير اسمه <code>text</code>.
-            </p>
-            <div class="quiz-controls">
-                <input type="text" id="json-quiz-input-unique" placeholder="اكتب الكود هنا..." dir="ltr">
-                <button onclick="checkJsonQuizUnique()" class="quiz-btn">تحقق من الإجابة ✅</button>
-            </div>
-            <div id="json-quiz-explain-unique" class="persistent-explain" style="display: none !important;"></div>
+      <div class="topic-section challenge-card quiz-container">
+        <h2 class="bold-text quiz-title">🏆 تحدي الكائنات (JSON Challenge)</h2>
+        <p class="bold-text quiz-instruction">
+          لدينا كائن: <code>const user = { id: 10 };</code><br />
+          اكتب كود لتحويله إلى نص JSON وتخزينه في متغير اسمه <code>text</code>.
+        </p>
+        <div class="quiz-controls">
+          <input
+            type="text"
+            id="json-quiz-input-unique"
+            placeholder="اكتب الكود هنا..."
+            dir="ltr"
+          />
+          <button onclick="checkJsonQuizUnique()" class="quiz-btn">
+            تحقق من الإجابة ✅
+          </button>
         </div>
+        <div
+          id="json-quiz-explain-unique"
+          class="persistent-explain"
+          style="display: none !important"
+        ></div>
+      </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div id="customModal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 class="bold-text" id="modalTitle">أدخل بياناتك</h3>
-            <input type="number" id="modalInput" class="bold-text" placeholder="اكتب الرقم هنا...">
-            <div class="modal-buttons">
-                <button onclick="submitModal()" class="btn-test success bold-text">تأكيد</button>
-                <button onclick="closeModal()" class="btn-test danger bold-text">إلغاء</button>
-            </div>
+      <div class="modal-content">
+        <h3 class="bold-text" id="modalTitle">أدخل بياناتك</h3>
+        <input
+          type="number"
+          id="modalInput"
+          class="bold-text"
+          placeholder="اكتب الرقم هنا..."
+        />
+        <div class="modal-buttons">
+          <button onclick="submitModal()" class="btn-test success bold-text">
+            تأكيد
+          </button>
+          <button onclick="closeModal()" class="btn-test danger bold-text">
+            إلغاء
+          </button>
         </div>
+      </div>
     </div>
 
     <div id="notification-container"></div>
@@ -1651,6 +1929,5 @@ console.log(User.getCount()); // 2 (نستدعيها من اسم الكلاس م
 
     <script src="../js/main.js"></script>
     <script src="../js/compiler.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,307 +1,397 @@
 /* Base Resets inside FAB */
 #fab-root * {
-    box-sizing: border-box;
-    font-family: inherit;
-    direction: ltr;
+  box-sizing: border-box;
+  font-family: inherit;
+  direction: ltr;
 }
 
 /* Glassmorphism utility */
 .glass-panel {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    color: #f8fafc;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #f8fafc;
 }
 
 /* Main FAB Container */
 .fab-container {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 100001;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 15px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100001;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 15px;
 }
 
 /* Main Button */
 .fab-main-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    border: none;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fab-main-btn:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .fab-main-btn.active {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 /* Sub Menu */
 .fab-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px) scale(0.9);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .fab-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 .fab-sub-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(30, 41, 59, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fab-sub-btn:hover {
-    background: rgba(51, 65, 85, 0.9);
-    transform: scale(1.1);
+  background: rgba(51, 65, 85, 0.9);
+  transform: scale(1.1);
 }
 
 /* Panels Overlay */
 .fab-panel {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 350px;
-    max-height: 500px;
-    height: calc(100vh - 140px);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 100002;
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 350px;
+  max-height: 500px;
+  height: calc(100vh - 140px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 100002;
 }
 
 .fab-panel.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* Panel Headers */
 .fab-panel-header {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.fab-header-toggle {
+  background: rgba(59, 130, 246, 0.15);
+  color: #dbeafe;
+  border: 1px solid rgba(147, 197, 253, 0.4);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.fab-header-toggle:hover {
+  background: rgba(59, 130, 246, 0.25);
 }
 
 /* --- Chat Panel Specifics --- */
 .fab-chat-body {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.fab-page-sections {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.fab-page-sections.is-hidden {
+  display: none;
+}
+
+.fab-page-sections-title {
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.fab-page-sections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fab-page-section-btn {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #f8fafc;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.fab-page-section-btn:hover {
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateX(-2px);
+}
+
+.fab-section-order {
+  min-width: 18px;
+  color: #93c5fd;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.fab-section-label {
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.45;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.fab-page-sections-empty {
+  color: #cbd5e1;
+  font-size: 0.8rem;
+  padding: 8px 4px;
 }
 
 .fab-chat-body::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 .fab-chat-body::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
 }
 
 .chat-bubble {
-    padding: 10px 14px;
-    border-radius: 12px;
-    max-width: 85%;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    word-wrap: break-word;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 
 .chat-bubble.user {
-    background: #3b82f6;
-    align-self: flex-end;
-    border-bottom-right-radius: 2px;
+  background: #3b82f6;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
 }
 
 .chat-bubble.ai {
-    background: rgba(255, 255, 255, 0.1);
-    align-self: flex-start;
-    border-bottom-left-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
 }
 
 .typing-indicator {
-    display: none;
-    align-self: flex-start;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    font-size: 0.8rem;
-    color: #94a3b8;
+  display: none;
+  align-self: flex-start;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #94a3b8;
 }
 
 .typing-indicator.active {
-    display: block;
+  display: block;
 }
 
 .fab-chat-input {
-    padding: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    gap: 10px;
+  padding: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 10px;
 }
 
 .fab-chat-input input {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 8px;
-    padding: 10px 15px;
-    outline: none;
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 5px;
+  padding: 9px 12px;
+  outline: none;
 }
 
 .fab-chat-input input:focus {
-    border-color: #3b82f6;
+  border-color: #3b82f6;
 }
 
 /* --- Compiler Panel Specifics --- */
 .fab-compiler-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
 }
 
 .fab-code-editor {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: #a78bfa;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 0.9rem;
-    resize: none;
-    outline: none;
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #a78bfa;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  resize: none;
+  outline: none;
 }
 
-
 .fab-run-btn {
-    background: #10b981;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s;
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 9px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
 }
 
 .fab-run-btn:hover {
-    background: #059669;
+  background: #059669;
 }
 
-
 .fab-console {
-    height: 100px;
-    background: #0f172a;
-    border-radius: 8px;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 0.8rem;
-    overflow-y: auto;
-    color: #cbd5e1;
+  height: 100px;
+  background: #0f172a;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  overflow-y: auto;
+  color: #cbd5e1;
 }
 
 .fab-console .error {
-    color: #ef4444;
+  color: #ef4444;
 }
 
 /* --- About Panel Specifics --- */
 .fab-about-body {
-    padding: 30px 20px;
-    text-align: center;
+  padding: 30px 20px;
+  text-align: center;
 }
 
 .fab-about-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 15px auto;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
 }
 
 .fab-about-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .fab-about-bio {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    margin-bottom: 20px;
-    line-height: 1.5;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .fab-social-links {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .fab-social-links a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    transition: background 0.2s;
+  color: white;
+  text-decoration: none;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: background 0.2s;
 }
 
 .fab-social-links a:hover {
-    background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
