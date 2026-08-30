@@ -11,11 +11,12 @@ https://codepen.io/amit_sheen/pen/abLPdoQ */
 
 body {
   font-family: "Raleway", sans-serif;
-  background-color: #eee;
+  background-color: #f1f3f5;
   color: #111;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   perspective: 1500px;
   overflow: hidden;
@@ -35,7 +36,7 @@ body *:not(:empty) {
 
 .scene {
   position: relative;
-  transform: translateY(15em);
+  transform: none;
 }
 
 .stateLabels {
@@ -46,7 +47,7 @@ body *:not(:empty) {
   transform: translateX(-50%);
 }
 .stateLabels::before {
-  content: "csStickman";
+  content: "Hi";
   position: absolute;
   top: -4em;
   width: 100%;
@@ -192,15 +193,19 @@ body *:not(:empty) {
   }
 }
 #state2:checked ~ .scene .shadow {
-  animation: shadowWalk 2s infinite ease-in-out, shadowWalk2 2s infinite ease-in-out;
+  animation:
+    shadowWalk 2s infinite ease-in-out,
+    shadowWalk2 2s infinite ease-in-out;
 }
 @keyframes shadowWalk {
   0%,
   100% {
-    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(-80deg);
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em))
+      rotateZ(-80deg);
   }
   50% {
-    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(80deg);
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em))
+      rotateZ(80deg);
   }
 }
 @keyframes shadowWalk2 {
@@ -320,15 +325,19 @@ body *:not(:empty) {
   }
 }
 #state3:checked ~ .scene .shadow {
-  animation: shadowRun 1.5s infinite ease-in-out, shadowRun2 1.5s infinite ease-in-out;
+  animation:
+    shadowRun 1.5s infinite ease-in-out,
+    shadowRun2 1.5s infinite ease-in-out;
 }
 @keyframes shadowRun {
   0%,
   100% {
-    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(-80deg);
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em))
+      rotateZ(-80deg);
   }
   50% {
-    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(80deg);
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em))
+      rotateZ(80deg);
   }
 }
 @keyframes shadowRun2 {
