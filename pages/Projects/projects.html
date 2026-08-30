@@ -138,12 +138,15 @@
       ];
 
       const grid = document.getElementById("projectsGrid");
+      const previewScaleForViewport = (projectScale) =>
+        window.innerWidth <= 640 ? 1 : projectScale;
 
       projects.forEach((project) => {
         const card = document.createElement("article");
+        const scale = previewScaleForViewport(project.previewScale);
         card.className = "project-card";
         card.innerHTML = `
-          <div class="project-preview" style="--preview-start:${project.accent[0]}; --preview-end:${project.accent[1]}; --preview-scale:${project.previewScale};">
+          <div class="project-preview" style="--preview-start:${project.accent[0]}; --preview-end:${project.accent[1]}; --preview-scale:${scale};">
             <span class="preview-label">${project.category}</span>
             <span class="preview-icon" aria-hidden="true">${project.icon}</span>
             <iframe
