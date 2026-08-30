@@ -440,7 +440,6 @@ h3:hover {
 }
 
 .theory-box {
-  border-right: 3px solid #10b981;
   background: rgba(16, 185, 129, 0.05);
   padding: 15px;
   margin: 15px 0;
@@ -509,7 +508,6 @@ h3:hover {
 /* تنسيق صندوق النظرية */
 .theory-box.gold-border {
   background: rgba(249, 115, 22, 0.05);
-  border-right: 4px solid #f97316;
   padding: 15px;
   border-radius: 8px;
   line-height: 1.8;

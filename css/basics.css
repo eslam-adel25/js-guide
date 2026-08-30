@@ -37,7 +37,6 @@ h2 {
   background-color: #f0f0f0;
   padding: 10px;
   border-radius: 5px;
-  border-right: 5px solid var(--main-color);
 }
 
 p {
@@ -264,7 +263,7 @@ td {
   background: #1e293b;
   padding: 20px;
   border-radius: 10px;
-  border-top: 5px solid;
+  
   min-width: 200px;
 }
 
@@ -541,7 +540,6 @@ pre code span.code-punctuation {
   margin-top: 20px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.05);
-  border-right: 5px solid #f44336;
   /* لون أحمر للتنبيه */
   border-radius: 8px;
   color: #fff;
@@ -604,7 +602,6 @@ pre code span.code-punctuation {
 /* --- تنسيق الشرح الذي يظهر تحت الزرار --- */
 .persistent-explain {
   background: rgba(249, 115, 22, 0.1);
-  border-right: 4px solid #f97316;
   padding: 15px;
   margin-top: 15px;
   color: #e2e8f0;
