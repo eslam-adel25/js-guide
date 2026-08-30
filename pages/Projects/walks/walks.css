@@ -1,0 +1,674 @@
+/* author: Amit Sheen
+https://codepen.io/amit_sheen/pen/abLPdoQ */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: #eee;
+  color: #111;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  perspective: 1500px;
+  overflow: hidden;
+}
+body *:not(:empty) {
+  transform-style: preserve-3d;
+}
+
+.hidden {
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
+  appearance: none;
+  background: none;
+  border: none;
+}
+
+.scene {
+  position: relative;
+  transform: translateY(15em);
+}
+
+.stateLabels {
+  position: absolute;
+  top: -14em;
+  display: flex;
+  gap: 2em;
+  transform: translateX(-50%);
+}
+.stateLabels::before {
+  content: "csStickman";
+  position: absolute;
+  top: -4em;
+  width: 100%;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.stateLabel {
+  width: 5em;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+.stateLabel::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  transform: translateX(-50%);
+  background-color: #0007;
+  transition: width 0.5s;
+}
+
+#state1:checked ~ .scene [for="state1"]::after {
+  width: 100%;
+}
+
+#state2:checked ~ .scene [for="state2"]::after {
+  width: 100%;
+}
+
+#state3:checked ~ .scene [for="state3"]::after {
+  width: 100%;
+}
+
+#state2:checked ~ .scene .head {
+  animation: headWalk 2s infinite ease-in-out;
+}
+@keyframes headWalk {
+  0%,
+  100% {
+    transform: rotateZ(-5deg);
+  }
+  50% {
+    transform: rotateZ(5deg);
+  }
+}
+#state2:checked ~ .scene .torso {
+  animation: torsoWalk 2s infinite ease-in-out;
+}
+@keyframes torsoWalk {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0.8em);
+  }
+  25%,
+  75% {
+    transform: translateY(0em);
+  }
+}
+#state2:checked ~ .scene .arm {
+  animation: armWalk 2s var(--armDelay, 0s) infinite ease-in-out;
+}
+@keyframes armWalk {
+  0%,
+  100% {
+    transform: rotateZ(var(--armAngle)) rotateX(-20deg);
+  }
+  50% {
+    transform: rotateZ(var(--armAngle)) rotateX(20deg);
+  }
+}
+#state2:checked ~ .scene .arm.left {
+  --armDelay: -1.9s;
+}
+#state2:checked ~ .scene .arm.right {
+  --armDelay: -0.9s;
+}
+#state2:checked ~ .scene .hand {
+  animation: handWalk 2s var(--armDelay, 0s) infinite ease-in-out;
+}
+@keyframes handWalk {
+  0%,
+  100% {
+    transform: rotateZ(var(--handAngle)) rotateX(0deg);
+  }
+  75% {
+    transform: rotateZ(var(--handAngle)) rotateX(20deg);
+  }
+}
+#state2:checked ~ .scene .leg {
+  animation: legWalk 2s var(--legDelay, 0s) infinite ease-in-out;
+}
+@keyframes legWalk {
+  0%,
+  100% {
+    transform: rotateZ(var(--legAngle)) rotateX(20deg);
+  }
+  50% {
+    transform: rotateZ(var(--legAngle)) rotateX(-20deg);
+  }
+}
+#state2:checked ~ .scene .leg.left {
+  --shinDelay: -1.9s;
+  --footDelay: -1.8s;
+}
+#state2:checked ~ .scene .leg.right {
+  --legDelay: -1s;
+  --shinDelay: -0.9s;
+  --footDelay: -0.8s;
+}
+#state2:checked ~ .scene .shin {
+  animation: shinWalk 2s var(--shinDelay, 0s) infinite ease-in-out;
+}
+@keyframes shinWalk {
+  0%,
+  25%,
+  100% {
+    transform: rotateZ(var(--shinAngle)) rotateX(0deg);
+  }
+  50%,
+  70% {
+    transform: rotateZ(var(--shinAngle)) rotateX(-30deg);
+  }
+}
+#state2:checked ~ .scene .foot {
+  animation: footWalk 2s var(--footDelay, 0s) infinite ease-in-out;
+}
+@keyframes footWalk {
+  0%,
+  100% {
+    transform: rotateX(70deg);
+  }
+  25%,
+  50% {
+    transform: rotateX(90deg);
+  }
+  75% {
+    transform: rotateX(100deg);
+  }
+}
+#state2:checked ~ .scene .shadow {
+  animation: shadowWalk 2s infinite ease-in-out, shadowWalk2 2s infinite ease-in-out;
+}
+@keyframes shadowWalk {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(-80deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(80deg);
+  }
+}
+@keyframes shadowWalk2 {
+  0%,
+  50%,
+  100% {
+    width: 20em;
+  }
+  25%,
+  75% {
+    width: 14em;
+  }
+}
+#state2:checked ~ .scene .floor {
+  animation: floorWalk 2s infinite linear;
+}
+@keyframes floorWalk {
+  to {
+    background-position-y: -24em;
+  }
+}
+
+#state3:checked ~ .scene .head {
+  transform: rotateX(-15deg);
+}
+#state3:checked ~ .scene .torso {
+  animation: torsoRun 1.5s infinite ease-in-out;
+}
+@keyframes torsoRun {
+  0%,
+  50%,
+  100% {
+    transform: translateY(1.3em) rotateX(-10deg);
+  }
+  25%,
+  75% {
+    transform: translateY(0em) rotateX(-10deg);
+  }
+}
+#state3:checked ~ .scene .arm {
+  animation: armRun 1.5s var(--armDelay, 0s) infinite ease-in-out;
+}
+@keyframes armRun {
+  0%,
+  100% {
+    transform: rotateZ(var(--armAngle)) rotateX(-45deg);
+  }
+  50% {
+    transform: rotateZ(var(--armAngle)) rotateX(45deg);
+  }
+}
+#state3:checked ~ .scene .arm.left {
+  --armDelay: -1.425s;
+}
+#state3:checked ~ .scene .arm.right {
+  --armDelay: -0.675s;
+}
+#state3:checked ~ .scene .hand {
+  animation: handRun 1.5s var(--armDelay, 0s) infinite ease-in-out;
+}
+@keyframes handRun {
+  0%,
+  100% {
+    transform: rotateZ(var(--handAngle)) rotateX(45deg);
+  }
+  50% {
+    transform: rotateZ(var(--handAngle)) rotateX(60deg);
+  }
+}
+#state3:checked ~ .scene .leg {
+  animation: legRun 1.5s var(--legDelay, 0s) infinite ease-in-out;
+}
+@keyframes legRun {
+  0%,
+  100% {
+    transform: rotateZ(var(--legAngle)) rotateX(60deg);
+  }
+  50% {
+    transform: rotateZ(var(--legAngle)) rotateX(-45deg);
+  }
+}
+#state3:checked ~ .scene .leg.right {
+  --legDelay: -0.75s;
+  --shinDelay: -0.525s;
+}
+#state3:checked ~ .scene .leg.left {
+  --shinDelay: -1.275s;
+}
+#state3:checked ~ .scene .shin {
+  animation: shinRun 1.5s var(--shinDelay, 0s) infinite ease-in;
+}
+@keyframes shinRun {
+  0%,
+  25%,
+  100% {
+    transform: rotateZ(var(--shinAngle)) rotateX(0deg);
+  }
+  50%,
+  65% {
+    transform: rotateZ(var(--shinAngle)) rotateX(-60deg);
+  }
+}
+#state3:checked ~ .scene .foot {
+  animation: footRun 1.5s var(--shinDelay, 0s) infinite ease-in-out;
+}
+@keyframes footRun {
+  0%,
+  100% {
+    transform: rotateX(60deg);
+  }
+  25%,
+  50% {
+    transform: rotateX(90deg);
+  }
+  75% {
+    transform: rotateX(100deg);
+  }
+}
+#state3:checked ~ .scene .shadow {
+  animation: shadowRun 1.5s infinite ease-in-out, shadowRun2 1.5s infinite ease-in-out;
+}
+@keyframes shadowRun {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(-80deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em)) rotateZ(80deg);
+  }
+}
+@keyframes shadowRun2 {
+  0%,
+  50%,
+  100% {
+    width: 24em;
+  }
+  25%,
+  75% {
+    width: 14em;
+  }
+}
+#state3:checked ~ .scene .floor {
+  animation: floorRun 1.5s infinite linear;
+}
+@keyframes floorRun {
+  to {
+    background-position-y: -32em;
+  }
+}
+
+.rotateBtn {
+  position: absolute;
+  left: 0;
+  top: -1em;
+  width: 3em;
+  height: 3em;
+  background: none;
+  border: solid #000a;
+  border-width: 0 0 8px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  animation: btnSwing 0.2s infinite ease-in-out alternate paused;
+}
+@keyframes btnSwing {
+  from {
+    transform: translateX(-5%) rotateZ(var(--rz));
+  }
+  to {
+    transform: translateX(5%) rotateZ(var(--rz));
+  }
+}
+.rotateBtn:hover {
+  animation-play-state: running;
+}
+.rotateBtn:active {
+  border-color: #000;
+}
+.rotateBtn#turnLeft {
+  transform: rotate(45deg);
+  --rz: 45deg;
+  left: -16em;
+}
+.rotateBtn#turnRight {
+  transform: rotate(-135deg);
+  --rz: -135deg;
+  left: 14em;
+}
+
+.cameraRotate_left {
+  animation: sceneRotateX 8s -0.5s infinite linear paused;
+}
+.cameraRotate_right {
+  animation: sceneRotateX 8s infinite linear paused reverse;
+}
+@keyframes sceneRotateX {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+#turnLeft:active ~ .cameraRotate_left,
+#turnRight:active ~ .cameraRotate_left .cameraRotate_right {
+  animation-play-state: running;
+}
+
+.stickman {
+  position: absolute;
+}
+.stickman * {
+  position: absolute;
+}
+
+i {
+  display: block;
+  height: 100%;
+  left: -0.5em;
+  top: 0;
+  width: 1em;
+  height: 100%;
+  border-radius: 0.5em;
+  background-image: linear-gradient(#444, #222);
+}
+i:nth-child(1) {
+  transform: rotateY(0deg);
+}
+i:nth-child(2) {
+  transform: rotateY(30deg);
+}
+i:nth-child(3) {
+  transform: rotateY(60deg);
+}
+i:nth-child(4) {
+  transform: rotateY(90deg);
+}
+i:nth-child(5) {
+  transform: rotateY(120deg);
+}
+i:nth-child(6) {
+  transform: rotateY(150deg);
+}
+
+.head {
+  transform-origin: bottom;
+}
+.head > i {
+  left: -1.75em;
+  top: -5em;
+  width: 3.5em;
+  height: 5em;
+  background-image: linear-gradient(#666, #0007);
+  border-radius: 50%/40% 40% 60% 60%;
+}
+.head > i:nth-child(1) {
+  transform: rotateY(0deg);
+}
+.head > i:nth-child(2) {
+  transform: rotateY(15deg);
+}
+.head > i:nth-child(3) {
+  transform: rotateY(30deg);
+}
+.head > i:nth-child(4) {
+  transform: rotateY(45deg);
+}
+.head > i:nth-child(5) {
+  transform: rotateY(60deg);
+}
+.head > i:nth-child(6) {
+  transform: rotateY(75deg);
+}
+.head > i:nth-child(7) {
+  transform: rotateY(90deg);
+}
+.head > i:nth-child(8) {
+  transform: rotateY(105deg);
+}
+.head > i:nth-child(9) {
+  transform: rotateY(120deg);
+}
+.head > i:nth-child(10) {
+  transform: rotateY(135deg);
+}
+.head > i:nth-child(11) {
+  transform: rotateY(150deg);
+}
+.head > i:nth-child(12) {
+  transform: rotateY(165deg);
+}
+
+.torso {
+  top: -5em;
+  height: 10em;
+  transform-origin: bottom;
+}
+
+.arm {
+  height: 6em;
+  transform-origin: center 0.5em;
+  transform: rotateZ(var(--armAngle));
+}
+.arm.left {
+  --armAngle: 20deg;
+}
+.arm.right {
+  --armAngle: -20deg;
+}
+
+.hand {
+  top: calc(100% - 1em);
+  height: 5em;
+  transform-origin: center 0.5em;
+  transform: rotateZ(var(--handAngle));
+}
+.left .hand {
+  --handAngle: -15deg;
+}
+.right .hand {
+  --handAngle: 15deg;
+}
+
+.leg {
+  top: calc(100% - 1em);
+  height: 7em;
+  transform-origin: center 0.5em;
+  transform: rotateZ(var(--legAngle, 0deg));
+}
+.leg.left {
+  --legAngle: 12deg;
+}
+.leg.right {
+  --legAngle: -12deg;
+}
+
+.shin {
+  top: calc(100% - 1em);
+  height: 7em;
+  transform-origin: center 0.5em;
+  transform: rotateZ(var(--shinAngle));
+}
+.left .shin {
+  --shinAngle: -10deg;
+}
+.right .shin {
+  --shinAngle: 10deg;
+}
+
+.foot {
+  top: calc(100% - 1em);
+  height: 2em;
+  transform-origin: center 0.5em;
+  transform: rotateX(90deg);
+}
+
+.shadow {
+  width: 12em;
+  height: 12em;
+  background-image: radial-gradient(#0004, #0000 66%);
+  transform: translate(-50%, -50%) rotateX(90deg) translateZ(calc(1px - 17em));
+}
+
+.background {
+  position: absolute;
+}
+.background > div {
+  position: absolute;
+  left: -1px;
+  top: -25em;
+  width: 2px;
+  height: 50em;
+  background-image: linear-gradient(#0000, #fff, #0000);
+  transform: rotateY(var(--ry)) translateZ(-24em);
+  backface-visibility: hidden;
+}
+.background > div:nth-child(1) {
+  --ry: 0deg;
+}
+.background > div:nth-child(2) {
+  --ry: 15deg;
+}
+.background > div:nth-child(3) {
+  --ry: 30deg;
+}
+.background > div:nth-child(4) {
+  --ry: 45deg;
+}
+.background > div:nth-child(5) {
+  --ry: 60deg;
+}
+.background > div:nth-child(6) {
+  --ry: 75deg;
+}
+.background > div:nth-child(7) {
+  --ry: 90deg;
+}
+.background > div:nth-child(8) {
+  --ry: 105deg;
+}
+.background > div:nth-child(9) {
+  --ry: 120deg;
+}
+.background > div:nth-child(10) {
+  --ry: 135deg;
+}
+.background > div:nth-child(11) {
+  --ry: 150deg;
+}
+.background > div:nth-child(12) {
+  --ry: 165deg;
+}
+.background > div:nth-child(13) {
+  --ry: 180deg;
+}
+.background > div:nth-child(14) {
+  --ry: 195deg;
+}
+.background > div:nth-child(15) {
+  --ry: 210deg;
+}
+.background > div:nth-child(16) {
+  --ry: 225deg;
+}
+.background > div:nth-child(17) {
+  --ry: 240deg;
+}
+.background > div:nth-child(18) {
+  --ry: 255deg;
+}
+.background > div:nth-child(19) {
+  --ry: 270deg;
+}
+.background > div:nth-child(20) {
+  --ry: 285deg;
+}
+.background > div:nth-child(21) {
+  --ry: 300deg;
+}
+.background > div:nth-child(22) {
+  --ry: 315deg;
+}
+.background > div:nth-child(23) {
+  --ry: 330deg;
+}
+.background > div:nth-child(24) {
+  --ry: 345deg;
+}
+
+.floor {
+  position: absolute;
+  top: 17em;
+  width: 32em;
+  height: 32em;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  background-image: repeating-linear-gradient(#eee 0, #fff 3em, #eee 4em);
+  box-shadow: 0 0 2em #0007 inset;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+}
+.floor::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(#0007, #0000 50%);
+  transform: translateZ(-2em);
+}

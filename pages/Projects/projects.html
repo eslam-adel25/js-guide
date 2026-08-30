@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Guide | Projects</title>
+    <meta
+      name="description"
+      content="A curated showcase of interactive JavaScript experiments and practice projects from the JS Guide portfolio."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/navigation.css" />
+    <link rel="stylesheet" href="../../css/projects.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">JS Guide</div>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="../../index.html">الرئيسية</a></li>
+          <li><a href="../basics.html">الأساسيات</a></li>
+          <li><a href="../advanced.html">متقدم</a></li>
+          <li><a href="../monsterLevel.html">Monster Level</a></li>
+          <li><a href="projects.html" class="active">مشاريع</a></li>
+        </ul>
+
+        <div
+          class="menu-icon"
+          id="menuIcon"
+          aria-label="Open navigation menu"
+          tabindex="0"
+        >
+          ☰
+        </div>
+      </div>
+    </nav>
+
+    <main class="projects-page">
+      <section class="projects-hero" aria-labelledby="projects-title">
+        <div class="projects-hero-inner">
+          <div class="projects-kicker">🚀 Projects</div>
+          <h1 id="projects-title">Explore my JavaScript projects</h1>
+          <p>
+            Practical experiments and interactive builds designed to turn
+            JavaScript concepts into real-world browser experiences.
+          </p>
+          <div class="hero-divider" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="projects-shell" aria-label="Project showcase">
+        <div class="projects-grid" id="projectsGrid"></div>
+      </section>
+    </main>
+
+    <script src="../../js/main.js"></script>
+    <script>
+      const projects = [
+        {
+          name: "Fish",
+          description:
+            "A layered 3D lantern and fish animation scene built with Three.js and custom shader motion.",
+          technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
+          url: "fish/fish.html",
+          status: "Interactive",
+          accent: ["#0f172a", "#1e293b"],
+          icon: "🐟",
+          category: "3D",
+          previewScale: 0.74,
+        },
+        {
+          name: "Professionalism",
+          description:
+            "An artistic animated SVG composition that explores smooth motion, layered paths, and creative storytelling.",
+          technologies: ["HTML", "CSS", "JavaScript", "SVG"],
+          url: "professionalism/professionalism.html",
+          status: "Visual",
+          accent: ["#1d4ed8", "#0f172a"],
+          icon: "🎨",
+          category: "Art",
+          previewScale: 0.9,
+        },
+        {
+          name: "Sales",
+          description:
+            "A product showcase slider with interactive cards, selection states, and polished ecommerce-style UI.",
+          technologies: ["HTML", "CSS", "JavaScript", "Swiper"],
+          url: "sales/sales.html",
+          status: "Showcase",
+          accent: ["#7c2d12", "#0f172a"],
+          icon: "🛍️",
+          category: "UI",
+          previewScale: 0.96,
+        },
+        {
+          name: "Simple 3D",
+          description:
+            "A layered 3D card hover experiment using depth effects, shadows, and image cutouts.",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          url: "simple_3d/simple_3d.html",
+          status: "Hover",
+          accent: ["#0f766e", "#111827"],
+          icon: "🧊",
+          category: "3D",
+          previewScale: 1.05,
+        },
+        {
+          name: "Space Globe",
+          description:
+            "A stylized orbital globe animation with star fields, lighting, and interactive camera movement.",
+          technologies: ["HTML", "CSS", "JavaScript", "Three.js"],
+          url: "space_globe/space_globe.html",
+          status: "3D",
+          accent: ["#312e81", "#0f172a"],
+          icon: "🌍",
+          category: "Globe",
+          previewScale: 0.82,
+        },
+        {
+          name: "Walks",
+          description:
+            "A CSS-driven character animation study with pose states, motion cycles, and directional controls.",
+          technologies: ["HTML", "CSS", "JavaScript"],
+          url: "walks/walks.html",
+          status: "Animation",
+          accent: ["#a16207", "#111827"],
+          icon: "🧍",
+          category: "Motion",
+          previewScale: 1.1,
+        },
+      ];
+
+      const grid = document.getElementById("projectsGrid");
+
+      projects.forEach((project) => {
+        const card = document.createElement("article");
+        card.className = "project-card";
+        card.innerHTML = `
+          <div class="project-preview" style="--preview-start:${project.accent[0]}; --preview-end:${project.accent[1]}; --preview-scale:${project.previewScale};">
+            <span class="preview-label">${project.category}</span>
+            <span class="preview-icon" aria-hidden="true">${project.icon}</span>
+            <iframe
+              class="project-preview-frame"
+              src="${project.url}"
+              title="${project.name} preview"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin"
+              referrerpolicy="no-referrer"
+              aria-label="${project.name} live preview"
+            ></iframe>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h2>${project.name}</h2>
+              <span class="project-status">${project.status}</span>
+            </div>
+            <p>${project.description}</p>
+            <ul class="tech-tags" aria-label="${project.name} technologies">
+              ${project.technologies.map((tech) => `<li>${tech}</li>`).join("")}
+            </ul>
+            <div class="project-actions">
+              <a class="primary-link" href="${project.url}">View Project</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

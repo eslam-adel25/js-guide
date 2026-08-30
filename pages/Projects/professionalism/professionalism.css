@@ -1,0 +1,210 @@
+/* author: Evan Jin (진경성)
+https://codepen.io/rudtjd2548/pen/XWVKJmZ */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500&family=Pacifico&display=swap");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.header {
+    padding-top: 110px;
+    background-color: #000;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.path {
+    fill: none;
+    stroke: #f2f2f2;
+    stroke-width: 3px;
+}
+
+.path1 {
+    stroke-dasharray: 6884;
+    animation: drawPath1 1s linear, floating 2.2s linear infinite;
+}
+
+.content1 {
+    background-color: #f1f1f1;
+}
+
+.content2 {
+    background-color: #000;
+}
+
+.path2 {
+    stroke: #000;
+}
+
+.content2 {
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.25) 1px,
+        transparent 1px,
+        transparent 7px
+    );
+    background-size: 2px;
+}
+
+.content3 {
+    background-color: #1a1a1a;
+}
+
+.footer {
+    height: 30vh;
+    background-color: #000;
+}
+
+@keyframes drawPath1 {
+    0% {
+        stroke-dashoffset: 6884;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes floating {
+    50% {
+        transform: translate3d(0, 40px, 0);
+    }
+}
+
+/* css for my tutorial channel link */
+#tube {
+    position: fixed;
+    bottom: 1vw;
+    right: 1vw;
+    opacity: 0.4;
+}
+#tube:hover {
+    opacity: 1;
+}
+#tube > img {
+    height: 3rem;
+}
