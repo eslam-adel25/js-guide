@@ -1,3 +1,212 @@
+const LOCAL_SEARCH_PAGES = [
+  { key: "home", title: "دليل JavaScript", url: "index.html" },
+  {
+    key: "basics",
+    title: "الأساسيات",
+    url: "pages/basics.html",
+  },
+  {
+    key: "advanced",
+    title: "متقدم",
+    url: "pages/advanced.html",
+  },
+  {
+    key: "monster-level",
+    title: "Monster Level - المصفوفات",
+    url: "pages/monsterLevel.html",
+  },
+];
+
+function normalizeSearchText(value) {
+  return String(value || "")
+    .toLocaleLowerCase()
+    .normalize("NFKC")
+    .replace(/[\u064B-\u065F\u0670]/g, "")
+    .replace(/[،؛؟,.!?()[\]{}:;"'`/\\|_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getSearchSectionCandidates(doc) {
+  const candidates = Array.from(
+    doc.querySelectorAll(".mega-card, .topic-section, .lesson-card, main"),
+  );
+
+  return candidates.filter((candidate) => {
+    if (candidate.closest("#fab-root, nav, footer, script, style")) {
+      return false;
+    }
+
+    const nestedCandidate = candidate.querySelector(
+      ".mega-card, .topic-section, .lesson-card",
+    );
+    return !nestedCandidate;
+  });
+}
+
+function getSearchableText(node) {
+  const clone = node.cloneNode(true);
+  clone
+    .querySelectorAll("script, style, nav, footer, #fab-root, .fab-panel")
+    .forEach((element) => element.remove());
+  return clone.textContent.replace(/\s+/g, " ").trim();
+}
+
+function getSearchSectionTitle(node, pageTitle) {
+  const heading = node.querySelector("h1, h2, h3, .main-label");
+  return heading ? heading.textContent.replace(/\s+/g, " ").trim() : pageTitle;
+}
+
+function getSearchPagePath(pageUrl) {
+  return new URL(getSearchPageHref(pageUrl), window.location.href).pathname;
+}
+
+function getSearchPageHref(pageUrl) {
+  return window.location.pathname.includes("/pages/")
+    ? `../${pageUrl}`
+    : pageUrl;
+}
+
+function createSearchSectionId(pageKey, index) {
+  return `local-search-${pageKey}-${index + 1}`;
+}
+
+function prepareLocalSearchAnchors(doc, pageKey) {
+  getSearchSectionCandidates(doc).forEach((section, index) => {
+    section.id = createSearchSectionId(pageKey, index);
+    section.style.scrollMarginTop = "110px";
+  });
+}
+
+function getSearchSnippet(text, query) {
+  const normalizedText = normalizeSearchText(text);
+  const normalizedQuery = normalizeSearchText(query);
+  const matchIndex = normalizedText.indexOf(normalizedQuery);
+  if (matchIndex < 0) return text.slice(0, 150).trim();
+
+  const start = Math.max(0, matchIndex - 55);
+  const end = Math.min(text.length, start + 180);
+  return `${start > 0 ? "..." : ""}${text.slice(start, end).trim()}${end < text.length ? "..." : ""}`;
+}
+
+function scoreSearchSection(section, queryTokens, normalizedQuery) {
+  const normalizedTitle = normalizeSearchText(section.sectionTitle);
+  const normalizedPageTitle = normalizeSearchText(section.pageTitle);
+  const normalizedContent = normalizeSearchText(section.text);
+  let score = 0;
+
+  if (normalizedTitle === normalizedQuery) score += 120;
+  if (normalizedPageTitle === normalizedQuery) score += 100;
+  if (normalizedTitle.startsWith(`${normalizedQuery} `)) score += 90;
+  if (normalizedTitle.includes(normalizedQuery)) score += 65;
+  if (normalizedContent.includes(normalizedQuery)) score += 35;
+
+  queryTokens.forEach((token) => {
+    if (normalizedTitle.includes(token)) score += 24;
+    if (normalizedPageTitle.includes(token)) score += 16;
+    if (normalizedContent.includes(token)) score += 7;
+  });
+
+  return score;
+}
+
+class LocalSiteSearch {
+  constructor(currentDocument) {
+    this.currentDocument = currentDocument;
+    this.indexPromise = null;
+  }
+
+  async loadIndex() {
+    if (this.indexPromise) return this.indexPromise;
+
+    this.indexPromise = Promise.all(
+      LOCAL_SEARCH_PAGES.map((page) => this.loadPage(page)),
+    ).then((pages) => pages.flat());
+
+    return this.indexPromise;
+  }
+
+  async loadPage(page) {
+    const currentPath = window.location.pathname;
+    const pagePath = getSearchPagePath(page.url);
+    let doc = null;
+
+    if (
+      pagePath === currentPath ||
+      (page.key === "home" && /\/$/.test(currentPath))
+    ) {
+      doc = this.currentDocument;
+      prepareLocalSearchAnchors(doc, page.key);
+    } else {
+      try {
+        const response = await fetch(getSearchPageHref(page.url), {
+          cache: "force-cache",
+        });
+        if (!response.ok) throw new Error(`Unable to load ${page.url}`);
+        doc = new DOMParser().parseFromString(
+          await response.text(),
+          "text/html",
+        );
+      } catch (error) {
+        console.warn("Local search skipped a page:", page.url, error);
+        return [];
+      }
+    }
+
+    const pageHeading = doc.querySelector("h1")?.textContent || "";
+    const pageSearchText = `${page.title} ${pageHeading}`.trim();
+
+    return getSearchSectionCandidates(doc)
+      .map((section, index) => {
+        const text = getSearchableText(section);
+        return {
+          pageKey: page.key,
+          pageTitle: page.title,
+          pageUrl: page.url,
+          sectionId: createSearchSectionId(page.key, index),
+          sectionTitle: getSearchSectionTitle(section, page.title),
+          pageSearchText,
+          text,
+        };
+      })
+      .filter((section) => section.text.length >= 4);
+  }
+
+  async search(query) {
+    const normalizedQuery = normalizeSearchText(query);
+    if (!normalizedQuery) return [];
+
+    const queryTokens = normalizedQuery.split(" ").filter(Boolean);
+    const index = await this.loadIndex();
+    const uniqueResults = new Map();
+
+    index.forEach((section) => {
+      const normalizedText = normalizeSearchText(section.text);
+      const normalizedPageSearchText = normalizeSearchText(
+        section.pageSearchText,
+      );
+      const searchableText = `${normalizedPageSearchText} ${normalizedText}`;
+      const matchesAllTokens = queryTokens.every((token) =>
+        searchableText.includes(token),
+      );
+      const matchesPhrase = searchableText.includes(normalizedQuery);
+      if (!matchesAllTokens && !matchesPhrase) return;
+
+      const result = {
+        ...section,
+        score: scoreSearchSection(section, queryTokens, normalizedQuery),
+        snippet: getSearchSnippet(section.text, query),
+      };
+      const resultKey = `${section.pageKey}:${section.sectionId}`;
+      uniqueResults.set(resultKey, result);
+    });
+
+    return Array.from(uniqueResults.values())
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 20);
+  }
+}
+
 class SmartFAB {
   constructor(rootId) {
     this.root = document.getElementById(rootId);
@@ -13,7 +222,37 @@ class SmartFAB {
     this.render();
     this.cacheDOM();
     this.bindEvents();
+    this.localSearch = new LocalSiteSearch(document);
+    prepareLocalSearchAnchors(document, this.getCurrentSearchPageKey());
     this.renderPageSections();
+    this.handleSearchHash();
+  }
+
+  getCurrentSearchPageKey() {
+    const currentPath = window.location.pathname;
+    return (
+      LOCAL_SEARCH_PAGES.find(
+        (page) => getSearchPagePath(page.url) === currentPath,
+      )?.key || "current"
+    );
+  }
+
+  handleSearchHash() {
+    const sectionId = window.location.hash.slice(1);
+    if (!sectionId) return;
+
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    setTimeout(() => {
+      const navbar = document.querySelector(".navbar");
+      const navbarHeight = navbar
+        ? navbar.getBoundingClientRect().height + 12
+        : 20;
+      const top =
+        target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 0);
   }
 
   // --- HTML Injection ---
@@ -186,28 +425,41 @@ class SmartFAB {
       "#fab-root, .fab-panel, .fab-chat-body, .fab-chat-input, .fab-main-btn, .fab-menu, .navbar, #notification-container, .modal, .modal-overlay, .modal-content";
     const sections = [];
     const seen = new Set();
-    const headingBlocks = Array.from(document.querySelectorAll("h1, h2, h3"));
 
-    headingBlocks.forEach((heading) => {
-      const text = heading.textContent.trim();
+    const rootCandidates = Array.from(
+      document.querySelectorAll(".mega-card, .lesson-section, .topic-section"),
+    );
+
+    rootCandidates.forEach((container) => {
+      if (!container || container.matches(ignoredSelectors)) return;
+      if (container.closest("#fab-root")) return;
+
+      const directParentContainer = container.parentElement?.closest(
+        ".mega-card, .lesson-section, .topic-section",
+      );
+      if (directParentContainer && directParentContainer !== container) return;
+
+      if (container.matches("header, .main-header, .container.lesson-card"))
+        return;
+
+      const labelNode =
+        container.querySelector("h1, h2, h3, .main-label") ||
+        container.querySelector(".section-title");
+      const text = labelNode
+        ? labelNode.textContent.trim()
+        : container.textContent.trim();
       if (!text || text.length < 4) return;
       if (/^(AI Assistant|JS Playground|About|دليل JavaScript)$/i.test(text))
         return;
 
-      const container = heading.closest(
-        "section, article, .lesson-card, .topic-section, .card, .container, .panel, .lesson-section, .content-section, .main",
-      );
-      if (!container || container.matches(ignoredSelectors)) return;
-      if (container.closest("#fab-root")) return;
-
-      const key = `${container.tagName}:${text}`;
+      const key = container.id || `${container.tagName}:${text}`;
       if (seen.has(key)) return;
       seen.add(key);
 
       if (!container.id) {
         container.id = `page-section-${sections.length + 1}`;
       }
-      container.style.scrollMarginTop = "90px";
+      container.style.scrollMarginTop = "110px";
 
       sections.push({
         id: container.id,
@@ -248,16 +500,24 @@ class SmartFAB {
       btn.innerHTML = `<span class="fab-section-order">${index + 1}.</span><span class="fab-section-label">${section.text}</span>`;
       btn.addEventListener("click", () => {
         const target = section.node;
+        if (!target) return;
+
         this.state.sectionMenuVisible = false;
         this.dom.pageSections.classList.add("is-hidden");
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (window.innerWidth <= 768) {
-          const navbar = document.querySelector(".navbar");
-          if (navbar) {
-            const navbarHeight = navbar.getBoundingClientRect().height || 70;
-            window.scrollBy({ top: -navbarHeight, behavior: "smooth" });
-          }
-        }
+
+        const navbar = document.querySelector(".navbar");
+        const navbarHeight = navbar
+          ? navbar.getBoundingClientRect().height + 12
+          : 20;
+        const top =
+          target.getBoundingClientRect().top +
+          window.pageYOffset -
+          navbarHeight;
+
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
       });
       list.appendChild(btn);
     });
@@ -287,54 +547,115 @@ class SmartFAB {
     const text = this.dom.chatInput.value.trim();
     if (!text) return;
 
-    // 1. إضافة رسالة المستخدم للشات
     this.appendMessage(text, "user");
     this.dom.chatInput.value = "";
 
-    // 2. إظهار مؤشر "يكتب الآن..."
     this.dom.typingIndicator.classList.add("active");
     this.scrollToBottom();
 
     try {
-      // 3. الاتصال الحقيقي بالـ API
-      const response = await this.callRealAPI(text);
-
-      // 4. إخفاء المؤشر وعرض رد الذكاء الاصطناعي
+      const results = await this.localSearch.search(text);
       this.dom.typingIndicator.classList.remove("active");
-      this.appendMessage(response, "ai");
+      this.renderSearchResults(text, results);
     } catch (error) {
       this.dom.typingIndicator.classList.remove("active");
-      this.appendMessage(
-        "عذراً، حدث خطأ في الاتصال. تأكد من صحة المفتاح أو اتصال الإنترنت.",
-        "ai",
-      );
-      console.error("API Error:", error);
+      this.renderSearchMessage("تعذر البحث المحلي. حاول مرة أخرى.");
+      console.error("Local search error:", error);
     }
   }
 
-  // دالة الاتصال الحقيقي
-  async callRealAPI(message) {
-    // إحنا بننادي السيرفر بتاعنا اللي عملناه بالـ Node.js
-    // السيرفر ده هو اللي معاه المفتاح وهو اللي بيكلم OpenAI
-    const response = await fetch("http://localhost:3000/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: message,
-      }),
-    });
+  renderSearchResults(query, results) {
+    const resultContainer = this.createSearchResultsContainer();
+    const heading = document.createElement("div");
+    heading.className = "fab-search-results-heading";
+    heading.textContent = `${results.length} نتيجة للبحث عن "${query}"`;
+    resultContainer.appendChild(heading);
 
-    if (!response.ok) {
-      // لو السيرفر وقع أو فيه مشكلة في المفتاح هناك
-      throw new Error(`Server error: ${response.status}`);
+    if (!results.length) {
+      const empty = document.createElement("div");
+      empty.className = "fab-search-empty";
+      empty.textContent = "لا توجد نتائج. جرّب كلمة أخرى.";
+      resultContainer.appendChild(empty);
+    } else {
+      results.forEach((result) => {
+        resultContainer.appendChild(this.createSearchResult(result));
+      });
     }
 
-    const data = await response.json();
+    this.dom.chatBody.insertBefore(resultContainer, this.dom.typingIndicator);
+    this.scrollToBottom();
+  }
 
-    // بنرجع الرد اللي السيرفر بعتهولنا في خاصية reply
-    return data.reply;
+  renderSearchMessage(message) {
+    const resultContainer = this.createSearchResultsContainer();
+    resultContainer.textContent = message;
+    this.dom.chatBody.insertBefore(resultContainer, this.dom.typingIndicator);
+    this.scrollToBottom();
+  }
+
+  createSearchResultsContainer() {
+    this.dom.chatBody
+      .querySelectorAll(".fab-search-results")
+      .forEach((node) => {
+        node.remove();
+      });
+    const container = document.createElement("div");
+    container.className = "fab-search-results";
+    return container;
+  }
+
+  createSearchResult(result) {
+    const item = document.createElement("article");
+    item.className = "fab-search-result";
+
+    const page = document.createElement("div");
+    page.className = "fab-search-result-page";
+    page.textContent = result.pageTitle;
+
+    const title = document.createElement("div");
+    title.className = "fab-search-result-title";
+    title.textContent = result.sectionTitle;
+
+    const snippet = document.createElement("p");
+    snippet.className = "fab-search-result-snippet";
+    snippet.textContent = result.snippet;
+
+    const open = document.createElement("button");
+    open.type = "button";
+    open.className = "fab-search-result-open";
+    open.textContent = "فتح القسم";
+    open.addEventListener("click", () => this.openSearchResult(result));
+
+    item.append(page, title, snippet, open);
+    return item;
+  }
+
+  openSearchResult(result) {
+    const href = `${getSearchPageHref(result.pageUrl)}#${result.sectionId}`;
+    const resultPath = getSearchPagePath(result.pageUrl);
+    if (resultPath !== window.location.pathname) {
+      window.location.href = href;
+      return;
+    }
+
+    const target = document.getElementById(result.sectionId);
+    if (!target) {
+      this.renderSearchMessage("القسم المطلوب غير متاح حالياً.");
+      return;
+    }
+
+    window.history.replaceState(null, "", `#${result.sectionId}`);
+    this.scrollToSearchTarget(target);
+  }
+
+  scrollToSearchTarget(target) {
+    const navbar = document.querySelector(".navbar");
+    const navbarHeight = navbar
+      ? navbar.getBoundingClientRect().height + 12
+      : 20;
+    const top =
+      target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    window.scrollTo({ top, behavior: "smooth" });
   }
 
   appendMessage(text, sender) {
